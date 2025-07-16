@@ -12,26 +12,13 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 vim.o.relativenumber = true
 
+vim.o.winborder = 'rounded' -- Enable winborder for all windows
+
 -- Auto unix file
 vim.api.nvim_create_autocmd('BufReadPost', {
   pattern = '*',
   callback = function()
     vim.bo.fileformat = 'unix'
-  end,
-})
-
--- Auto-strip Windows carriage returns when pasting from system clipboard
-vim.api.nvim_create_autocmd('TextYankPost', {
-  pattern = '*',
-  callback = function()
-    local reg = vim.v.event.regname
-    if reg == '+' then
-      local text = vim.fn.getreg '+'
-      local clean = string.gsub(text, '\r', '')
-      if text ~= clean then
-        vim.fn.setreg('+', clean)
-      end
-    end
   end,
 })
 
@@ -48,7 +35,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Tab options (Web development)
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json', 'html', 'css' },
+  pattern = { 'vue', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json', 'html', 'css' },
   callback = function()
     vim.bo.expandtab = true -- Use spaces instead of tabs
     vim.bo.tabstop = 2 -- Number of visual spaces per TAB
@@ -56,6 +43,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.bo.softtabstop = 2
   end,
 })
+
 -- Tab options (Go)
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'go',
@@ -197,57 +185,6 @@ require('lazy').setup({
       },
     },
   },
-  { -- Useful plugin to show you pending keybinds.
-    'folke/which-key.nvim',
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    opts = {
-      -- delay between pressing a key and opening which-key (milliseconds)
-      -- this setting is independent of vim.o.timeoutlen
-      delay = 0,
-      icons = {
-        -- set icon mappings to true if you have a Nerd Font
-        mappings = vim.g.have_nerd_font,
-        -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
-        -- default which-key.nvim defined Nerd Font icons, otherwise define a string table
-        keys = vim.g.have_nerd_font and {} or {
-          Up = '<Up> ',
-          Down = '<Down> ',
-          Left = '<Left> ',
-          Right = '<Right> ',
-          C = '<C-…> ',
-          M = '<M-…> ',
-          D = '<D-…> ',
-          S = '<S-…> ',
-          CR = '<CR> ',
-          Esc = '<Esc> ',
-          ScrollWheelDown = '<ScrollWheelDown> ',
-          ScrollWheelUp = '<ScrollWheelUp> ',
-          NL = '<NL> ',
-          BS = '<BS> ',
-          Space = '<Space> ',
-          Tab = '<Tab> ',
-          F1 = '<F1>',
-          F2 = '<F2>',
-          F3 = '<F3>',
-          F4 = '<F4>',
-          F5 = '<F5>',
-          F6 = '<F6>',
-          F7 = '<F7>',
-          F8 = '<F8>',
-          F9 = '<F9>',
-          F10 = '<F10>',
-          F11 = '<F11>',
-          F12 = '<F12>',
-        },
-      },
-      -- Document existing key chains
-      spec = {
-        { '<leader>s', group = '[S]earch' },
-        { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-      },
-    },
-  },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -316,6 +253,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      vim.keymap.set('n', '<leader>sm', function()
+        builtin.find_files { cwd = '~/.microsoft/usersecrets' }
+      end, { desc = '[S]earch [M]icrosoft Usersecrets' })
     end,
   },
   -- LSP Plugins
@@ -340,12 +281,6 @@ require('lazy').setup({
       'saghen/blink.cmp',
     },
     config = function()
-      local _open_floating_preview = vim.lsp.util.open_floating_preview
-      vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
-        opts = opts or {}
-        opts.border = opts.border or 'rounded'
-        return _open_floating_preview(contents, syntax, opts, ...)
-      end
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
@@ -356,7 +291,6 @@ require('lazy').setup({
 
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
           map('<leader>ca', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
           map('<leader>gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
           map('<leader>gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
           map('<leader>gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
@@ -755,6 +689,7 @@ require('lazy').setup({
         'tsx',
         'vue',
         'go',
+        'c_sharp',
       },
       auto_install = true,
       highlight = {
@@ -826,6 +761,26 @@ require('lazy').setup({
   require 'custom.plugins.fterm',
   -- require 'custom.plugins.noice',
   -- require 'custom.plugins.avante',
+  {
+    'paradoxical-dev/lsp_hover',
+    lazy = true,
+    config = function()
+      vim.api.nvim_create_autocmd('LspAttach', {
+        ---@diagnostic disable: unused-local
+        callback = function(event)
+          local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
+          client:request 'textDocument/hover'
+        end,
+      })
+    end,
+  },
+  {
+    'GustavEikaas/easy-dotnet.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
+    config = function()
+      require('easy-dotnet').setup()
+    end,
+  },
   {
     'github/copilot.vim',
   },
