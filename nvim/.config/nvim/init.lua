@@ -468,6 +468,22 @@ require('lazy').setup({
 
       local servers = {
         -- clangd = {},
+        yamlls = {
+          root_dir = require('lspconfig').util.root_pattern '.git',
+          filetypes = { 'yaml', 'yml' },
+          settings = {
+            yaml = {
+              schemas = {
+                ['https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json'] = {
+                  '/azure-pipeline*.y*l',
+                  '/*.azure*',
+                  'Azure-Pipelines/**/*.y*l',
+                  'Pipelines/*.y*l',
+                },
+              },
+            },
+          },
+        },
         gopls = {
           root_dir = require('lspconfig').util.root_pattern('go.mod', '.git'),
           settings = {
