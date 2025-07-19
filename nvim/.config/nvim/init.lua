@@ -785,20 +785,26 @@ require('lazy').setup({
     'github/copilot.vim',
   },
   {
-    'projekt0n/github-nvim-theme',
-    name = 'github-theme',
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    'rebelot/kanagawa.nvim',
     config = function()
-      require('github-theme').setup {
-        options = {
-          -- transparent = true, -- enables transparent background
-        },
-      }
-
-      vim.cmd 'colorscheme github_dark_default'
+      vim.cmd 'colorscheme kanagawa-dragon'
     end,
   },
+  -- {
+  --   'projekt0n/github-nvim-theme',
+  --   name = 'github-theme',
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     require('github-theme').setup {
+  --       options = {
+  --         -- transparent = true, -- enables transparent background
+  --       },
+  --     }
+  --
+  --     vim.cmd 'colorscheme github_dark_default'
+  --   end,
+  -- },
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
