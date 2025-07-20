@@ -1,2 +1,6 @@
 background-opacity = 0.9
 theme = "GitHub-Dark-Default"
+font-feature = -calt
+font-feature = -liga
+font-feature = -clig
+font-feature = -dlig
