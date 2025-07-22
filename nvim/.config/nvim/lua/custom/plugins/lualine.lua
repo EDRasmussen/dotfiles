@@ -5,7 +5,7 @@ return {
   config = function()
     require('lualine').setup {
       options = {
-        theme = 'github_dark',
+        -- theme = 'github_dark',
         globalstatus = true,
         section_separators = '',
         component_separators = '',
