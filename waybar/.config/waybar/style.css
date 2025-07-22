@@ -16,25 +16,32 @@ window#waybar {
   border-radius: 4px;
   margin: 4px 5px;
   padding: 4px 0;
-  background-color: #161b22;
 }
 
 #workspaces button {
-  all: unset;
-  /* Reset ALL styling */
+  all: unset;  /* Reset ALL styling */
   font-size: 14px;
-  margin: 0 0;
-  padding: 0;
-  /* Adjust spacing between dots */
-  color: #888;
+  color: #c9d1d9;               /* Soft gray text for inactive tabs */
+  background-color: #161b22;    /* Inactive background */
+  margin-right: 4px;
+  padding: 4px 8px;             /* Slightly wider padding */
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
 }
 
-#workspaces button.focused {
-  color: #fff;
+#workspaces button.active {
+  color: #dcd7ba;               /* Fuji White (Kanagawa text) */
+  background-color: #6e7756;    /* Muted Kanagawa green */
+}
+
+#workspaces button:hover {
+  background-color: #dca561;    /* Kanagawa gold accent on hover */
+  color: #1f1f28;               /* Dark text for contrast on hover */
 }
 
 #workspaces button.urgent {
-  color: #ff5f5f;
+  color: #ff5f5f;               /* Urgent remains bold red */
+  background-color: #1f1f28;    /* Dark neutral for urgent background */
 }
 
 #clock,

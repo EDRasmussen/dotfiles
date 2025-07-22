@@ -34,7 +34,7 @@
     "hyprland/workspaces": {
         "disable-scroll": false,
         "on-click": "activate",
-        "format": "{icon}",
+        "format": "{id}",
         "format-icons": {
             "default": "○",
             "active": "●",
