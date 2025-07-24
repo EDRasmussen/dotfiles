@@ -494,6 +494,7 @@ require('lazy').setup({
         'html',
         'jsonls',
         'tailwindcss',
+        'svelte',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
       require('mason-lspconfig').setup {
