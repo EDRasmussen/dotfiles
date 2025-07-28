@@ -274,7 +274,15 @@ require('lazy').setup({
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'mason-org/mason.nvim', opts = {} },
+      {
+        'mason-org/mason.nvim',
+        opts = {
+          registries = {
+            'github:mason-org/mason-registry',
+            'github:Crashdummyy/mason-registry',
+          },
+        },
+      },
       'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
@@ -470,7 +478,6 @@ require('lazy').setup({
             client.server_capabilities.documentRangeFormattingProvider = true
           end,
         },
-        omnisharp = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -762,6 +769,28 @@ require('lazy').setup({
     'rebelot/kanagawa.nvim',
     config = function()
       vim.cmd 'colorscheme kanagawa-wave'
+    end,
+  },
+  {
+    'tpope/vim-obsession',
+  },
+  {
+    'seblyng/roslyn.nvim',
+    dependencies = {
+      'neovim/nvim-lspconfig', -- Ensure LSP config is available
+      'mason-org/mason.nvim', -- For handling mason dependencies
+      'WhoIsSethDaniel/mason-tool-installer.nvim', -- Automatically install missing tools
+    },
+    config = function()
+      -- Set up roslyn.nvim
+      require('roslyn').setup()
+
+      -- Use mason-tool-installer to automatically install roslyn and rzls
+      require('mason-tool-installer').setup {
+        ensure_installed = { 'roslyn', 'rzls' }, -- Automatically install roslyn and rzls
+        auto_update = true, -- Update tools if needed
+        run_on_start = true, -- Run installation on Neovim startup
+      }
     end,
   },
   -- {
