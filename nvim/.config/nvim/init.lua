@@ -441,43 +441,43 @@ require('lazy').setup({
             },
           },
         },
-        vtsls = {
-          filetypes = {
-            'javascript',
-            'javascriptreact',
-            'javascript.jsx',
-            'typescript',
-            'typescriptreact',
-            'typescript.tsx',
-            'vue',
-          },
-          settings = {
-            vtsls = { tsserver = { globalPlugins = {} } },
-            typescript = {
-              inlayHints = {
-                parameterNames = { enabled = 'literals' },
-                parameterTypes = { enabled = true },
-                variableTypes = { enabled = true },
-                propertyDeclarationTypes = { enabled = true },
-                functionLikeReturnTypes = { enabled = true },
-                enumMemberValues = { enabled = true },
-              },
-            },
-          },
-          before_init = function(_, config)
-            table.insert(config.settings.vtsls.tsserver.globalPlugins, {
-              name = '@vue/typescript-plugin',
-              location = vim.fn.expand '$MASON/packages/vue-language-server/node_modules/@vue/language-server',
-              languages = { 'vue' },
-              configNamespace = 'typescript',
-              enableForWorkspaceTypeScriptVersions = true,
-            })
-          end,
-          on_attach = function(client)
-            client.server_capabilities.documentFormattingProvider = true
-            client.server_capabilities.documentRangeFormattingProvider = true
-          end,
-        },
+        -- vtsls = {
+        --   filetypes = {
+        --     'javascript',
+        --     'javascriptreact',
+        --     'javascript.jsx',
+        --     'typescript',
+        --     'typescriptreact',
+        --     'typescript.tsx',
+        --     'vue',
+        --   },
+        --   settings = {
+        --     vtsls = { tsserver = { globalPlugins = {} } },
+        --     typescript = {
+        --       inlayHints = {
+        --         parameterNames = { enabled = 'literals' },
+        --         parameterTypes = { enabled = true },
+        --         variableTypes = { enabled = true },
+        --         propertyDeclarationTypes = { enabled = true },
+        --         functionLikeReturnTypes = { enabled = true },
+        --         enumMemberValues = { enabled = true },
+        --       },
+        --     },
+        --   },
+        --   before_init = function(_, config)
+        --     table.insert(config.settings.vtsls.tsserver.globalPlugins, {
+        --       name = '@vue/typescript-plugin',
+        --       location = vim.fn.expand '$MASON/packages/vue-language-server/node_modules/@vue/language-server',
+        --       languages = { 'vue' },
+        --       configNamespace = 'typescript',
+        --       enableForWorkspaceTypeScriptVersions = true,
+        --     })
+        --   end,
+        --   on_attach = function(client)
+        --     client.server_capabilities.documentFormattingProvider = true
+        --     client.server_capabilities.documentRangeFormattingProvider = true
+        --   end,
+        -- },
         lua_ls = {
           settings = {
             Lua = {
@@ -516,6 +516,40 @@ require('lazy').setup({
           end,
         },
       }
+
+      local vue_language_server_path = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server'
+
+      local vue_plugin = {
+        name = '@vue/typescript-plugin',
+        location = vue_language_server_path,
+        languages = { 'vue' },
+        configNamespace = 'typescript',
+      }
+      vim.lsp.config('vtsls', {
+        settings = {
+          vtsls = {
+            tsserver = {
+              globalPlugins = {
+                vue_plugin,
+              },
+            },
+          },
+        },
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+      })
+
+      vim.lsp.config('vue_ls', {
+        settings = {
+          init_options = {
+            typescript = {
+              tsdk = '',
+            },
+          },
+        },
+      })
+
+      vim.lsp.enable 'vue_ls'
+      vim.lsp.enable 'vtsls'
     end,
   },
   { -- Autoformat
