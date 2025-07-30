@@ -104,6 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="$PATH:$HOME/.dotnet/tools"
 export PATH="$PATH:$HOME/.local/scripts"
+export PATH="$PATH:$HOME/.local/bin/azure-functions-cli"
 alias logmeout="loginctl terminate-session self"
 export PATH="$HOME/.local/omnisharp:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
