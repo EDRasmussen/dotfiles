@@ -107,6 +107,7 @@ export PATH="$PATH:$HOME/.local/scripts"
 export PATH="$PATH:$HOME/.local/bin/azure-functions-cli"
 alias logmeout="loginctl terminate-session self"
 export PATH="$HOME/.local/omnisharp:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
 
