@@ -4,9 +4,16 @@
 echo "Updating system..."
 sudo dnf update -y
 
+# Install OZSH
+if ! echo "$SHELL" | grep -q "zsh"; then
+    echo "Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
 # Install essential packages
 echo "Installing essential packages..."
 sudo dnf groupinstall -y "Development Tools"
+sudo dnf copr enable scottames/ghostty
 sudo dnf install -y \
     git \
     curl \
@@ -16,16 +23,21 @@ sudo dnf install -y \
     make \
     fd-find \
     fzf \
+    jq \
+    lua \
+    luarocks \
     python3 \
     python3-pip \
-    nodejs \
-    npm \
     zip \
     unzip \
     ripgrep \
     go \
     npm \
     nodejs \
+    ruby \
+    php \
+    rust \
+    cargo \
     ghostty \
     tmux \
     neovim
@@ -50,3 +62,32 @@ sudo dnf install dotnet-sdk-8.0 \
     aspnetcore-runtime-8.0 \
     dotnet-sdk-9.0 \
     aspnetcore-runtime-9.0
+
+dotnet tool install --global dotnet-ef
+dotnet tool install --global EasyDotnet
+dotnet tool install --global dotnet-outdated-tool
+
+# Hyprland
+sudo dnf install hyprland hyprland-devel hyprpaper hypridle hyprlock waybar
+
+# Firewall
+sudo dnf install ufw
+sudo wget -O /usr/local/bin/ufw-docker https://github.com/chaifeng/ufw-docker/raw/master/ufw-docker
+sudo chmod +x /usr/local/bin/ufw-docker
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# Allow SSH in
+sudo ufw allow 22/tcp
+
+# Allow Docker containers to use DNS on host
+sudo ufw allow in on docker0 to any port 53
+
+# Turn on the firewall
+sudo ufw enable
+
+# Turn on Docker protections
+sudo ufw-docker install
+sudo ufw reload
+
+echo "Setup complete! Please set up your SSH keys."
