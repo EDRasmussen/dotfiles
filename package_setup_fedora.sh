@@ -14,6 +14,7 @@ fi
 echo "Installing essential packages..."
 sudo dnf groupinstall -y "Development Tools"
 sudo dnf copr enable scottames/ghostty
+sudo dnf copr enable dejan/lazygit
 sudo dnf install -y \
     git \
     curl \
@@ -38,6 +39,8 @@ sudo dnf install -y \
     php \
     rust \
     cargo \
+    clamav \
+    lazygit \
     ghostty \
     tmux \
     neovim
@@ -54,6 +57,8 @@ sudo dnf -y install dnf-plugins-core
 sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl enable --now docker
+# lazydocker
+curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 
 # Dotnet
 echo "Installing Dotnet..."
@@ -68,7 +73,7 @@ dotnet tool install --global EasyDotnet
 dotnet tool install --global dotnet-outdated-tool
 
 # Hyprland
-sudo dnf install hyprland hyprland-devel hyprpaper hypridle hyprlock waybar
+sudo dnf install hyprland hyprland-devel hyprpaper hypridle hyprlock waybar xdg-desktop-portal-hyprland
 
 # Firewall
 sudo dnf install ufw
@@ -89,5 +94,7 @@ sudo ufw enable
 # Turn on Docker protections
 sudo ufw-docker install
 sudo ufw reload
+
+# Microsoft Intune: https://morgansimonsen.com/2024/12/12/microsoft-intune-compliance-on-fedora-workstation/
 
 echo "Setup complete! Please set up your SSH keys."
