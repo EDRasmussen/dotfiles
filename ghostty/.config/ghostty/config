@@ -1,6 +1,9 @@
 background-opacity = 0.9
 background-blur = true
 theme = "GitHub-Dark-Default"
+title = " "
+macos-titlebar-proxy-icon = "hidden"
+font-family = "JetBrains Mono"
 font-feature = -calt
 font-feature = -liga
 font-feature = -clig

@@ -38,8 +38,8 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'vue', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json', 'html', 'css' },
   callback = function()
     vim.bo.expandtab = true -- Use spaces instead of tabs
-    vim.bo.tabstop = 2      -- Number of visual spaces per TAB
-    vim.bo.shiftwidth = 2   -- Indent by 2 spaces
+    vim.bo.tabstop = 2 -- Number of visual spaces per TAB
+    vim.bo.shiftwidth = 2 -- Indent by 2 spaces
     vim.bo.softtabstop = 2
   end,
 })
@@ -49,9 +49,9 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'go',
   callback = function()
     vim.bo.expandtab = false -- Use real tabs (required by Go standards)
-    vim.bo.tabstop = 4       -- Show each tab as 4 spaces (default is 8)
-    vim.bo.shiftwidth = 4    -- Indent by 4 spaces when pressing <Tab> or autoindenting
-    vim.bo.softtabstop = 4   -- Make <BS> feel consistent when editing
+    vim.bo.tabstop = 4 -- Show each tab as 4 spaces (default is 8)
+    vim.bo.shiftwidth = 4 -- Indent by 4 spaces when pressing <Tab> or autoindenting
+    vim.bo.softtabstop = 4 -- Make <BS> feel consistent when editing
   end,
 })
 
@@ -173,7 +173,7 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 require('lazy').setup({
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
-  {                            -- Adds git related signs to the gutter, as well as utilities for managing changes
+  { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
@@ -206,7 +206,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
       require('telescope').setup {
@@ -490,13 +490,13 @@ require('lazy').setup({
       }
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua',    -- Used to format Lua code
+        'stylua', -- Used to format Lua code
         'csharpier', -- Used to format C# code
         'vue_ls',
-        'eslint',    -- TS
-        'gopls',     -- Go LSP
+        'eslint', -- TS
+        'gopls', -- Go LSP
         'goimports', -- Go Formatter
-        'gofumpt',   -- Stricter Go formatter
+        'gofumpt', -- Stricter Go formatter
         'dockerls',
         'html',
         'jsonls',
@@ -506,7 +506,7 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-        automatic_installation = false,
+        automatic_installation = true,
         automatic_enable = true,
         handlers = {
           function(server_name)
@@ -517,8 +517,7 @@ require('lazy').setup({
         },
       }
 
-      local vue_language_server_path = vim.fn.stdpath 'data' ..
-          '/mason/packages/vue-language-server/node_modules/@vue/language-server'
+      local vue_language_server_path = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server'
 
       local vue_plugin = {
         name = '@vue/typescript-plugin',
@@ -809,10 +808,10 @@ require('lazy').setup({
     config = function()
       vim.cmd 'colorscheme kanagawa'
 
-      require('kanagawa').setup({
+      require('kanagawa').setup {
         compile = false,
-        transparent = true
-      })
+        transparent = true,
+      }
 
       vim.cmd 'KanagawaCompile'
     end,
@@ -823,8 +822,8 @@ require('lazy').setup({
   {
     'seblyng/roslyn.nvim',
     dependencies = {
-      'neovim/nvim-lspconfig',                     -- Ensure LSP config is available
-      'mason-org/mason.nvim',                      -- For handling mason dependencies
+      'neovim/nvim-lspconfig', -- Ensure LSP config is available
+      'mason-org/mason.nvim', -- For handling mason dependencies
       'WhoIsSethDaniel/mason-tool-installer.nvim', -- Automatically install missing tools
     },
     config = function()
@@ -834,8 +833,8 @@ require('lazy').setup({
       -- Use mason-tool-installer to automatically install roslyn and rzls
       require('mason-tool-installer').setup {
         ensure_installed = { 'roslyn', 'rzls' }, -- Automatically install roslyn and rzls
-        auto_update = true,                      -- Update tools if needed
-        run_on_start = true,                     -- Run installation on Neovim startup
+        auto_update = true, -- Update tools if needed
+        run_on_start = true, -- Run installation on Neovim startup
       }
     end,
   },
