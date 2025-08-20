@@ -14,14 +14,6 @@ vim.o.relativenumber = true
 
 vim.o.winborder = 'rounded' -- Enable winborder for all windows
 
--- Auto unix file
-vim.api.nvim_create_autocmd('BufReadPost', {
-  pattern = '*',
-  callback = function()
-    vim.bo.fileformat = 'unix'
-  end,
-})
-
 -- Tab options (Normal)
 vim.api.nvim_create_autocmd('FileType', {
   pattern = '*',
