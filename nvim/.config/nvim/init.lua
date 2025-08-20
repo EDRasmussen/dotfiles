@@ -441,43 +441,6 @@ require('lazy').setup({
             },
           },
         },
-        -- vtsls = {
-        --   filetypes = {
-        --     'javascript',
-        --     'javascriptreact',
-        --     'javascript.jsx',
-        --     'typescript',
-        --     'typescriptreact',
-        --     'typescript.tsx',
-        --     'vue',
-        --   },
-        --   settings = {
-        --     vtsls = { tsserver = { globalPlugins = {} } },
-        --     typescript = {
-        --       inlayHints = {
-        --         parameterNames = { enabled = 'literals' },
-        --         parameterTypes = { enabled = true },
-        --         variableTypes = { enabled = true },
-        --         propertyDeclarationTypes = { enabled = true },
-        --         functionLikeReturnTypes = { enabled = true },
-        --         enumMemberValues = { enabled = true },
-        --       },
-        --     },
-        --   },
-        --   before_init = function(_, config)
-        --     table.insert(config.settings.vtsls.tsserver.globalPlugins, {
-        --       name = '@vue/typescript-plugin',
-        --       location = vim.fn.expand '$MASON/packages/vue-language-server/node_modules/@vue/language-server',
-        --       languages = { 'vue' },
-        --       configNamespace = 'typescript',
-        --       enableForWorkspaceTypeScriptVersions = true,
-        --     })
-        --   end,
-        --   on_attach = function(client)
-        --     client.server_capabilities.documentFormattingProvider = true
-        --     client.server_capabilities.documentRangeFormattingProvider = true
-        --   end,
-        -- },
         lua_ls = {
           settings = {
             Lua = {
@@ -502,8 +465,14 @@ require('lazy').setup({
         'jsonls',
         'tailwindcss',
         'svelte',
+        'roslyn',
+        'rzls',
       })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      require('mason-tool-installer').setup {
+        auto_update = true, -- Update tools if needed
+        run_on_start = true, -- Run installation on Neovim startup
+        ensure_installed = ensure_installed,
+      }
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = true,
@@ -518,7 +487,6 @@ require('lazy').setup({
       }
 
       local vue_language_server_path = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server'
-
       local vue_plugin = {
         name = '@vue/typescript-plugin',
         location = vue_language_server_path,
@@ -829,30 +797,8 @@ require('lazy').setup({
     config = function()
       -- Set up roslyn.nvim
       require('roslyn').setup()
-
-      -- Use mason-tool-installer to automatically install roslyn and rzls
-      require('mason-tool-installer').setup {
-        ensure_installed = { 'roslyn', 'rzls' }, -- Automatically install roslyn and rzls
-        auto_update = true, -- Update tools if needed
-        run_on_start = true, -- Run installation on Neovim startup
-      }
     end,
   },
-  -- {
-  --   'projekt0n/github-nvim-theme',
-  --   name = 'github-theme',
-  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   config = function()
-  --     require('github-theme').setup {
-  --       options = {
-  --         -- transparent = true, -- enables transparent background
-  --       },
-  --     }
-  --
-  --     vim.cmd 'colorscheme github_dark_default'
-  --   end,
-  -- },
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
