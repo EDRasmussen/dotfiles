@@ -741,19 +741,6 @@ require('lazy').setup({
   -- require 'custom.plugins.noice',
   -- require 'custom.plugins.avante',
   {
-    'paradoxical-dev/lsp_hover',
-    lazy = true,
-    config = function()
-      vim.api.nvim_create_autocmd('LspAttach', {
-        ---@diagnostic disable: unused-local
-        callback = function(event)
-          local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
-          client:request 'textDocument/hover'
-        end,
-      })
-    end,
-  },
-  {
     'GustavEikaas/easy-dotnet.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
     config = function()
