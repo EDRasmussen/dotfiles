@@ -733,7 +733,7 @@ require('lazy').setup({
 
   -- require 'custom.plugins.neoscroll',
   -- require 'custom.plugins.bufferline',
-  require 'custom.plugins.harpoon',
+  -- require 'custom.plugins.harpoon',
   require 'custom.plugins.trouble',
   require 'custom.plugins.autotag',
   require 'custom.plugins.lualine',
@@ -777,6 +777,25 @@ require('lazy').setup({
       -- Set up roslyn.nvim
       require('roslyn').setup()
     end,
+  },
+  {
+    'iofq/dart.nvim',
+    opts = {
+      marklist = { 'a', 's', 'd', 'f', 'q', 'w', 'e', 'r' },
+      buflist = {},
+
+      tabline = {
+        always_show = false,
+      },
+
+      mappings = {
+        mark = ';;', -- Mark current buffer
+        jump = ';', -- Jump to buffer marked by next character i.e `;a`
+        pick = ';p', -- Open Dart.pick
+        next = '<S-l>', -- Cycle right through the tabline
+        prev = '<S-h>', -- Cycle left through the tabline
+      },
+    },
   },
 }, {
   ui = {
