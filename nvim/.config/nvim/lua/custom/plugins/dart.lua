@@ -14,6 +14,7 @@ return {
       pick = ';p', -- Open Dart.pick
       next = '<S-l>', -- Cycle right through the tabline
       prev = '<S-h>', -- Cycle left through the tabline
+      unmark_all = ';u', -- Close all marked and recent buffers
     },
   },
 }
