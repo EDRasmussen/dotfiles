@@ -144,29 +144,7 @@ return {
       },
     }
 
-    -- Cross-platform netcoredbg binary resolution
-    -- local uname = vim.loop.os_uname()
-    -- local is_wsl = uname.release:lower():find 'microsoft' ~= nil or uname.version:lower():find 'wsl' ~= nil
-    -- local is_windows = uname.sysname:find 'Windows' ~= nil or is_wsl
-    -- local sep = package.config:sub(1, 1)
-    -- local exe = is_windows and 'netcoredbg.exe' or 'netcoredbg'
-
-    -- Build the full path
-    -- local netcoredbg_path = table.concat({
-    --   vim.fn.stdpath 'data',
-    --   'mason',
-    --   'packages',
-    --   'netcoredbg',
-    --   'netcoredbg',
-    --   exe,
-    -- }, sep)
-
-    -- Register dap-cs with the correct netcoredbg path
-    require('dap-cs').setup {
-      -- netcoredbg = {
-      --   path = netcoredbg_path,
-      -- },
-    }
+    require('dap-cs').setup {}
 
     require('dap-go').setup {
       delve = {

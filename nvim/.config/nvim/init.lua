@@ -14,39 +14,6 @@ vim.o.relativenumber = true
 
 vim.o.winborder = 'rounded' -- Enable winborder for all windows
 
--- Tab options (Normal)
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = '*',
-  callback = function()
-    vim.bo.expandtab = true
-    vim.bo.tabstop = 4
-    vim.bo.shiftwidth = 4
-    vim.bo.softtabstop = 4
-  end,
-})
-
--- Tab options (Web development)
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'vue', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json', 'html', 'css' },
-  callback = function()
-    vim.bo.expandtab = true -- Use spaces instead of tabs
-    vim.bo.tabstop = 2 -- Number of visual spaces per TAB
-    vim.bo.shiftwidth = 2 -- Indent by 2 spaces
-    vim.bo.softtabstop = 2
-  end,
-})
-
--- Tab options (Go)
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'go',
-  callback = function()
-    vim.bo.expandtab = false -- Use real tabs (required by Go standards)
-    vim.bo.tabstop = 4 -- Show each tab as 4 spaces (default is 8)
-    vim.bo.shiftwidth = 4 -- Indent by 4 spaces when pressing <Tab> or autoindenting
-    vim.bo.softtabstop = 4 -- Make <BS> feel consistent when editing
-  end,
-})
-
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'c'
 
@@ -119,12 +86,6 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 
 -- Go error handling
 vim.keymap.set('n', '<leader>ee', 'oif err != nil {<CR>}<Esc>Oreturn err<Esc>')
-
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -399,10 +360,7 @@ require('lazy').setup({
       }
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local vue_path = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server'
-
       local servers = {
-        -- clangd = {},
         yamlls = {
           root_dir = require('lspconfig').util.root_pattern '.git',
           filetypes = { 'yaml', 'yml' },
@@ -443,6 +401,7 @@ require('lazy').setup({
           },
         },
       }
+
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
@@ -510,6 +469,17 @@ require('lazy').setup({
 
       vim.lsp.enable 'vue_ls'
       vim.lsp.enable 'vtsls'
+    end,
+  },
+  { -- Roslyn plugin (c# ls)
+    'seblyng/roslyn.nvim',
+    dependencies = {
+      'neovim/nvim-lspconfig',
+      'mason-org/mason.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+    },
+    config = function()
+      require('roslyn').setup()
     end,
   },
   { -- Autoformat
@@ -631,18 +601,15 @@ require('lazy').setup({
       signature = { enabled = true },
     },
   },
-  -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
-  { -- Collection of various small independent plugins/modules
+  {
     'echasnovski/mini.nvim',
     config = function()
       require('mini.ai').setup { n_lines = 500 }
       require('mini.surround').setup()
-      --  Check out: https://github.com/echasnovski/mini.nvim
+      require('mini.sessions').setup()
     end,
   },
-
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -726,77 +693,17 @@ require('lazy').setup({
   },
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
-  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
-
-  -- require 'custom.plugins.neoscroll',
-  -- require 'custom.plugins.bufferline',
-  -- require 'custom.plugins.harpoon',
+  require 'kickstart.plugins.gitsigns',
   require 'custom.plugins.trouble',
   require 'custom.plugins.autotag',
   require 'custom.plugins.lualine',
   require 'custom.plugins.fterm',
-  -- require 'custom.plugins.noice',
-  -- require 'custom.plugins.avante',
-  {
-    'GustavEikaas/easy-dotnet.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
-    config = function()
-      require('easy-dotnet').setup()
-    end,
-  },
-  {
-    'github/copilot.vim',
-  },
-  {
-    'rebelot/kanagawa.nvim',
-    config = function()
-      vim.cmd 'colorscheme kanagawa'
-
-      require('kanagawa').setup {
-        compile = false,
-        transparent = true,
-      }
-
-      vim.cmd 'KanagawaCompile'
-    end,
-  },
-  {
-    'tpope/vim-obsession',
-  },
-  {
-    'seblyng/roslyn.nvim',
-    dependencies = {
-      'neovim/nvim-lspconfig', -- Ensure LSP config is available
-      'mason-org/mason.nvim', -- For handling mason dependencies
-      'WhoIsSethDaniel/mason-tool-installer.nvim', -- Automatically install missing tools
-    },
-    config = function()
-      -- Set up roslyn.nvim
-      require('roslyn').setup()
-    end,
-  },
-  {
-    'iofq/dart.nvim',
-    opts = {
-      marklist = { 'a', 's', 'd', 'f', 'q', 'w', 'e', 'r' },
-      buflist = {},
-
-      tabline = {
-        always_show = false,
-      },
-
-      mappings = {
-        mark = ';;', -- Mark current buffer
-        jump = ';', -- Jump to buffer marked by next character i.e `;a`
-        pick = ';p', -- Open Dart.pick
-        next = '<S-l>', -- Cycle right through the tabline
-        prev = '<S-h>', -- Cycle left through the tabline
-      },
-    },
-  },
+  require 'custom.plugins.easy_dotnet',
+  'github/copilot.vim',
+  'tpope/vim-obsession',
+  require 'custom.plugins.dart',
+  require 'custom.plugins.theme',
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
