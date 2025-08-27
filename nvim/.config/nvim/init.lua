@@ -1,6 +1,6 @@
 if vim.g.vscode then
   -- VSCode Neovim
-  require 'custom.vscode_keymaps'
+  require 'vscode_keymaps'
   return
 end
 
@@ -693,20 +693,20 @@ require('lazy').setup({
   },
   { 'adlrwbr/keep-split-ratio.nvim', opts = {} },
   'nvim-treesitter/nvim-treesitter-context',
-  require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.gitsigns',
-  require 'custom.plugins.trouble',
-  require 'custom.plugins.autotag',
-  require 'custom.plugins.lualine',
-  require 'custom.plugins.fterm',
-  require 'custom.plugins.easy_dotnet',
-  require 'custom.plugins.undotree',
   'github/copilot.vim',
   'tpope/vim-obsession',
-  require 'custom.plugins.dart',
-  require 'custom.plugins.theme',
+  require 'plugins.debug',
+  require 'plugins.indent_line',
+  require 'plugins.autopairs',
+  require 'plugins.gitsigns',
+  require 'plugins.trouble',
+  require 'plugins.autotag',
+  require 'plugins.lualine',
+  require 'plugins.fterm',
+  require 'plugins.easy_dotnet',
+  require 'plugins.undotree',
+  require 'plugins.dart',
+  require 'plugins.theme',
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
