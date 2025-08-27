@@ -691,6 +691,7 @@ require('lazy').setup({
       },
     },
   },
+  { 'adlrwbr/keep-split-ratio.nvim', opts = {} },
   'nvim-treesitter/nvim-treesitter-context',
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
