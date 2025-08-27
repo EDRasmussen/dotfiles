@@ -702,6 +702,7 @@ require('lazy').setup({
   require 'custom.plugins.lualine',
   require 'custom.plugins.fterm',
   require 'custom.plugins.easy_dotnet',
+  require 'custom.plugins.undotree',
   'github/copilot.vim',
   'tpope/vim-obsession',
   require 'custom.plugins.dart',
