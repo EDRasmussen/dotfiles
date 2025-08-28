@@ -603,7 +603,7 @@ require('lazy').setup({
   },
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
   {
-    'echasnovski/mini.nvim',
+    'nvim-mini/mini.nvim',
     config = function()
       require('mini.ai').setup { n_lines = 500 }
       require('mini.surround').setup()
@@ -695,6 +695,14 @@ require('lazy').setup({
   'nvim-treesitter/nvim-treesitter-context',
   'github/copilot.vim',
   'tpope/vim-obsession',
+  {
+    'oribarilan/lensline.nvim',
+    tag = '1.0.0', -- or: branch = 'release/1.x' for latest non-breaking updates
+    event = 'LspAttach',
+    config = function()
+      require('lensline').setup()
+    end,
+  },
   require 'plugins.debug',
   require 'plugins.indent_line',
   require 'plugins.autopairs',
