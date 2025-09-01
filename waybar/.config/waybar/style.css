@@ -1,110 +1,200 @@
+@import "kanagawa.css";
+
 * {
-  font-family: JetBrainsMono Nerd Font, monospace;
-  font-size: 13px;
-  border: none;
-  padding: 0 6px;
-  margin: 0;
-  min-height: 0;
-  color: #c9d1d9;
+  font-family:
+    "JetBrains Mono NerdFont", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.01em;
 }
 
 window#waybar {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(62, 62, 62, 0.27);
+  border-radius: 0;
+  transition-property: background-color;
+  transition-duration: 0.5s;
 }
 
+window#waybar > box {
+  padding: 5px 0;
+}
+
+button {
+  box-shadow: inset 0 -3px transparent;
+  border: none;
+  border-radius: 10px;
+}
+
+button:hover {
+  background: inherit;
+  border: none;
+}
+
+/* Workspaces styles */
+
 #workspaces {
-  border-radius: 4px;
-  margin: 4px 5px;
-  padding: 4px 0;
+  font-weight: 800;
+  margin-right: 5px;
+  background-color: @background;
+  color: @foreground;
+  border-radius: 10px;
 }
 
 #workspaces button {
-  all: unset;  /* Reset ALL styling */
-  font-size: 14px;
-  color: #c9d1d9;               /* Soft gray text for inactive tabs */
-  background-color: #161b22;    /* Inactive background */
-  margin-right: 4px;
-  padding: 4px 8px;             /* Slightly wider padding */
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
-}
-
-#workspaces button.active {
-  color: #dcd7ba;               /* Fuji White (Kanagawa text) */
-  background-color: #6e7756;    /* Muted Kanagawa green */
+  border-radius: 0;
+  padding: 0 8px;
+  color: inherit;
+  background-color: transparent;
 }
 
 #workspaces button:hover {
-  background-color: #dca561;    /* Kanagawa gold accent on hover */
-  color: #1f1f28;               /* Dark text for contrast on hover */
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.active {
+  background-color: @foreground-dark;
+  color: @background;
+}
+
+#workspaces button.active:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+#workspaces button.active:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 #workspaces button.urgent {
-  color: #ff5f5f;               /* Urgent remains bold red */
-  background-color: #1f1f28;    /* Dark neutral for urgent background */
+  border-bottom: 2px solid @orange;
+  border-radius: 0;
 }
 
-#clock,
-#cpu,
-#memory,
-#temperature,
-#battery,
-#battery#bat2,
-#network,
-#pulseaudio,
-#idle_inhibitor,
-#custom-media,
-#custom-power,
-#tray,
-#backlight,
-#keyboard-state,
-#power-profiles-daemon,
-#mpd {
-  background-color: #161b22;
-  margin: 4px 5px;
-  padding: 4px 10px;
-  border-radius: 6px;
+#workspaces button.urgent:nth-child(1) {
+  border-bottom: 2px solid @orange;
+  border-radius: 10px 0 0 10px;
+}
+
+#workspaces button.urgent:nth-last-child(1) {
+  border-bottom: 2px solid @orange;
+  border-radius: 0 10px 10px 0;
+}
+
+/* Hardware group styles */
+
+#hardware {
+  margin-right: 5px;
+}
+
+#cpu {
+  padding-right: 10px;
+}
+
+#memory {
+  padding-left: 10px;
+}
+
+/* Audio module styles */
+
+#zvuk {
+  background-color: @background;
+  color: @foreground;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+
+#pulseaudio:hover {
+  background-color: @overlay;
+}
+
+#pulseaudio {
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+#pulseaudio.output.muted {
+  color: @red;
+}
+#pulseaudio.input.source-muted {
+  color: @red;
+}
+
+/* Privacy */
+
+#privacy {
+  background-color: @background;
+  color: @power;
+  border: 1.5px solid @power;
+  padding: 6px 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+/* Language */
+
+#language {
+  margin-right: 5px;
+}
+
+/* Time group styles */
+
+#time {
+  border-radius: 10px;
+  font-weight: 700;
+  background-color: @background;
+  color: @foreground;
+}
+
+#clock.simple {
+  padding: 6px 10px;
+  background-color: @foreground-dark;
+  color: @background;
+  border-radius: 0 10px 10px 0;
+  font-weight: 700;
 }
 
 #clock {
-  color: #FFF;
+  padding: 6px 10px;
+  border-radius: 10px 0 0 10px;
 }
 
-#battery.charging,
-#battery#bat2.charging {
-  color: #3fb950;
+/* Tray */
+
+#tray {
+  margin-right: 5px;
 }
 
-#battery.warning,
-#battery#bat2.warning {
-  color: #f69d50;
-}
-
-#battery.critical,
-#battery#bat2.critical {
-  color: #f85149;
-}
-
-#pulseaudio.muted {
-  color: #8b949e;
-}
-
-#temperature.critical {
-  color: #f85149;
-}
-
-#custom-power {
-  background-color: #da3633;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-#tray>.passive {
+#tray > .passive {
   -gtk-icon-effect: dim;
-  opacity: 0.5;
 }
 
-#tray>.needs-attention {
-  background-color: #da3633;
-  border-radius: 50%;
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+/* Default module styles */
+
+#battery,
+#temperature,
+#network,
+#hardware,
+#window,
+#tray,
+#language {
+  font-weight: 700;
+  background-color: @background;
+  color: @foreground;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+.modules-right {
+  padding: 0 10px;
+}
+
+.modules-left {
+  padding: 0 10px;
+}
+
+label:focus {
+  background-color: #000;
 }
