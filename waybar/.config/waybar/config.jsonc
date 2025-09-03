@@ -13,8 +13,19 @@
 		"privacy",
 		"group/zvuk",
 		"group/hardware",
+        "battery",
 		"tray"
 	],
+    "battery": {
+      "format": "{icon} {capacity}%",
+      "format-charging": " {capacity}%",
+      "format-icons": ["", "", "", "", ""],
+      "states": {
+        "warning": 30,
+        "critical": 15 
+      },
+      "tooltip": true
+    },
 	"hyprland/workspaces": {
 		"on-click": "activate",
 		"sort-by-number": true

@@ -15,8 +15,9 @@ core=(
     hyprland hypridle hyprpaper hyprlock xdg-desktop-portal-hyprland
     wl-clipboard
     greetd
-    tuigreet
+    greetd-tuigreet
     stow
+    flatpak
 )
 
 dev=(
@@ -33,6 +34,7 @@ dev=(
     tree
     lazydocker
     lazygit
+    ttf-jetbrains-mono-nerd
 )
 
 cli=(
@@ -47,11 +49,11 @@ langs=(
     lua luarocks luajit
     ruby
     php composer
-    dotnet-sdk
+    dotnet-sdk dotnet-runtime aspnet-runtime
     python python-pip
     go
     rust
-    nodejs
+    nodejs npm
 )
 
 gui=(
@@ -65,15 +67,16 @@ gui=(
     seahorse
     network-manager-applet
     blueman
+    upower
     grim slurp
     cliphist
 )
 
 aur=(
-    nerd-fonts-jetbrains-mono
+    ttf-ms-fonts
 )
 
-flatpaks=(
+flatpak=(
     app.zen_browser.zen
     com.spotify.Client
     com.discordapp.Discord
@@ -91,12 +94,12 @@ declare -A groups=(
     [gui]="${gui[*]}"
     [shell]="${shell[*]}"
     [aur]="${aur[*]}"
-    [flatpak]="${flatpaks[*]}"
+    [flatpak]="${flatpak[*]}"
     [security]="${security[*]}"
 )
 
 
-default=(core dev cli gui aur)
+default=(core dev cli langs shell flatpak gui aur security)
 if [[ $# -eq 0 ]]; then
     enabled=("${default[@]}")
 elif [[ $1 == "all" ]]; then
@@ -107,7 +110,7 @@ fi
 
 install_omz() {
   if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-    RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
+    RUNZSH=yes CHSH=yes KEEP_ZSHRC=yes \
       sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   fi
 
@@ -126,19 +129,16 @@ install_omz() {
 
 install_flatpaks() {
     if ! command -v flatpak >/dev/null 2>&1; then
-        echo "Flatpak not found, installing..."
         sudo pacman -S --needed --noconfirm flatpak
-        flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
     fi
 
     for app in "$@"; do
-        flatpak install -y --user flathub "$app"
+        flatpak install -y flathub "$app"
     done
 }
 
 install_aur() {
     if ! command -v yay >/dev/null 2>&1; then
-        echo "yay not found, installing..."
         sudo pacman -S --needed --noconfirm base-devel git
         tmpdir=$(mktemp -d)
         git clone https://aur.archlinux.org/yay.git "$tmpdir/yay"
@@ -153,11 +153,8 @@ setup_ufw() {
   sudo ufw --force reset >/dev/null 2>&1 || true
   sudo ufw default deny incoming
   sudo ufw default allow outgoing
-
   sudo ufw --force enable
   sudo systemctl enable --now ufw.service >/dev/null 2>&1 || true
-
-  echo "UFW enabled: incoming DENY, outgoing ALLOW."
 }
 
 setup_greetd() {
@@ -168,11 +165,6 @@ setup_greetd() {
 vt = 1
 
 [default_session]
-# Show tuigreet and start Hyprland after login
-# Flags:
-#   --remember : remember last user
-#   --time     : show clock
-#   --asterisks: mask password input
 command = "tuigreet --remember --time --asterisks --cmd Hyprland"
 user = "greeter"
 EOF
@@ -180,7 +172,6 @@ EOF
   sudo systemctl enable --now greetd.service >/dev/null 2>&1 || true
 }
 
-echo "Updating system..."
 sudo pacman -Syu --noconfirm
 for g in "${enabled[@]}"; do
     pkgs=${groups[$g]:-}
@@ -188,16 +179,13 @@ for g in "${enabled[@]}"; do
         echo "Installing $g: $pkgs"
         case "$g" in
             aur) install_aur $pkgs ;;
-            flatpak) install_flatpaks $pkgs ;;
-            shell)
-                sudo pacman -S --needed --noconfirm $pkgs
-                install_omz
-                ;;
             security)
                 sudo pacman -S --needed --noconfirm $pkgs
                 setup_ufw
                 ;;
             *) sudo pacman -S --needed --noconfirm $pkgs ;;
+            flatpak)
+                install_flatpaks $pkgs ;;
         esac
     else
         echo "Unknown group: $g"
@@ -215,6 +203,28 @@ fi
 sudo systemctl enable --now power-profiles-daemon >/dev/null 2>&1 || true
 sudo systemctl enable --now NetworkManager.service >/dev/null 2>&1 || true
 sudo systemctl enable --now bluetooth.service >/dev/null 2>&1 || true
+sudo systemctl enable --now upower.service 2>/dev/null || true
+
+# Zen browser default
+xdg-settings set default-web-browser app.zen_browser.zen.desktop
+xdg-mime default app.zen_browser.zen.desktop x-scheme-handler/http
+xdg-mime default app.zen_browser.zen.desktop x-scheme-handler/https
+xdg-mime default app.zen_browser.zen.desktop text/html
+flatpak override --user --filesystem=~/.fonts
+flatpak override --user --filesystem=/usr/share/fonts
+flatpak override --user --filesystem=/var/lib/flatpak/runtime
+
+# Overrides to remove networkmanager spam
+sudo mkdir -p /etc/systemd/system/NetworkManager.service.d
+sudo tee /etc/systemd/system/NetworkManager.service.d/override.conf >/dev/null <<'EOF'
+[Service]
+StandardOutput=null
+StandardError=journal
+EOF
+sudo systemctl daemon-reexec
+
+mkdir -p ~/projects
 setup_greetd
+install_omz
 
 echo "Done!"
