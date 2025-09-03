@@ -14,6 +14,9 @@ core=(
     gnome-keyring
     hyprland hypridle hyprpaper hyprlock xdg-desktop-portal-hyprland
     wl-clipboard
+    greetd
+    tuigreet
+    stow
 )
 
 dev=(
@@ -157,6 +160,26 @@ setup_ufw() {
   echo "UFW enabled: incoming DENY, outgoing ALLOW."
 }
 
+setup_greetd() {
+  sudo install -d -m 0755 /etc/greetd
+
+  sudo tee /etc/greetd/config.toml >/dev/null <<'EOF'
+[terminal]
+vt = 1
+
+[default_session]
+# Show tuigreet and start Hyprland after login
+# Flags:
+#   --remember : remember last user
+#   --time     : show clock
+#   --asterisks: mask password input
+command = "tuigreet --remember --time --asterisks --cmd Hyprland"
+user = "greeter"
+EOF
+
+  sudo systemctl enable --now greetd.service >/dev/null 2>&1 || true
+}
+
 echo "Updating system..."
 sudo pacman -Syu --noconfirm
 for g in "${enabled[@]}"; do
@@ -192,5 +215,6 @@ fi
 sudo systemctl enable --now power-profiles-daemon >/dev/null 2>&1 || true
 sudo systemctl enable --now NetworkManager.service >/dev/null 2>&1 || true
 sudo systemctl enable --now bluetooth.service >/dev/null 2>&1 || true
+setup_greetd
 
 echo "Done!"
