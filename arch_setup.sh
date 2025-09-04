@@ -195,6 +195,7 @@ xdg-settings set default-web-browser zen.desktop
 xdg-mime default zen.desktop x-scheme-handler/http
 xdg-mime default zen.desktop x-scheme-handler/https
 xdg-mime default zen.desktop text/html
+sudo ln -s /opt/zen-browser-bin/zen-bin /usr/local/bin/zen
 
 # Overrides to remove networkmanager spam
 sudo mkdir -p /etc/systemd/system/NetworkManager.service.d
