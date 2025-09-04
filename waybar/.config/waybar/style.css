@@ -157,6 +157,10 @@ button:hover {
   border-radius: 10px 0 0 10px;
 }
 
+#battery {
+  margin-right: 5px;
+}
+
 /* Tray */
 
 #tray {
