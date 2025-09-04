@@ -17,7 +17,6 @@ core=(
     greetd
     greetd-tuigreet
     stow
-    flatpak
 )
 
 dev=(
@@ -35,6 +34,7 @@ dev=(
     lazydocker
     lazygit
     ttf-jetbrains-mono-nerd
+    azure-cli
 )
 
 cli=(
@@ -70,16 +70,14 @@ gui=(
     upower
     grim slurp
     cliphist
+    spotify-launcher
+    discord
 )
 
 aur=(
-    ttf-ms-fonts
-)
-
-flatpak=(
-    app.zen_browser.zen
-    com.spotify.Client
-    com.discordapp.Discord
+    zen-browser-bin
+    ttf-ms-fonts ttf-vista-fonts
+    ttf-menlo-powerline ttf-monaco
 )
 
 shell=( zsh )
@@ -94,12 +92,11 @@ declare -A groups=(
     [gui]="${gui[*]}"
     [shell]="${shell[*]}"
     [aur]="${aur[*]}"
-    [flatpak]="${flatpak[*]}"
     [security]="${security[*]}"
 )
 
 
-default=(core dev cli langs shell flatpak gui aur security)
+default=(core dev cli langs shell gui aur security)
 if [[ $# -eq 0 ]]; then
     enabled=("${default[@]}")
 elif [[ $1 == "all" ]]; then
@@ -125,16 +122,6 @@ install_omz() {
   if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
   fi
-}
-
-install_flatpaks() {
-    if ! command -v flatpak >/dev/null 2>&1; then
-        sudo pacman -S --needed --noconfirm flatpak
-    fi
-
-    for app in "$@"; do
-        flatpak install -y flathub "$app"
-    done
 }
 
 install_aur() {
@@ -184,8 +171,6 @@ for g in "${enabled[@]}"; do
                 setup_ufw
                 ;;
             *) sudo pacman -S --needed --noconfirm $pkgs ;;
-            flatpak)
-                install_flatpaks $pkgs ;;
         esac
     else
         echo "Unknown group: $g"
@@ -206,13 +191,10 @@ sudo systemctl enable --now bluetooth.service >/dev/null 2>&1 || true
 sudo systemctl enable --now upower.service 2>/dev/null || true
 
 # Zen browser default
-xdg-settings set default-web-browser app.zen_browser.zen.desktop
-xdg-mime default app.zen_browser.zen.desktop x-scheme-handler/http
-xdg-mime default app.zen_browser.zen.desktop x-scheme-handler/https
-xdg-mime default app.zen_browser.zen.desktop text/html
-flatpak override --user --filesystem=~/.fonts
-flatpak override --user --filesystem=/usr/share/fonts
-flatpak override --user --filesystem=/var/lib/flatpak/runtime
+xdg-settings set default-web-browser zen.desktop
+xdg-mime default zen.desktop x-scheme-handler/http
+xdg-mime default zen.desktop x-scheme-handler/https
+xdg-mime default zen.desktop text/html
 
 # Overrides to remove networkmanager spam
 sudo mkdir -p /etc/systemd/system/NetworkManager.service.d

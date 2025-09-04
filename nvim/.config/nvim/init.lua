@@ -420,6 +420,7 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'csharpier', -- Used to format C# code
+        'vtsls',
         'vue_ls',
         'eslint', -- TS
         'gopls', -- Go LSP
