@@ -164,13 +164,14 @@ StandardInput=tty
 StandardOutput=tty
 StandardError=journal
 
-TTYPath=/dev/tty2
+TTYPath=/dev/tty1
 TTYReset=true
 TTYVHangup=true
 TTYVTDisallocate=true
+
+Type=idle
 EOF
 
-  sudo systemctl daemon-reload
   sudo systemctl enable --now greetd.service >/dev/null 2>&1 || true
 }
 
