@@ -76,6 +76,7 @@ gui=(
 
 aur=(
     zen-browser-bin
+    onlyoffice-bin
     ttf-ms-fonts ttf-vista-fonts
     ttf-menlo-powerline ttf-monaco
 )
