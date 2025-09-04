@@ -148,8 +148,7 @@ setup_ufw() {
 
 setup_greetd() {
   sudo install -d -m 0755 /etc/greetd
-
-  sudo tee /etc/greetd/config.toml >/dev/null <<'EOF'
+  sudo tee /etc/greetd/config.toml >/dev/null <<EOF
 [terminal]
 vt = 2
 
@@ -158,6 +157,20 @@ command = "tuigreet --remember --time --asterisks --cmd Hyprland"
 user = "greeter"
 EOF
 
+  sudo install -d -m 0755 /etc/systemd/system/greetd.service.d
+  sudo tee /etc/systemd/system/greetd.service.d/override.conf >/dev/null <<EOF
+[Service]
+StandardInput=tty
+StandardOutput=tty
+StandardError=journal
+
+TTYPath=/dev/tty2
+TTYReset=true
+TTYVHangup=true
+TTYVTDisallocate=true
+EOF
+
+  sudo systemctl daemon-reload
   sudo systemctl enable --now greetd.service >/dev/null 2>&1 || true
 }
 
