@@ -151,7 +151,7 @@ setup_greetd() {
 
   sudo tee /etc/greetd/config.toml >/dev/null <<'EOF'
 [terminal]
-vt = 1
+vt = 2
 
 [default_session]
 command = "tuigreet --remember --time --asterisks --cmd Hyprland"
