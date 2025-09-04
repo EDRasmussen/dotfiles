@@ -75,6 +75,7 @@ gui=(
 )
 
 aur=(
+    cursor-bin
     zen-browser-bin
     onlyoffice-bin
     ttf-ms-fonts ttf-vista-fonts

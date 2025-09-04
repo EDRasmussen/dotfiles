@@ -709,14 +709,14 @@ require('lazy').setup({
   { 'adlrwbr/keep-split-ratio.nvim', opts = {} },
   'nvim-treesitter/nvim-treesitter-context',
   'github/copilot.vim',
-  'tpope/vim-obsession',
-  {
-    'oribarilan/lensline.nvim',
-    event = 'LspAttach',
-    config = function()
-      require('lensline').setup()
-    end,
-  },
+  -- 'tpope/vim-obsession',
+  -- {
+  --   'oribarilan/lensline.nvim',
+  --   event = 'LspAttach',
+  --   config = function()
+  --     require('lensline').setup()
+  --   end,
+  -- },
   require 'plugins.debug',
   require 'plugins.indent_line',
   require 'plugins.autopairs',
