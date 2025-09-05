@@ -60,6 +60,7 @@ gui=(
     ghostty
     thunar
     rofi-wayland
+    rofi-calc
     waybar dunst
     ttf-nerd-fonts-symbols
     hyprpolkitagent
@@ -221,6 +222,7 @@ StandardOutput=null
 StandardError=journal
 EOF
 sudo systemctl daemon-reexec
+git config --global --type bool push.autoSetupRemote true
 
 mkdir -p ~/projects
 setup_greetd
