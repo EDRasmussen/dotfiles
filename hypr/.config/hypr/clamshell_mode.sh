@@ -33,7 +33,6 @@ case "$ARG" in
     ;;
   removed)
     if ! has_external; then
-      hyprctl keyword monitor "eDP-1,preferred,auto,1"
       systemctl hibernate
     fi
     ;;
