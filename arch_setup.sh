@@ -81,6 +81,7 @@ aur=(
     onlyoffice-bin
     ttf-ms-fonts ttf-vista-fonts
     ttf-menlo-powerline ttf-monaco
+    evremap-git
 )
 
 shell=( zsh )
@@ -176,6 +177,33 @@ EOF
   sudo systemctl enable --now greetd.service >/dev/null 2>&1 || true
 }
 
+setup_evremap() {
+  local stow_pkg="evremap"
+
+  if [[ ! -d "$stow_pkg" ]]; then
+    echo "[evremap] ERROR: expected $stow_pkg with etc/evremap.toml inside"
+    return 1
+  fi
+
+  echo "[evremap] linking config with stow → /etc/evremap.toml"
+  if ! command -v stow >/dev/null 2>&1; then
+    sudo pacman -S --needed --noconfirm stow
+  fi
+  sudo stow -t / "$stow_pkg"
+
+  echo "[evremap] creating systemd override"
+  sudo install -d -m 0755 /etc/systemd/system/evremap.service.d
+  sudo tee /etc/systemd/system/evremap.service.d/override.conf >/dev/null <<'EOF'
+[Service]
+ExecStart=
+ExecStart=/usr/bin/evremap remap /etc/evremap.toml
+Restart=always
+EOF
+
+  sudo systemctl daemon-reload
+  sudo systemctl enable --now evremap.service >/dev/null 2>&1 || true
+}
+
 sudo pacman -Syu --noconfirm
 for g in "${enabled[@]}"; do
     pkgs=${groups[$g]:-}
@@ -202,6 +230,7 @@ if command -v docker >/dev/null 2>&1; then
     fi
 fi
 
+setup_evremap
 sudo systemctl enable --now power-profiles-daemon >/dev/null 2>&1 || true
 sudo systemctl enable --now NetworkManager.service >/dev/null 2>&1 || true
 sudo systemctl enable --now bluetooth.service >/dev/null 2>&1 || true
