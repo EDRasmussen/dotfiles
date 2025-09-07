@@ -433,6 +433,7 @@ require('lazy').setup({
         'svelte',
         'roslyn',
         'rzls',
+        'sqlfluff',
       })
       require('mason-tool-installer').setup {
         auto_update = true, -- Update tools if needed
@@ -545,10 +546,19 @@ require('lazy').setup({
             require_cwd = false,
           }
         end,
+        sqlfluff = {
+          command = 'sqlfluff',
+          args = { 'format', '--dialect=postgres', '-' },
+          stdin = true,
+          cwd = function()
+            return vim.fn.getcwd()
+          end,
+        },
       },
       formatters_by_ft = {
         lua = { 'stylua' },
         go = { 'goimports', 'gofumpt' },
+        sql = { 'sqlfluff' },
         ts = { 'eslint' },
         javascript = { 'eslint' },
         javascriptreact = { 'eslint' },
