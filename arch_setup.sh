@@ -230,6 +230,7 @@ git config --global --type bool push.autoSetupRemote true
 
 mkdir -p ~/projects
 install_omz
+sh ./install.sh
 setup_greetd
 
 echo "Done!"
