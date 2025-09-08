@@ -79,6 +79,7 @@ aur=(
     cursor-bin
     zen-browser-bin
     onlyoffice-bin
+    bruno-bin
     ttf-ms-fonts ttf-vista-fonts
     ttf-menlo-powerline ttf-monaco
 )
@@ -194,6 +195,9 @@ for g in "${enabled[@]}"; do
     fi
 done
 
+# Azure credentials manager
+wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
+
 if command -v docker >/dev/null 2>&1; then
     sudo systemctl enable --now docker >/dev/null 2>&1 || true
     if ! id -nG "$USER" | grep -qw docker; then
@@ -225,7 +229,7 @@ sudo systemctl daemon-reexec
 git config --global --type bool push.autoSetupRemote true
 
 mkdir -p ~/projects
-setup_greetd
 install_omz
+setup_greetd
 
 echo "Done!"
