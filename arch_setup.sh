@@ -50,6 +50,7 @@ langs=(
     ruby
     php composer
     dotnet-sdk dotnet-runtime aspnet-runtime
+    dotnet-sdk-8.0 dotnet-runtime-8.0 aspnet-runtime-8.0
     python python-pip
     go
     rust
@@ -73,6 +74,7 @@ gui=(
     cliphist
     spotify-launcher
     discord
+    dbeaver
 )
 
 aur=(
@@ -197,6 +199,7 @@ done
 
 # Azure credentials manager
 wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
+dotnet tool install --global dotnet-ef
 
 if command -v docker >/dev/null 2>&1; then
     sudo systemctl enable --now docker >/dev/null 2>&1 || true

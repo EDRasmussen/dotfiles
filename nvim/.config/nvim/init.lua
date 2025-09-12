@@ -496,6 +496,14 @@ require('lazy').setup({
     },
     config = function()
       require('roslyn').setup()
+      vim.lsp.config('roslyn', {
+        settings = {
+          ['csharp|background_analysis'] = {
+            dotnet_analyzer_diagnostics_scope = 'openFiles',
+            dotnet_compiler_diagnostics_scope = 'openFiles',
+          },
+        },
+      })
     end,
   },
   { -- Autoformat
