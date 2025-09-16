@@ -75,6 +75,7 @@ gui=(
     spotify-launcher
     discord
     dbeaver
+    noto-fonts-emoji
 )
 
 aur=(
@@ -82,6 +83,7 @@ aur=(
     zen-browser-bin
     onlyoffice-bin
     bruno-bin
+    azure-functions-core-tools-bin
     ttf-ms-fonts ttf-vista-fonts
     ttf-menlo-powerline ttf-monaco
 )
