@@ -1,4 +1,4 @@
-background-opacity = 0.9
+background-opacity = 0.8
 background-blur = true
 theme = Kanagawa Wave
 title = " "
@@ -8,3 +8,4 @@ font-feature = -calt
 font-feature = -liga
 font-feature = -clig
 font-feature = -dlig
+confirm-close-surface=false
