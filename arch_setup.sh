@@ -14,6 +14,7 @@ core=(
     gnome-keyring
     hyprland hypridle hyprpaper hyprlock xdg-desktop-portal-hyprland
     wl-clipboard
+    cliphist
     greetd
     greetd-tuigreet
     stow
