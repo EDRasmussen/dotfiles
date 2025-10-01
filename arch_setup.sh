@@ -59,7 +59,7 @@ langs=(
 )
 
 gui=(
-    ghostty
+    alacritty
     thunar
     rofi-wayland
     rofi-calc
