@@ -434,6 +434,7 @@ require('lazy').setup({
         'roslyn',
         'rzls',
         'sqlfluff',
+        'postgres_lsp',
       })
       require('mason-tool-installer').setup {
         auto_update = true, -- Update tools if needed
