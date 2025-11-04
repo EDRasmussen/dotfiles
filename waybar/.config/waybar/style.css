@@ -1,13 +1,12 @@
 @import "kanagawa.css";
 
 * {
-  font-family:
-    "JetBrains Mono NerdFont", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 1.01em;
+  font-family: "SF Pro", FontAwesome, Roboto, Helvetica, Arial;
+  font-size: 1rem;
 }
 
 window#waybar {
-  background-color: rgba(62, 62, 62, 0.27);
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 0;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -29,18 +28,16 @@ button:hover {
 }
 
 /* Workspaces styles */
-
 #workspaces {
-  font-weight: 800;
   margin-right: 5px;
-  background-color: @background;
-  color: @foreground;
-  border-radius: 10px;
+  color: #FFF;
 }
 
 #workspaces button {
-  border-radius: 0;
-  padding: 0 8px;
+  font-weight:600;
+  border-radius: 7px;
+  border: 2px solid rgba(0,0,0,0);
+  padding: 0 5px;
   color: inherit;
   background-color: transparent;
 }
@@ -50,17 +47,7 @@ button:hover {
 }
 
 #workspaces button.active {
-  background-color: @foreground-dark;
-  color: @background;
-}
-
-#workspaces button.active:first-child {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-#workspaces button.active:last-child {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-color: #FFF;
 }
 
 #workspaces button.urgent {
@@ -85,30 +72,20 @@ button:hover {
 }
 
 #cpu {
-  padding-right: 10px;
+  padding-right: 5px;
 }
 
 #memory {
-  padding-left: 10px;
+  padding-left: 5px;
 }
 
 /* Audio module styles */
-
-#zvuk {
-  background-color: @background;
-  color: @foreground;
-  border-radius: 10px;
-  margin-right: 5px;
-}
-
-#pulseaudio:hover {
-  background-color: @overlay;
-}
-
 #pulseaudio {
-  font-weight: 700;
-  padding: 6px 10px;
-  border-radius: 10px;
+    margin-right: 10px;
+}
+
+#pulseaudio.output {
+    margin-right:10px;
 }
 
 #pulseaudio.output.muted {
@@ -119,7 +96,6 @@ button:hover {
 }
 
 /* Privacy */
-
 #privacy {
   background-color: @background;
   color: @power;
@@ -136,25 +112,13 @@ button:hover {
 }
 
 /* Time group styles */
-
 #time {
-  border-radius: 10px;
-  font-weight: 700;
-  background-color: @background;
-  color: @foreground;
-}
-
-#clock.simple {
-  padding: 6px 10px;
-  background-color: @foreground-dark;
-  color: @background;
-  border-radius: 0 10px 10px 0;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 #clock {
-  padding: 6px 10px;
-  border-radius: 10px 0 0 10px;
+  font-weight: 400;
+  padding: 6px 5px;
 }
 
 #battery {
@@ -176,7 +140,6 @@ button:hover {
 }
 
 /* Default module styles */
-
 #battery,
 #temperature,
 #network,
@@ -184,9 +147,7 @@ button:hover {
 #window,
 #tray,
 #language {
-  font-weight: 700;
-  background-color: @background;
-  color: @foreground;
+  color: #FFF;
   padding: 6px 10px;
   border-radius: 10px;
 }
