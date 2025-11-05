@@ -6,7 +6,9 @@
     "modules-left": [
         "hyprland/workspaces"
     ],
-    "modules-center": [],
+    "modules-center": [
+        "hyprland/window"
+    ],
     "modules-right": [
         "tray",
         "privacy",
@@ -131,5 +133,15 @@
     },
     "tray": {
         "spacing": 10
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 60,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "🌐 $1",
+            "(.*) - Visual Studio Code": "  $1",
+            "(.*) - Cursor": "  $1"
+        }
     }
 }
