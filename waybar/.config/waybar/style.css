@@ -123,7 +123,8 @@ button:hover {
 #privacy {
   background-color: transparent;
   color: @power;
-  border: 1px solid rgba(220, 165, 97, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color:#FFF;
   padding: 4px 10px;
   border-radius: 6px;
   margin: 0 3px;
@@ -147,6 +148,7 @@ button:hover {
   margin: 0 3px;
   border-radius: 6px;
   box-shadow: none;
+  color:#FFF;
 }
 
 #clock {
@@ -157,6 +159,7 @@ button:hover {
 
 /* Battery */
 #battery {
+  color:#FFF;
   background-color: transparent;
   padding: 4px 10px;
   margin: 0 3px;
@@ -188,7 +191,6 @@ button:hover {
   border-radius: 8px;
 }
 
-/* Default module styles */
 #temperature,
 #network {
   color: rgba(255, 255, 255, 0.85);
@@ -213,7 +215,6 @@ label:focus {
   background-color: transparent;
 }
 
-/* Window title - centered like macOS */
 #window {
   color: rgba(255, 255, 255, 0.75);
   font-weight: 500;

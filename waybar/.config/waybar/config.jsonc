@@ -10,22 +10,22 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "tray",
         "privacy",
+        "tray",
         "battery",
         "group/hardware",
         "group/zvuk",
         "group/time"
     ],
     "battery": {
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
+        "format": "{icon}  {capacity}%",
+        "format-charging": "􀢋  {capacity}%",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "􀛪",
+            "􀛩",
+            "􀛩",
+            "􀛨",
+            "􀛨"
         ],
         "states": {
             "warning": 30,
@@ -139,8 +139,9 @@
         "max-length": 60,
         "separate-outputs": true,
         "rewrite": {
-            "(.*) — Mozilla Firefox": "🌐 $1",
+            "(.*) — Zen Browser": "🌐 $1",
             "(.*) - Visual Studio Code": "  $1",
+            "tmux-sessionizer": "alacritty",
             "(.*) - Cursor": "  $1"
         }
     }

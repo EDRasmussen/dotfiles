@@ -11,7 +11,7 @@
 configuration {
 	modi:                       "drun,run,window";
     show-icons:                 true;
-    icon-theme: "Papirus";
+    icon-theme:                 "Papirus";
     display-drun:               "drun";
     display-run:                "run";
     display-window:             "window";
@@ -23,7 +23,7 @@ configuration {
 @import                          "./shared/colors.rasi"
 
 * {
-  font: "JetBrains Mono Nerd Font 14";
+  font: "SF Pro Display 14";
 }
 
 
@@ -45,7 +45,7 @@ window {
     margin:                      0px;
     padding:                     0px;
     border: 2px solid;
-    border-color: @borderColor;
+    border-color:                @borderColor;
     border-radius:               10px;
     cursor:                      "default";
 }
@@ -76,29 +76,18 @@ inputbar {
 }
 
 prompt {
-    enabled:                     true;
-    padding:                     15px;
-    border:                      0px 1px 0px 0px;
-    border-radius:               0px;
-    border-color:                @foreground;
-    background-color:            inherit;
-    text-color:                  inherit;
+    enabled:                     false;
 }
 textbox-prompt-colon {
-    enabled:                     true;
-    expand:                      false;
-    str:                         "::";
-    background-color:            inherit;
-    text-color:                  inherit;
+    enabled:                     false;
 }
 entry {
-    enabled:                     true;
-    padding:                     15px;
-    background-color:            inherit;
-    text-color:                  inherit;
-    cursor:                      text;
-    placeholder:                 "";
-    placeholder-color:           inherit;
+  enabled: true;
+  padding: 15px;
+  background-color: inherit;
+  text-color: inherit;
+  cursor: text;
+  placeholder-color: rgba(255, 255, 255, 0.45);
 }
 
 /*****----- Listview -----*****/

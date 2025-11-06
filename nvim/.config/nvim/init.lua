@@ -431,10 +431,10 @@ require('lazy').setup({
         'jsonls',
         'tailwindcss',
         'svelte',
-        'roslyn',
         'rzls',
         'sqlfluff',
         'postgres_lsp',
+        'terraformls',
       })
       require('mason-tool-installer').setup {
         auto_update = true, -- Update tools if needed
@@ -486,25 +486,6 @@ require('lazy').setup({
 
       vim.lsp.enable 'vue_ls'
       vim.lsp.enable 'vtsls'
-    end,
-  },
-  { -- Roslyn plugin (c# ls)
-    'seblyng/roslyn.nvim',
-    dependencies = {
-      'neovim/nvim-lspconfig',
-      'mason-org/mason.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-    },
-    config = function()
-      require('roslyn').setup()
-      vim.lsp.config('roslyn', {
-        settings = {
-          ['csharp|background_analysis'] = {
-            dotnet_analyzer_diagnostics_scope = 'openFiles',
-            dotnet_compiler_diagnostics_scope = 'openFiles',
-          },
-        },
-      })
     end,
   },
   { -- Autoformat

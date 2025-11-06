@@ -16,7 +16,7 @@ scale_4k_externals() {
 
 case "$ARG" in
   open)
-    hyprctl keyword monitor "eDP-1,preferred,auto,1"
+    hyprctl keyword monitor "eDP-1,preferred,auto,1.5"
     scale_4k_externals
     ;;
   close)
@@ -24,7 +24,7 @@ case "$ARG" in
       hyprctl keyword monitor "eDP-1,disable"
       scale_4k_externals
     else
-      hyprctl keyword monitor "eDP-1,preferred,auto,1"
+      hyprctl keyword monitor "eDP-1,preferred,auto,1.5"
       systemctl hibernate
     fi
     ;;
