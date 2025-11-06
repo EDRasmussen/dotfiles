@@ -77,7 +77,7 @@
         "format": "{format_source}",
         "format-source": " {volume}%",
         "format-source-muted": " ",
-        "tooltip-format": "Fifine K680",
+        "tooltip-format": "{source}",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
