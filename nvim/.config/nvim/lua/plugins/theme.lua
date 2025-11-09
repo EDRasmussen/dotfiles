@@ -1,13 +1,25 @@
+-- return {
+--   'rebelot/kanagawa.nvim',
+--   config = function()
+--     vim.cmd 'colorscheme kanagawa'
+--
+--     require('kanagawa').setup {
+--       compile = false,
+--       transparent = true,
+--     }
+--
+--     vim.cmd 'KanagawaCompile'
+--   end,
+-- }
 return {
-  'rebelot/kanagawa.nvim',
+  'Kaikacy/Lemons.nvim',
+  version = '*', -- for stable release
+  lazy = false,
+  priority = 1000,
   config = function()
-    vim.cmd 'colorscheme kanagawa'
-
-    require('kanagawa').setup {
-      compile = false,
-      transparent = true,
-    }
-
-    vim.cmd 'KanagawaCompile'
+    vim.cmd.colorscheme 'lemons'
+    -- or
+    -- require("lemons").load()
+    -- there is no difference between these two
   end,
 }
