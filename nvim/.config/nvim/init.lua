@@ -420,9 +420,9 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'csharpier', -- Used to format C# code
-        'vtsls',
+        'tsgo',
         'vue_ls',
-        'eslint_d', -- TS
+        'biome', -- TS
         'gopls', -- Go LSP
         'goimports', -- Go Formatter
         'gofumpt', -- Stricter Go formatter
@@ -461,9 +461,9 @@ require('lazy').setup({
         languages = { 'vue' },
         configNamespace = 'typescript',
       }
-      vim.lsp.config('vtsls', {
+      vim.lsp.config('tsgo', {
         settings = {
-          vtsls = {
+          tsgo = {
             tsserver = {
               globalPlugins = {
                 vue_plugin,
@@ -485,7 +485,7 @@ require('lazy').setup({
       })
 
       vim.lsp.enable 'vue_ls'
-      vim.lsp.enable 'vtsls'
+      vim.lsp.enable 'tsgo'
     end,
   },
   { -- Autoformat
@@ -544,11 +544,11 @@ require('lazy').setup({
         lua = { 'stylua' },
         go = { 'goimports', 'gofumpt' },
         sql = { 'sqlfluff' },
-        ts = { 'eslint_d' },
-        javascript = { 'eslint_d' },
-        javascriptreact = { 'eslint_d' },
-        typescript = { 'eslint_d' },
-        vue = { 'eslint_d' },
+        ts = { 'biome' },
+        javascript = { 'biome' },
+        javascriptreact = { 'biome' },
+        typescript = { 'biome' },
+        vue = { 'biome' },
         cs = { 'csharpier' },
       },
     },
