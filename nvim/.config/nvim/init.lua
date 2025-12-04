@@ -274,7 +274,7 @@ require('lazy').setup({
           map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
           map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
-          vim.keymap.set('n', '<leader>RR', function()
+          vim.keymap.set('n', '<leader>P', function()
             local group = vim.api.nvim_create_augroup('LspHardRestart', { clear = true })
 
             vim.api.nvim_create_autocmd('LspDetach', {
@@ -422,7 +422,7 @@ require('lazy').setup({
         'csharpier', -- Used to format C# code
         'vtsls',
         'vue_ls',
-        'eslint', -- TS
+        'eslint_d', -- TS
         'gopls', -- Go LSP
         'goimports', -- Go Formatter
         'gofumpt', -- Stricter Go formatter
@@ -544,11 +544,12 @@ require('lazy').setup({
         lua = { 'stylua' },
         go = { 'goimports', 'gofumpt' },
         sql = { 'sqlfluff' },
-        ts = { 'eslint' },
-        javascript = { 'eslint' },
-        javascriptreact = { 'eslint' },
-        typescript = { 'eslint' },
-        vue = { 'eslint' },
+        ts = { 'eslint_d' },
+        javascript = { 'eslint_d' },
+        javascriptreact = { 'eslint_d' },
+        typescript = { 'eslint_d' },
+        vue = { 'eslint_d' },
+        cs = { 'csharpier' },
       },
     },
   },
@@ -701,6 +702,10 @@ require('lazy').setup({
       },
     },
   },
+  {
+    'pteroctopus/faster.nvim',
+    opts = {},
+  },
   { 'adlrwbr/keep-split-ratio.nvim', opts = {} },
   'nvim-treesitter/nvim-treesitter-context',
   'github/copilot.vim',
@@ -724,6 +729,10 @@ require('lazy').setup({
   require 'plugins.undotree',
   require 'plugins.dart',
   require 'plugins.theme',
+  {
+    'likec4/likec4.nvim',
+    build = 'npm install -g @likec4/language-server',
+  },
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
