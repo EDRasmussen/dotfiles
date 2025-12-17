@@ -423,6 +423,7 @@ require('lazy').setup({
         'vtsls',
         'vue_ls',
         'eslint_d', -- TS
+        'prettierd', -- TS
         'gopls', -- Go LSP
         'goimports', -- Go Formatter
         'gofumpt', -- Stricter Go formatter
@@ -431,7 +432,6 @@ require('lazy').setup({
         'jsonls',
         'tailwindcss',
         'svelte',
-        'rzls',
         'sqlfluff',
         'postgres_lsp',
         'terraformls',
@@ -544,11 +544,12 @@ require('lazy').setup({
         lua = { 'stylua' },
         go = { 'goimports', 'gofumpt' },
         sql = { 'sqlfluff' },
-        ts = { 'eslint_d' },
-        javascript = { 'eslint_d' },
-        javascriptreact = { 'eslint_d' },
-        typescript = { 'eslint_d' },
-        vue = { 'eslint_d' },
+        ts = { 'prettierd' },
+        javascript = { 'prettierd' },
+        javascriptreact = { 'prettierd' },
+        typescript = { 'prettierd' },
+        vue = { 'prettierd' },
+        svelte = { 'prettierd' },
         cs = { 'csharpier' },
       },
     },
