@@ -160,7 +160,7 @@ setup_greetd() {
 vt = 2
 
 [default_session]
-command = "tuigreet --remember --time --asterisks --cmd Hyprland"
+command = "tuigreet --remember --time --asterisks --cmd start-hyprland"
 user = "greeter"
 EOF
 

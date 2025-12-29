@@ -12,6 +12,7 @@
     "modules-right": [
         "privacy",
         "tray",
+        "hyprland/language",
         "battery",
         "group/hardware",
         "group/zvuk",
@@ -36,6 +37,11 @@
     "hyprland/workspaces": {
         "on-click": "activate",
         "sort-by-number": true
+    },
+    "hyprland/language": {
+        "format": "  {}",
+        "format-en": "US",
+        "format-da": "DK"
     },
     // Hardware info
     "group/hardware": {
@@ -74,13 +80,15 @@
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
     "pulseaudio#input": {
-        "format": "{format_source}",
         "format-source": " {volume}%",
         "format-source-muted": " ",
-        "tooltip-format": "{source}",
+        "format": "{format_source}",
+        "scroll-step": 1,
+        "smooth-scrolling-threshold": 1,
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
+        "on-click-middle": "pavucontrol"
     },
     // Time
     "group/time": {
@@ -139,9 +147,9 @@
         "max-length": 60,
         "separate-outputs": true,
         "rewrite": {
-            "(.*) — Zen Browser": "🌐 $1",
+            "(.*) — Zen Browser": "$1",
             "(.*) - Visual Studio Code": "  $1",
-            "tmux-sessionizer": "alacritty",
+            "tmux-sessionizer": "terminal",
             "(.*) - Cursor": "  $1"
         }
     }

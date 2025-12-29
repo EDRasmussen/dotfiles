@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-  background-color: rgba(20, 20, 25, 0.5);
+  background-color: #171717;
   border-radius: 0;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -45,20 +45,19 @@ button:hover {
   margin: 0 2px;
   min-width: 20px;
   border-radius: 4px;
-  background-color: transparent;
   border: none;
   color: rgba(255, 255, 255, 0.6);
   transition: all 0.2s;
 }
 
 #workspaces button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
+  background: #252525;
+  color: #fafafa;
 }
 
 #workspaces button.active {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 1);
+  background: #252525;
+  color: #fafafa;
   border: none;
 }
 
@@ -80,14 +79,14 @@ button:hover {
   padding-right: 8px;
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.85);
+  color: #fafafa;
 }
 
 #memory {
   padding-left: 8px;
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.85);
+  color: #fafafa;
 }
 
 /* Audio module styles */
@@ -102,7 +101,7 @@ button:hover {
 #pulseaudio.output {
   padding-right: 8px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: #fafafa;
 }
 
 #pulseaudio.output.muted {
@@ -112,7 +111,7 @@ button:hover {
 #pulseaudio.input {
   padding-left: 8px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: #fafafa;
 }
 
 #pulseaudio.input.source-muted {
@@ -122,9 +121,8 @@ button:hover {
 /* Privacy */
 #privacy {
   background-color: transparent;
-  color: @power;
   border: 1px solid rgba(255, 255, 255, 0.4);
-  color:#FFF;
+  color: #fafafa;
   padding: 4px 10px;
   border-radius: 6px;
   margin: 0 3px;
@@ -148,7 +146,7 @@ button:hover {
   margin: 0 3px;
   border-radius: 6px;
   box-shadow: none;
-  color:#FFF;
+  color: #fafafa;
 }
 
 #clock {
@@ -159,7 +157,7 @@ button:hover {
 
 /* Battery */
 #battery {
-  color:#FFF;
+  color: #fafafa;
   background-color: transparent;
   padding: 4px 10px;
   margin: 0 3px;
@@ -193,7 +191,7 @@ button:hover {
 
 #temperature,
 #network {
-  color: rgba(255, 255, 255, 0.85);
+  color: #fafafa;
   background-color: transparent;
   padding: 4px 10px;
   margin: 0 3px;
@@ -216,7 +214,7 @@ label:focus {
 }
 
 #window {
-  color: rgba(255, 255, 255, 0.75);
+  color: #fafafa;
   font-weight: 500;
   font-size: 13px;
   letter-spacing: -0.01em;
