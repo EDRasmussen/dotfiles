@@ -1,9 +1,14 @@
 @import "kanagawa.css";
 
 * {
-  font-family: "SF Pro Display", "SF Pro", system-ui, -apple-system, FontAwesome;
+  font-family: "SF Pro Display","SF Pro", system-ui, -apple-system, FontAwesome;
   font-size: 13px;
   font-weight: 400;
+}
+
+tooltip {
+  font-family: "JetBrains Mono", "SF Mono";
+  font-size: 11px;
 }
 
 window#waybar {

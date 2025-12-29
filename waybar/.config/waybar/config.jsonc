@@ -104,9 +104,10 @@
         "interval": 1
     },
     "clock": {
-        "format-alt": "{:L%a %d, %b %Y}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "locale": "da_DK.UTF-8",
         "format": "{:%d-%m-%Y}",
+        "format-alt": "{:L%a %d, %b %Y}",
+        "tooltip-format": "<big>{:L%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "year",
             "mode-mon-col": 3,
@@ -114,11 +115,11 @@
             "on-scroll": 1,
             "on-click-right": "mode",
             "format": {
-                "months": "<span color='#ffead3'><b>{}</b></span>",
-                "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+                "months": "<span color='#cbd5e1'><b>{}</b></span>",
+                "days": "<span color='#94a3b8'><b>{}</b></span>",
+                "weeks": "<span color='#2dd4bf'><b>W{}</b></span>",
+                "weekdays": "<span color='#e2e8f0'><b>{}</b></span>",
+                "today": "<span color='#22c55e'><b><u>{}</u></b></span>"
             }
         },
         "actions": {
