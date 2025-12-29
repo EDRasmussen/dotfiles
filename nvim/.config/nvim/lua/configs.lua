@@ -29,6 +29,8 @@ opt.undofile = true -- persistent undo file
 opt.completeopt = { "menuone", "popup", "noinsert" }
 opt.winborder = "rounded" -- use rounded borders for windows
 opt.hlsearch = false -- disable highlight of search results
+opt.splitright = true -- moves the cursor on vertical split
+opt.splitbelow = true -- moves the cursor on horizontal split
 
 vim.cmd.filetype("plugin indent on")
 

@@ -39,7 +39,6 @@ dev=(
 )
 
 cli=(
-    neovim
     tmux
     ripgrep
     fd fzf
@@ -80,6 +79,7 @@ gui=(
 )
 
 aur=(
+    neovim-nightly-bin
     cursor-bin
     zen-browser-bin
     onlyoffice-bin

@@ -1,11 +1,11 @@
 * {
-  background: #16161DE6;
-  background-alt: #1F1F28E6;
-  foreground: #DCD7BA;
+  background: #0A0A0A;
+  background-alt: #171717;
+
+  foreground: #E5E5E5;
   urgent: #DCA561E6;
   active-window: #76946AE6;
-
-  borderColor: #DCD7BA99;
+  borderColor: #282828;
 }
 
 /*
