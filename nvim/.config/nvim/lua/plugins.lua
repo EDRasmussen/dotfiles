@@ -34,7 +34,7 @@ vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
 require("plugins.nvim-treesitter")
 require("plugins.mason")
 require("plugins.blink-cmp")
-require("gitsigns").setup({ signcolumn = false })
+require("gitsigns").setup()
 require("plugins.conform")
 require("plugins.telescope")
 require("easy-dotnet").setup()
