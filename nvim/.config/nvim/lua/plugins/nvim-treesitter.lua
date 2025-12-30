@@ -1,49 +1,76 @@
+local treesitter = require("nvim-treesitter")
 require("nvim-treesitter").setup({
 	lazy = false,
 	build = ":TSUpdate",
 	highlight = { enable = true },
 })
 
-local ts = require("nvim-treesitter")
-local augroup = vim.api.nvim_create_augroup("myconfig.treesitter", { clear = true })
-
 vim.api.nvim_create_autocmd("FileType", {
-	group = augroup,
-	pattern = { "*" },
-	callback = function(event)
-		local filetype = event.match
-		local lang = vim.treesitter.language.get_lang(filetype)
-		if lang == nil then
-			return
+	callback = function(args)
+		if vim.list_contains(treesitter.get_installed(), vim.treesitter.language.get_lang(args.match)) then
+			vim.treesitter.start(args.buf)
 		end
-
-		local is_installed, _ = vim.treesitter.language.add(lang)
-
-		if not is_installed then
-			local available_langs = ts.get_available()
-			local is_available = vim.tbl_contains(available_langs, lang)
-
-			if is_available then
-				vim.notify("Installing treesitter parser for " .. lang, vim.log.levels.INFO)
-				ts.install({ lang }):wait(30 * 1000)
-			end
-		end
-
-		local ok, _ = pcall(vim.treesitter.start, event.buf, lang)
-		if not ok then
-			return
-		end
-
-		vim.bo[event.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 	end,
 })
 
-vim.api.nvim_create_autocmd("PackChanged", {
-	group = augroup,
-	pattern = { "nvim-treesitter" },
-	callback = function()
-		vim.notify("Updating treesitter parsers", vim.log.levels.INFO)
-		ts.update(nil, { summary = true }):wait(30 * 1000)
-	end,
+local should_install = {
+	"javascript",
+	"typescript",
+	"python",
+	"c",
+	"lua",
+	"cpp",
+	"svelte",
+	"cs",
+	"vue",
+	"go",
+	"sql",
+	"html",
+	"css",
+	"json",
+	"jsonc",
+	"yaml",
+	"yml",
+	"markdown",
+	"markdown_inline",
+	"xml",
+	"csv",
+	"powershell",
+	"vim",
+	"vimdoc",
+	"gitignore",
+	"docker",
+}
+
+local installed = treesitter.get_installed()
+
+local to_install = vim.tbl_filter(function(lang)
+	return not vim.tbl_contains(installed, lang)
+end, should_install)
+
+treesitter.install(to_install)
+
+require("nvim-treesitter-textobjects").setup({
+	select = {
+		lookahead = true,
+		selection_modes = {
+			["@parameter.outer"] = "v",
+			["@function.outer"] = "V",
+			["@class.outer"] = "V",
+		},
+		include_surrounding_whitespace = true,
+	},
+	move = {
+		set_jumps = false,
+	},
 })
+
+vim.keymap.set({ "n", "x", "o" }, "]]", function()
+	require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+	vim.cmd("normal! zz")
+end)
+
+vim.keymap.set({ "n", "x", "o" }, "[[", function()
+	require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+	vim.cmd("normal! zz")
+end)

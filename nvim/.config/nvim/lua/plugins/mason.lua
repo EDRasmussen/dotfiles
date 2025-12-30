@@ -11,6 +11,8 @@ require("mason-lspconfig").setup({
 		"cssls",
 		"jsonls",
 		"svelte",
+		"pyright",
+		"sqls",
 	},
 	automatic_installation = true,
 })
@@ -25,6 +27,7 @@ require("mason-tool-installer").setup({
 		"black",
 		"csharpier",
 		"isort",
+		"sqlfluff",
 	},
 	auto_update = false,
 	run_on_start = true,

@@ -30,4 +30,6 @@ vim.lsp.enable({
 	"cssls",
 	"jsonls",
 	"svelte",
+	"pyright",
+	"sqls",
 })
