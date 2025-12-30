@@ -12,26 +12,39 @@
     "modules-right": [
         "privacy",
         "tray",
+        "network",
+        "bluetooth",
         "hyprland/language",
         "battery",
         "group/hardware",
         "group/zvuk",
         "group/time"
     ],
+    "network": {
+        "tooltip": false,
+        "format-wifi": "􀙇 ",
+        "format-ethernet": "􀞆 Wired",
+        "format-disconnected": "􀙈 Offline",
+        "format-linked": "􀞆 {ifname}",
+        "max-length": 18,
+        "on-click-right": "alacritty -e nmtui",
+        "on-click": "alacritty -e nmtui"
+    },
+    "bluetooth": {
+        "format": "",
+        "format-disabled": " Off",
+        "format-off": " Off",
+        "format-on": "",
+        "format-connected": " {device_alias}",
+        "tooltip": false,
+        "on-click": "blueman-manager",
+        "on-click-right": "blueman-manager"
+    },
     "battery": {
-        "format": "{icon}  {capacity}%",
-        "format-charging": "􀢋  {capacity}%",
-        "format-icons": [
-            "􀛪",
-            "􀛩",
-            "􀛩",
-            "􀛨",
-            "􀛨"
-        ],
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "􀢋 {capacity}%",
+        "format-icons": ["􀛪","􀛩","􀛩","􀛨","􀛨"],
+        "states": { "warning": 30, "critical": 15 },
         "tooltip": true
     },
     "hyprland/workspaces": {
@@ -39,7 +52,7 @@
         "sort-by-number": true
     },
     "hyprland/language": {
-        "format": "  {}",
+        "format": "{}",
         "format-en": "US",
         "format-da": "DK"
     },
@@ -132,16 +145,10 @@
     },
     "privacy": {
         "icon-size": 15,
-        "icon-spacing": 8
-    },
-    "network": {
-        "format-wifi": "<span color=\"#DCA561\"> </span>",
-        "format-ethernet": "<span color=\"#DCA561\"> </span>",
-        "format-disconnected": "<span color=\"#DCA561\">⚠</span>",
-        "tooltip": false
+        "icon-spacing": 6
     },
     "tray": {
-        "spacing": 10
+        "spacing": 6
     },
     "hyprland/window": {
         "format": "{}",

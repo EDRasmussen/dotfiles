@@ -1,4 +1,11 @@
-@import "kanagawa.css";
+@define-color bg #171717;
+@define-color fg #e5e5e5;
+@define-color fg_strong #fafafa;
+@define-color muted rgba(255, 255, 255, 0.6);
+@define-color hover rgba(255, 255, 255, 0.10);
+@define-color border #27272a;
+@define-color red #ef4444;
+@define-color orange #f59e0b;
 
 * {
   font-family: "SF Pro Display","SF Pro", system-ui, -apple-system, FontAwesome;
@@ -12,7 +19,7 @@ tooltip {
 }
 
 window#waybar {
-  background-color: #171717;
+  background-color: @bg;
   border-radius: 0;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -23,6 +30,11 @@ window#waybar > box {
   padding: 6px 0;
 }
 
+.modules-left,
+.modules-right {
+  padding: 0 12px;
+}
+
 button {
   box-shadow: none;
   border: none;
@@ -31,11 +43,29 @@ button {
 }
 
 button:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: @hover;
   border: none;
 }
 
-/* Workspaces styles - clean numbered style */
+/* Keep all right-side modules visually consistent */
+#privacy,
+#tray,
+#language,
+#battery,
+#hardware,
+#zvuk,
+#time {
+  background-color: transparent;
+  padding: 4px 6px;
+  margin: 0 4px;
+  border-radius: 6px;
+  box-shadow: none;
+  color: @fg_strong;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Workspaces */
 #workspaces {
   margin-left: 8px;
   margin-right: 8px;
@@ -51,18 +81,18 @@ button:hover {
   min-width: 20px;
   border-radius: 4px;
   border: none;
-  color: rgba(255, 255, 255, 0.6);
+  color: @muted;
   transition: all 0.2s;
 }
 
 #workspaces button:hover {
   background: #252525;
-  color: #fafafa;
+  color: @fg_strong;
 }
 
 #workspaces button.active {
   background: #252525;
-  color: #fafafa;
+  color: @fg_strong;
   border: none;
 }
 
@@ -71,117 +101,46 @@ button:hover {
   color: #000;
 }
 
-/* Hardware group styles */
-#hardware {
-  background-color: transparent;
-  padding: 4px 10px;
-  margin: 0 3px;
-  border-radius: 6px;
-  box-shadow: none;
-}
+/* Hardware group spacing (avoid uneven gaps) */
+#cpu { padding-right: 8px; }
+#memory { padding-left: 8px; }
 
-#cpu {
-  padding-right: 8px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: #fafafa;
-}
+/* Audio group spacing */
+#pulseaudio.output { padding-right: 8px; }
+#pulseaudio.input { padding-left: 8px; }
+#pulseaudio.output.muted,
+#pulseaudio.input.source-muted { color: @red; }
 
-#memory {
-  padding-left: 8px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: #fafafa;
-}
-
-/* Audio module styles */
-#zvuk {
-  background-color: transparent;
-  padding: 4px 10px;
-  margin: 0 3px;
-  border-radius: 6px;
-  box-shadow: none;
-}
-
-#pulseaudio.output {
-  padding-right: 8px;
-  font-weight: 500;
-  color: #fafafa;
-}
-
-#pulseaudio.output.muted {
-  color: @red;
-}
-
-#pulseaudio.input {
-  padding-left: 8px;
-  font-weight: 500;
-  color: #fafafa;
-}
-
-#pulseaudio.input.source-muted {
-  color: @red;
-}
-
-/* Privacy */
+/* Privacy: use shadcn border */
 #privacy {
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #fafafa;
-  padding: 4px 10px;
-  border-radius: 6px;
-  margin: 0 3px;
-  box-shadow: none;
+  border: 1px solid @border;
 }
 
-/* Language */
-#language {
-  background-color: transparent;
-  padding: 4px 10px;
-  margin: 0 3px;
-  border-radius: 6px;
-  box-shadow: none;
-  font-weight: 500;
-}
-
-/* Time group styles */
-#time {
-  background-color: transparent;
-  padding: 4px 10px;
-  margin: 0 3px;
-  border-radius: 6px;
-  box-shadow: none;
-  color: #fafafa;
-}
-
+/* Time */
 #clock {
-  font-weight: 500;
   padding: 0 4px;
+}
+
+/* Network & bluetooth */
+#network,
+#bluetooth {
+  background-color: transparent;
+  padding: 4px 10px;
+  margin: 0 4px;
+  border-radius: 6px;
+  box-shadow: none;
+  color: @fg_strong;
+  font-weight: 500;
   letter-spacing: -0.01em;
 }
 
-/* Battery */
-#battery {
-  color: #fafafa;
-  background-color: transparent;
-  padding: 4px 10px;
-  margin: 0 3px;
-  border-radius: 6px;
-  box-shadow: none;
-  font-weight: 500;
-}
-
-/* Tray */
+/* Tray: reduce loudness + keep spacing even */
 #tray {
-  background-color: transparent;
   padding: 4px 8px;
-  border-radius: 6px;
-  margin: 0 3px;
-  box-shadow: none;
 }
 
 #tray > * {
-  padding: 0 4px;
+  padding: 0 3px;
 }
 
 #tray > .passive {
@@ -190,36 +149,13 @@ button:hover {
 
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
-  background-color: rgba(255, 159, 59, 0.3);
+  background-color: rgba(255, 159, 59, 0.25);
   border-radius: 8px;
 }
 
-#temperature,
-#network {
-  color: #fafafa;
-  background-color: transparent;
-  padding: 4px 10px;
-  margin: 0 3px;
-  border-radius: 6px;
-  box-shadow: none;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-.modules-right {
-  padding: 0 12px;
-}
-
-.modules-left {
-  padding: 0 12px;
-}
-
-label:focus {
-  background-color: transparent;
-}
-
+/* Center window title */
 #window {
-  color: #fafafa;
+  color: @fg_strong;
   font-weight: 500;
   font-size: 13px;
   letter-spacing: -0.01em;
@@ -227,4 +163,8 @@ label:focus {
   box-shadow: none;
   padding: 0;
   margin: 0;
+}
+
+label:focus {
+  background-color: transparent;
 }
