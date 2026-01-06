@@ -6,11 +6,11 @@
       "version": "1.0.0 - 2.0.0"
     },
     "conform.nvim": {
-      "rev": "df83eeaab265dacd2eef139a78e502a3f8926618",
+      "rev": "8314f4c9e205e7f30b62147069729f9a1227d8bf",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "easy-dotnet.nvim": {
-      "rev": "541a823bab5c457379db431352a9404b6c9025ed",
+      "rev": "a4a8de06a99630fe85d88a2c7e1d0eb35e98da97",
       "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
     },
     "fidget.nvim": {
@@ -18,7 +18,7 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "130beacf8a51f00aede9c31064c749136679a321",
+      "rev": "6bd29494e3f79ff08be1d35bc1926ed23c22ed9a",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "lualine.nvim": {
@@ -42,11 +42,11 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "43ec25063430196d36f5fff5758c9101775f3d57",
+      "rev": "02fc1af931cb6e7bb475e4977f530073cfdcc20d",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "nvim-dap": {
-      "rev": "818cd8787a77a97703eb1d9090543a374f79a9ac",
+      "rev": "cdfd55a133f63228c55f91378f12908cb2a78ded",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-go": {
@@ -62,7 +62,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "7efc1b58a8061d29786860006c7257c90a5196dc",
+      "rev": "b033ab331ca0bccbd93c3c2b4f886fdfc09abec0",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-context": {
@@ -70,7 +70,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
     "nvim-treesitter-textobjects": {
-      "rev": "ecd03f5811eb5c66d2fa420b79121b866feecd82",
+      "rev": "28a3494c075ef0f353314f627546537e43c09592",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
       "version": "'main'"
     },
@@ -87,7 +87,7 @@
       "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
     },
     "telescope.nvim": {
-      "rev": "3f8109cd21abe9fdb274a09da1e3c176673254b4",
+      "rev": "3333a52ff548ba0a68af6d8da1e54f9cd96e9179",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "vague.nvim": {
