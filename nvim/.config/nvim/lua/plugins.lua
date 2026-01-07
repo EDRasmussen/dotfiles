@@ -27,6 +27,7 @@ vim.pack.add({
 	{ src = "https://github.com/leoluz/nvim-dap-go" },
 	{ src = "https://github.com/jay-babu/mason-nvim-dap.nvim" },
 	{ src = "https://github.com/j-hui/fidget.nvim" },
+	{ src = "https://github.com/github/copilot.vim" },
 })
 
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH

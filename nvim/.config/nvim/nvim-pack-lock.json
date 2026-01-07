@@ -9,6 +9,10 @@
       "rev": "8314f4c9e205e7f30b62147069729f9a1227d8bf",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "copilot.vim": {
+      "rev": "206011a8bc5078a02560d5c44177e9849e8f8d6c",
+      "src": "https://github.com/github/copilot.vim"
+    },
     "easy-dotnet.nvim": {
       "rev": "a4a8de06a99630fe85d88a2c7e1d0eb35e98da97",
       "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
