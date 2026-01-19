@@ -14,6 +14,7 @@ require("mason-lspconfig").setup({
 		"svelte",
 		"pyright",
 		"sqls",
+		"tailwindcss",
 	},
 	automatic_installation = true,
 })

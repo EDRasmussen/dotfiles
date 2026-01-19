@@ -33,4 +33,5 @@ vim.lsp.enable({
 	"svelte",
 	"pyright",
 	"sqls",
+	"tailwindcss",
 })
