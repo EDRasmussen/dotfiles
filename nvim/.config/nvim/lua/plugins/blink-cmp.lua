@@ -5,8 +5,10 @@ require("blink.cmp").setup({
 		documentation = { auto_show = true, auto_show_delay_ms = 200 },
 	},
 	keymap = {
-		["<Tab>"] = { "select_next", "fallback" },
-		["<S-Tab>"] = { "select_prev", "fallback" },
+		["<C-j>"] = { "select_next", "fallback" },
+		["<C-k>"] = { "select_prev", "fallback" },
+		["<Down>"] = { "select_next", "fallback" },
+		["<Up>"] = { "select_prev", "fallback" },
 		["<CR>"] = { "accept", "fallback" },
 	},
 	sources = { default = { "lsp" } },
