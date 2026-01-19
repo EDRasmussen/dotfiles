@@ -8,7 +8,12 @@
 @define-color orange #f59e0b;
 
 * {
-  font-family: "SF Pro Display","SF Pro", system-ui, -apple-system, FontAwesome;
+  font-family:
+    "SF Pro Display",
+    "SF Pro",
+    system-ui,
+    -apple-system,
+    FontAwesome;
   font-size: 13px;
   font-weight: 400;
 }
@@ -102,14 +107,24 @@ button:hover {
 }
 
 /* Hardware group spacing (avoid uneven gaps) */
-#cpu { padding-right: 8px; }
-#memory { padding-left: 8px; }
+#cpu {
+  padding-right: 8px;
+}
+#memory {
+  padding-left: 8px;
+}
 
 /* Audio group spacing */
-#pulseaudio.output { padding-right: 8px; }
-#pulseaudio.input { padding-left: 8px; }
+#pulseaudio.output {
+  padding-right: 8px;
+}
+#pulseaudio.input {
+  padding-left: 8px;
+}
 #pulseaudio.output.muted,
-#pulseaudio.input.source-muted { color: @red; }
+#pulseaudio.input.source-muted {
+  color: @red;
+}
 
 /* Privacy: use shadcn border */
 #privacy {

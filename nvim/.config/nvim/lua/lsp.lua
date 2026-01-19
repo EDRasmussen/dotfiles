@@ -24,6 +24,7 @@ vim.lsp.enable({
 	"bashls",
 	"gopls",
 	"lua_ls",
+	"phpactor",
 	"vtsls",
 	"vue_ls",
 	"html",

@@ -11,6 +11,7 @@ require("conform").setup({
 	formatters_by_ft = {
 		cs = { "csharpier" },
 		go = { "goimports", "gofmt" },
+		php = { "php_cs_fixer" },
 		gomod = { "gofmt" },
 		gowork = { "gofmt" },
 		lua = { "stylua" },
