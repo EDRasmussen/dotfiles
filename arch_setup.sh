@@ -87,6 +87,7 @@ aur=(
     azure-functions-core-tools-bin
     ttf-ms-fonts ttf-vista-fonts
     ttf-menlo-powerline ttf-monaco
+    apple-fonts
 )
 
 shell=( zsh )
