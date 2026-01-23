@@ -38,6 +38,7 @@ local should_install = {
 	"vimdoc",
 	"gitignore",
 	"docker",
+	"twig",
 }
 
 local installed = treesitter.get_installed()

@@ -3,6 +3,7 @@ return {
 	cmd = { "tailwindcss-language-server", "--stdio" },
 	filetypes = {
 		"html",
+		"twig",
 		"css",
 		"scss",
 		"javascript",

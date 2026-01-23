@@ -7,11 +7,15 @@ require("conform").setup({
 				cwd = util.root_file({ ".sqlfluff", ".git", "compose.yaml", "go.mod" }),
 			},
 		},
+		djlint = {
+			prepend_args = { "--profile", "nunjucks", "--ignore-blocks", "extends" },
+		},
 	},
 	formatters_by_ft = {
 		cs = { "csharpier" },
 		go = { "goimports", "gofmt" },
 		php = { "php_cs_fixer" },
+		twig = { "djlint" },
 		gomod = { "gofmt" },
 		gowork = { "gofmt" },
 		lua = { "stylua" },

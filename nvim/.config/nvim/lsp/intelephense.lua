@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-	cmd = { "phpactor", "language-server" },
+	cmd = { "intelephense", "--stdio" },
 	filetypes = { "php" },
 	root_markers = { "composer.json", ".git" },
 }
