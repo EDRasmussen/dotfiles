@@ -2,6 +2,9 @@ local util = require("conform.util")
 
 require("conform").setup({
 	formatters = {
+		csharpier = {
+			cwd = util.root_file({ ".csharpierrc", ".csharpierrc.json", ".csharpierrc.yaml", ".git" }),
+		},
 		sqlfluff = {
 			sqlfluff = {
 				cwd = util.root_file({ ".sqlfluff", ".git", "compose.yaml", "go.mod" }),

@@ -3,7 +3,7 @@ vim.g.maplocalleader = " "
 
 local opt = vim.opt
 opt.guicursor = "i:block" -- block cursor in insert mode
-opt.colorcolumn = "80" -- highlight column 80
+opt.colorcolumn = "100" -- highlight column 80
 opt.signcolumn = "yes:1" -- always show sign column
 opt.termguicolors = true -- enable true colors
 opt.ignorecase = true -- ignore case in search
