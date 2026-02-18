@@ -19,7 +19,12 @@
 }
 
 tooltip {
-  font-family: "JetBrains Mono", "SF Mono";
+  font-family:
+    "SF Pro Display",
+    "SF Pro",
+    system-ui,
+    -apple-system,
+    FontAwesome;
   font-size: 11px;
 }
 
