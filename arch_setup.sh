@@ -117,7 +117,7 @@ fi
 
 install_omz() {
   if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-    RUNZSH=yes CHSH=yes KEEP_ZSHRC=yes \
+    RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
       sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   fi
 
@@ -236,7 +236,7 @@ sudo systemctl daemon-reexec
 git config --global --type bool push.autoSetupRemote true
 
 mkdir -p ~/projects
-# install_omz
+install_omz
 sh ./install.sh
 setup_greetd
 
