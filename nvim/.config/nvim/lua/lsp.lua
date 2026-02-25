@@ -33,6 +33,7 @@ vim.lsp.enable({
 	"jsonls",
 	"svelte",
 	"pyright",
+	"rust_analyzer",
 	"sqls",
 	"tailwindcss",
 })

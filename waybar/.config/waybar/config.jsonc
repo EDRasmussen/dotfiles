@@ -11,7 +11,6 @@
     "custom/vpn",
     "network",
     "bluetooth",
-    "hyprland/language",
     "battery",
     "group/hardware",
     "group/zvuk",
@@ -63,11 +62,6 @@
   "hyprland/workspaces": {
     "on-click": "activate",
     "sort-by-number": true,
-  },
-  "hyprland/language": {
-    "format": "{}",
-    "format-en": "US",
-    "format-da": "DK",
   },
   // Hardware info
   "group/hardware": {

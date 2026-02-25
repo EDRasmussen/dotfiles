@@ -14,6 +14,7 @@ require("mason-lspconfig").setup({
 		"jsonls",
 		"svelte",
 		"pyright",
+		"rust_analyzer",
 		"sqls",
 		"tailwindcss",
 	},
