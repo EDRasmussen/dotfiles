@@ -13,6 +13,12 @@ require("conform").setup({
 		djlint = {
 			prepend_args = { "--profile", "nunjucks", "--ignore-blocks", "extends" },
 		},
+		prettierd = {
+			cwd = util.root_file({ ".prettierignore", ".git", "package.json" }),
+		},
+		prettier = {
+			cwd = util.root_file({ ".prettierignore", ".git", "package.json" }),
+		},
 	},
 	formatters_by_ft = {
 		cs = { "csharpier" },
@@ -36,7 +42,6 @@ require("conform").setup({
 		jsonc = { "prettierd", "prettier", stop_after_first = true },
 		yaml = { "prettierd", "prettier", stop_after_first = true },
 		yml = { "prettierd", "prettier", stop_after_first = true },
-		markdown = { "prettierd", "prettier", stop_after_first = true },
 		xml = { "prettierd", "prettier", stop_after_first = true },
 	},
 	format_on_save = {
