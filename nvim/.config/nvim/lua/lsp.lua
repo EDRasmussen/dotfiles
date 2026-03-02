@@ -24,7 +24,7 @@ vim.lsp.enable({
 	"bashls",
 	"gopls",
 	"lua_ls",
-	"phpactor",
+	"intelephense",
 	"twiggy",
 	"vtsls",
 	"vue_ls",
