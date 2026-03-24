@@ -17,10 +17,20 @@ require("mason-nvim-dap").setup({
 	automatic_installation = true,
 	ensure_installed = {
 		"delve",
+		"codelldb",
 		"js",
 		"php",
 	},
 })
+
+dap.adapters.codelldb = {
+	type = "server",
+	port = "${port}",
+	executable = {
+		command = vim.fn.stdpath("data") .. "/mason/packages/codelldb/extension/adapter/codelldb",
+		args = { "--port", "${port}" },
+	},
+}
 
 dap.adapters.php = {
 	type = "executable",
@@ -34,6 +44,19 @@ dap.configurations.php = {
 		request = "launch",
 		name = "Listen for Xdebug",
 		port = 9003,
+	},
+}
+
+dap.configurations.rust = {
+	{
+		type = "codelldb",
+		request = "launch",
+		name = "Launch current crate",
+		cwd = "${workspaceFolder}",
+		stopOnEntry = false,
+		program = function()
+			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+		end,
 	},
 }
 

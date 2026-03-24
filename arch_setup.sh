@@ -54,6 +54,7 @@ langs=(
     python python-pip
     go
     rust
+    rust-src
     nodejs npm
 )
 

@@ -21,6 +21,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.lsp.enable({
+	"astro",
 	"bashls",
 	"gopls",
 	"lua_ls",
