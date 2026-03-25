@@ -31,6 +31,8 @@ require("mason-tool-installer").setup({
 		"eslint_d",
 		"black",
 		"csharpier",
+		"oxlint",
+		"oxfmt",
 		"isort",
 		"sqlfluff",
 		"php-cs-fixer",
