@@ -21,7 +21,7 @@ core=(
 )
 
 dev=(
-    gcc make
+    gcc make just
     cmake ninja
     unzip zip tar unrar p7zip
     pkgconf
