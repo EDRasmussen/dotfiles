@@ -76,7 +76,7 @@ gui=(
     spotify-launcher
     discord
     dbeaver
-    ttf-inter
+    inter-font
     noto-fonts-emoji
 )
 
