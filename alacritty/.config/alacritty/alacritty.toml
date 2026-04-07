@@ -2,5 +2,32 @@
 size = 12.0
 
 [font.normal]
-family = "GeistMono Nerd Font"
+family = "JetBrainsMono Nerd Font Mono"
 
+[window]
+opacity = 0.8
+blur = true
+
+[colors.primary]
+background = "#1d2021"
+foreground = "#d4be98"
+
+[colors.normal]
+black = "#1d2021"
+red = "#ea6962"
+green = "#a9b665"
+yellow = "#d8a657"
+blue = "#7daea3"
+magenta = "#d3869b"
+cyan = "#89b482"
+white = "#d4be98"
+
+[colors.bright]
+black = "#56595a"
+red = "#ea6962"
+green = "#a9b665"
+yellow = "#d8a657"
+blue = "#7daea3"
+magenta = "#d3869b"
+cyan = "#89b482"
+white = "#d4be98"

@@ -20,7 +20,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
 	{ src = "https://github.com/andymass/vim-matchup" },
 	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
-	{ src = "https://github.com/vague-theme/vague.nvim" },
+	{ src = "https://github.com/ellisonleao/gruvbox.nvim" },
 
 	{ src = "https://github.com/nvim-neotest/nvim-nio" },
 	{ src = "https://github.com/mfussenegger/nvim-dap" },
@@ -43,6 +43,6 @@ require("plugins.telescope")
 require("easy-dotnet").setup()
 require("plugins.lualine")
 require("plugins.mini")
-require("plugins.vague")
+require("plugins.gruvbox")
 require("plugins.dap")
 require("fidget").setup({})

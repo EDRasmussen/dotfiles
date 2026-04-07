@@ -23,7 +23,7 @@ configuration {
 @import                          "./shared/colors.rasi"
 
 * {
-  font: "SF Pro Display 14";
+  font: "Inter 14";
 }
 
 
@@ -87,7 +87,7 @@ entry {
   background-color: inherit;
   text-color: inherit;
   cursor: text;
-  placeholder-color: rgba(255, 255, 255, 0.45);
+  placeholder-color: rgba(212, 190, 152, 0.45);
 }
 
 /*****----- Listview -----*****/
