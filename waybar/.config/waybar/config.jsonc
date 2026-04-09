@@ -12,27 +12,27 @@
     "on-click": "activate",
     "sort-by-number": true,
     "all-outputs": true,
-    "disable-scroll": true
+    "disable-scroll": true,
   },
 
   "group/sys-info": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 600,
-      "children-class": "tray-group-item"
+      "children-class": "tray-group-item",
     },
-    "modules": ["custom/expand-icon", "tray", "network"]
+    "modules": ["custom/expand-icon", "tray", "network"],
   },
 
   "custom/expand-icon": {
     "format": "",
-    "tooltip": false
+    "tooltip": false,
   },
 
   "tray": {
     "icon-size": 18,
     "spacing": 9,
-    "reverse-direction": true
+    "reverse-direction": true,
   },
 
   "network": {
@@ -41,7 +41,7 @@
     "format-disconnected": "󰤭",
     "format-ethernet": "󰈀",
     "tooltip-format": "Connected to {essid}\nNetwork speed: {signalStrength}%",
-    "on-click": "alacritty -e nmtui"
+    "on-click": "alacritty -e nmtui",
   },
 
   "bluetooth": {
@@ -52,17 +52,17 @@
     "tooltip-format": "Bluetooth: {status}",
     "tooltip-format-connected": "{controller_alias}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "  {device_alias}",
-    "on-click": "alacritty -e bluetui"
+    "on-click": "alacritty -e bluetui",
   },
 
   "pulseaudio": {
     "format": "{icon}",
     "format-muted": "󰖁",
     "format-icons": {
-      "default": ["󰝟", "󰖀", "󰖀", "󰕾"]
+      "default": ["󰝟", "󰖀", "󰖀", "󰕾"],
     },
     "on-click": "alacritty -e wiremix",
-    "tooltip-format": "Device: {desc}\nVolume: {volume}%"
+    "tooltip-format": "Device: {desc}\nVolume: {volume}%",
   },
 
   "battery": {
@@ -77,12 +77,12 @@
     "states": {
       "good": 80,
       "low": 30,
-      "critical": 19
-    }
+      "critical": 19,
+    },
   },
 
   "clock": {
-    "format": "{:%H:%M}",
-    "tooltip-format": "{:%d - %A}"
-  }
+    "format": "{:%Y-%M-%d} {:%H:%M}",
+    "tooltip-format": "{:%d - %A}",
+  },
 }
