@@ -93,12 +93,8 @@ window#waybar {
   font-weight: bold;
 }
 
-/* Workspaces: buttons 1-5 (always visible) */
-#workspaces button:nth-child(1),
-#workspaces button:nth-child(2),
-#workspaces button:nth-child(3),
-#workspaces button:nth-child(4),
-#workspaces button:nth-child(5) {
+/* Workspaces */
+#workspaces button {
   color: @bright-bg;
   padding: 0 5pt;
   min-width: 10pt;
@@ -125,52 +121,4 @@ window#waybar {
   color: @fg;
   background-color: darker(darker(@blue));
   border: 1px solid darker(@blue);
-}
-
-/* Workspaces: buttons 6-9 (hidden unless occupied/active) */
-#workspaces button:nth-child(6),
-#workspaces button:nth-child(7),
-#workspaces button:nth-child(8),
-#workspaces button:nth-child(9) {
-  color: transparent;
-  margin: 0;
-  padding: 0;
-  font-size: 0;
-  border: 0;
-  border-radius: 0;
-  min-width: 0;
-  transition: none;
-  animation: none;
-  box-shadow: none;
-  text-shadow: none;
-}
-
-#workspaces button:nth-child(6).occupied,
-#workspaces button:nth-child(7).occupied,
-#workspaces button:nth-child(8).occupied,
-#workspaces button:nth-child(9).occupied {
-  color: @fg;
-  font-size: 12pt;
-  padding: 0 5pt;
-  margin: 1px;
-  min-width: 10pt;
-  background-color: darker(darker(@bright-bg));
-  border: 1px solid alpha(@bright-bg, 0.8);
-  border-radius: 0;
-  box-shadow: none;
-}
-
-#workspaces button:nth-child(6).active,
-#workspaces button:nth-child(7).active,
-#workspaces button:nth-child(8).active,
-#workspaces button:nth-child(9).active {
-  color: @fg;
-  font-size: 12pt;
-  padding: 0 5pt;
-  margin: 1px;
-  min-width: 10pt;
-  background-color: darker(darker(@blue));
-  border: 1px solid alpha(darker(@blue), 0.8);
-  border-radius: 0;
-  box-shadow: none;
 }
