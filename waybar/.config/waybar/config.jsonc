@@ -20,7 +20,7 @@
       "transition-duration": 600,
       "children-class": "tray-group-item",
     },
-    "modules": ["custom/expand-icon", "tray", "network"],
+    "modules": ["custom/expand-icon", "tray", "pulseaudio", "network"],
   },
 
   "custom/expand-icon": {
@@ -60,7 +60,10 @@
     "format-icons": {
       "default": ["󰝟", "󰖀", "󰖀", "󰕾"],
     },
-    "on-click": "alacritty -e wiremix",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
     "tooltip-format": "Device: {desc}\nVolume: {volume}%",
   },
 
