@@ -41,6 +41,7 @@ require("conform").setup({
 		scss = { "prettierd", "prettier", stop_after_first = true },
 		json = { "prettierd", "prettier", stop_after_first = true },
 		jsonc = { "prettierd", "prettier", stop_after_first = true },
+		markdown = { "prettierd", "prettier", stop_after_first = true },
 		yaml = { "prettierd", "prettier", stop_after_first = true },
 		yml = { "prettierd", "prettier", stop_after_first = true },
 		xml = { "prettierd", "prettier", stop_after_first = true },

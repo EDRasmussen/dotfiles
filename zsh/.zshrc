@@ -17,6 +17,7 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
 export EDITOR=nvim
+export PRETTIERD_DEFAULT_CONFIG="$HOME/dotfiles/.prettierrc.json"
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 bindkey -s ^f "tmux-sessionizer\n"
 

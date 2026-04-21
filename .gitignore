@@ -1,2 +1,4 @@
 tmux/.local/share
 tmux/.local/state
+/tmux/.local/bin/claude
+/tmux/.local/bin/claude
