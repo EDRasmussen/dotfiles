@@ -2,6 +2,7 @@
 return {
 	cmd = { "tailwindcss-language-server", "--stdio" },
 	filetypes = {
+		"astro",
 		"html",
 		"twig",
 		"css",
@@ -15,6 +16,11 @@ return {
 		"php",
 	},
 	root_markers = {
+		"package.json",
+		".git",
+		"astro.config.mjs",
+		"astro.config.js",
+		"astro.config.ts",
 		"tailwind.config.js",
 		"tailwind.config.ts",
 		"tailwind.config.mjs",
