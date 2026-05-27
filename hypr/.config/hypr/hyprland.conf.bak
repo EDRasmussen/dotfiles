@@ -1,0 +1,192 @@
+#MONITORS
+monitor = DP-4, 3840x2160@120, auto, 1.5
+monitor = eDP-1, preferred, auto, 1.5
+monitor = , preferred, auto, 1
+
+#CLAMSHELL
+bindl=,switch:off:Lid Switch,exec,~/.config/hypr/clamshell_mode.sh open
+bindl=,switch:on:Lid Switch,exec,~/.config/hypr/clamshell_mode.sh close
+bindl=,monitoradded,exec,~/.config/hypr/clamshell_mode.sh rescan
+bindl=,monitorremoved,exec,~/.config/hypr/clamshell_mode.sh removed
+
+# Optional: ensure sane state on login
+exec-once=~/.config/hypr/clamshell_mode.sh fallback
+
+# AUTOSTART APPLICATIONS
+exec-once = hyprpaper
+exec-once = hypridle
+exec-once = waybar
+exec-once = dunst
+exec-once = wl-paste --watch cliphist store
+exec-once = hyprctl setcursor breeze_cursors 24
+
+# ENV VARIABLES
+env = XCURSOR_SIZE,24
+env = HYPRCURSOR_SIZE,24
+env = XCURSOR_THEME,breeze_cursors
+env = LIBVA_DRIVER_NAME,nvidia
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+env = ELECTRON_OZONE_PLATFORM_HINT,auto
+env = GDK_SCALE,2
+
+input {
+    kb_layout = dk
+    kb_options = caps:swapescape
+    follow_mouse = 1
+    touchpad {
+        natural_scroll = yes
+    }
+}
+
+general {
+    gaps_in = 5
+    gaps_out = 10
+    border_size = 2
+
+    col.active_border = rgb(282828)
+    col.inactive_border = rgb(171717)
+
+    resize_on_border = false
+    allow_tearing = false
+
+    layout = hy3
+}
+
+binds {
+    drag_threshold = 10
+}
+
+decoration {
+    rounding = 0
+    rounding_power = 0
+    blur {
+        enabled = true
+        size = 1
+        passes = 4
+        vibrancy = 0.1696
+        new_optimizations = true
+    }
+}
+
+animations {
+    enabled = false
+    bezier = easeOutQuint, 0.22, 1, 0.36, 1
+    animation = windows, 1, 1.5, easeOutQuint, popin 80%
+    animation = workspaces, 1, 1.5, easeOutQuint, slide
+    animation = fade, 1, 1.5, easeOutQuint
+    animation = windowsIn, 1, 1.5, easeOutQuint, popin 80%
+    animation = windowsOut, 1, 1.5, easeOutQuint, slide
+    animation = border, 1, 3, easeOutQuint
+}
+
+plugin {
+    load = hy3
+}
+
+misc {
+    disable_hyprland_logo = true
+    force_default_wallpaper = 0
+}
+
+xwayland {
+    force_zero_scaling = true
+}
+
+# Autostart terminal
+bind=SUPER, Return, exec, alacritty
+
+# Launcher (rofi/wofi)
+bind=SUPER, SPACE, exec, rofi -show drun -theme-str 'entry { placeholder: "Search..."; }'
+bind=SUPER, C, exec, rofi -show calc -theme-str 'entry { placeholder: "Insert expression"; }'
+
+# Browser (zen)
+bind=SUPER, B, exec, zen
+bind=SUPER, V, exec, cliphist list | rofi -dmenu -theme-str 'entry { placeholder: "Select clipboard history element to copy"; }' | cliphist decode | wl-copy
+
+# Lock PC
+bind=SUPER, ESCAPE, exec, hyprlock
+
+# Close window
+bind=SUPER, Q, killactive
+
+# Splits
+bind=SUPER CTRL, h, layoutmsg, split:left
+bind=SUPER CTRL, l, layoutmsg, split:right
+bind=SUPER CTRL, k, layoutmsg, split:up
+bind=SUPER CTRL, j, layoutmsg, split:down
+
+# Focus
+bind=SUPER, h, movefocus, l
+bind=SUPER, l, movefocus, r
+bind=SUPER, k, movefocus, u
+bind=SUPER, j, movefocus, d
+
+# Resize
+bind=SUPER, u, resizeactive, -40 0
+bind=SUPER, p, resizeactive, 40 0
+bind=SUPER, o, resizeactive, 0 -40
+bind=SUPER, i, resizeactive, 0 40
+
+# Swap
+bind=SUPER SHIFT, h, swapwindow, l
+bind=SUPER SHIFT, l, swapwindow, r
+bind=SUPER SHIFT, k, swapwindow, u
+bind=SUPER SHIFT, j, swapwindow, d
+
+# Move windows between workspaces
+bind=SUPER SHIFT, 1, movetoworkspace, 1
+bind=SUPER SHIFT, 2, movetoworkspace, 2
+bind=SUPER SHIFT, 3, movetoworkspace, 3
+bind=SUPER SHIFT, 4, movetoworkspace, 4
+bind=SUPER SHIFT, 5, movetoworkspace, 5
+bind=SUPER SHIFT, 6, movetoworkspace, 6
+bind=SUPER SHIFT, 7, movetoworkspace, 7
+bind=SUPER SHIFT, 8, movetoworkspace, 8
+bind=SUPER SHIFT, 9, movetoworkspace, 9
+
+# Workspace switching
+bind=SUPER, 1, workspace, 1
+bind=SUPER, 2, workspace, 2
+bind=SUPER, 3, workspace, 3
+bind=SUPER, 4, workspace, 4
+bind=SUPER, 5, workspace, 5
+bind=SUPER, 6, workspace, 6
+bind=SUPER, 7, workspace, 7
+bind=SUPER, 8, workspace, 8
+bind=SUPER, 9, workspace, 9
+
+# Floating window
+bind = SUPER, t, togglefloating
+bindm = SUPER, mouse:272, movewindow
+bindm = SUPER, mouse:273, resizewindow
+
+# Fullscreen
+bind = SUPER, f, fullscreen
+
+# Citrix - suppress XWayland ghost windows (Start menu / Search bar)
+windowrule = match:class ^(Start)$, workspace special:citrix_junk silent
+windowrule = match:class ^(Søg)$, workspace special:citrix_junk silent
+
+# Screenshots
+bind=SUPER, S, exec, grim -g "$(slurp)" - | wl-copy
+
+# Keyboard backlight
+bind = , keyboard_brightness_up_shortcut, exec, brightnessctl -d *::kbd_backlight set +33%
+bind = , keyboard_brightness_down_shortcut, exec, brightnessctl -d *::kbd_backlight set 33%-
+
+# Screen brightness
+bind = , XF86MonBrightnessUp, exec, brightnessctl s +5%
+bind = , XF86MonBrightnessDown, exec, brightnessctl s 5%-
+
+# Volume and Media Control
+bind = , XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+bind = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bind = , XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bind = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bind = , XF86AudioPlay, exec, playerctl play-pause
+bind = , XF86AudioPause, exec, playerctl play-pause
+bind = , XF86AudioNext, exec, playerctl next
+bind = , XF86AudioPrev, exec, playerctl previous
+ 
+bind = SUPER SHIFT, LEFT, movecurrentworkspacetomonitor, +1
+bind = SUPER SHIFT, RIGHT, movecurrentworkspacetomonitor, -1 
