@@ -14,3 +14,10 @@ vim.keymap.set({ "n", "v" }, "<leader>f", function()
 end, { desc = "Format file or selection" })
 
 vim.keymap.set("n", "<leader>e", ":Explore<CR>", { desc = "Open file explorer" })
+
+vim.keymap.set("n", "<leader>gb", function()
+	require("gitsigns").blame()
+end, { desc = "Blame file (split)" })
+vim.keymap.set("n", "<leader>gl", function()
+	require("gitsigns").toggle_current_line_blame()
+end, { desc = "Toggle inline blame" })

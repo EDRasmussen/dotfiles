@@ -1,6 +1,13 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
+vim.filetype.add({
+	extension = {
+		cshtml = "html",
+		razor = "html",
+	},
+})
+
 local highlight_group = augroup("YankHighlight", { clear = true })
 autocmd("TextYankPost", {
 	pattern = "*",

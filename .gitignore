@@ -1,4 +1,4 @@
 tmux/.local/share
 tmux/.local/state
-/tmux/.local/bin/claude
+tmux/.local/.IdentityService
 /tmux/.local/bin/claude

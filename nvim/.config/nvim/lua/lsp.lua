@@ -7,11 +7,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
 		end
 
-		map("n", "<leader>gd", vim.lsp.buf.definition)
+		local builtin = require("telescope.builtin")
+		map("n", "<leader>gd", builtin.lsp_definitions)
 		map("n", "<leader>gD", vim.lsp.buf.declaration)
-		map("n", "<leader>gr", vim.lsp.buf.references)
-		map("n", "<leader>gi", vim.lsp.buf.implementation)
-		map("n", "<leader>gt", vim.lsp.buf.type_definition)
+		map("n", "<leader>gr", builtin.lsp_references)
+		map("n", "<leader>gi", builtin.lsp_implementations)
+		map("n", "<leader>gt", builtin.lsp_type_definitions)
 
 		map("n", "<leader>rn", vim.lsp.buf.rename)
 		map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action)

@@ -156,6 +156,35 @@ setup_ufw() {
   sudo systemctl enable --now ufw.service >/dev/null 2>&1 || true
 }
 
+setup_clamshell() {
+  # Lid: suspend when undocked, ignore when docked (Hyprland's
+  # clamshell_mode.sh handles eDP-1 in the docked case).
+  sudo install -d -m 0755 /etc/systemd/logind.conf.d
+  sudo tee /etc/systemd/logind.conf.d/90-clamshell.conf >/dev/null <<'EOF'
+[Login]
+HandleLidSwitch=suspend
+HandleLidSwitchExternalPower=suspend
+HandleLidSwitchDocked=ignore
+EOF
+
+  # Wake from suspend on USB hub hotplug (e.g. plugging the dock back in).
+  # Scoped to bDeviceClass=09 (hubs) so random USB sticks can't wake the laptop.
+  sudo tee /etc/udev/rules.d/90-usb-wakeup.rules >/dev/null <<'EOF'
+ACTION=="add", SUBSYSTEM=="usb", DRIVER=="usb", ATTR{bDeviceClass}=="09", ATTR{power/wakeup}="enabled"
+EOF
+  sudo udevadm control --reload
+
+  # s2idle keeps USB controllers powered during suspend so the dock can wake us.
+  # Persisted in the systemd-boot kernel cmdline so it survives reboots.
+  if [[ -d /boot/loader/entries ]]; then
+    for entry in /boot/loader/entries/*linux*.conf; do
+      [[ -f "$entry" ]] || continue
+      grep -q "mem_sleep_default=s2idle" "$entry" && continue
+      sudo sed -i 's|^options |options mem_sleep_default=s2idle |' "$entry"
+    done
+  fi
+}
+
 setup_greetd() {
   sudo install -d -m 0755 /etc/greetd
   sudo tee /etc/greetd/config.toml >/dev/null <<EOF
@@ -241,5 +270,6 @@ mkdir -p ~/projects
 install_omz
 sh ./install.sh
 setup_greetd
+setup_clamshell
 
 echo "Done!"
