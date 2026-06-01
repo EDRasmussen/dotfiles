@@ -1,10 +1,10 @@
 require("gruvbox").setup({
-	transparent_mode = true,
+	-- transparent_mode = true,
 	italic = {
 		comments = true,
 	},
 })
-
+vim.o.background = "light"
 vim.cmd("colorscheme gruvbox")
 
 vim.api.nvim_set_hl(0, "MiniCursorword", { link = "CursorLine" })
