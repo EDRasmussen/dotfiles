@@ -22,11 +22,11 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
 	{ src = "https://github.com/andymass/vim-matchup" },
 	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
-	{ src = "https://github.com/ellisonleao/gruvbox.nvim" },
+	{ src = "https://github.com/boningmaple/mac-clear" },
 
 	{ src = "https://github.com/nvim-neotest/nvim-nio" },
 	{ src = "https://github.com/mfussenegger/nvim-dap" },
-	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
+	{ src = "https://github.com/igorlfs/nvim-dap-view", version = vim.version.range("1.*") },
 	{ src = "https://github.com/leoluz/nvim-dap-go" },
 	{ src = "https://github.com/jay-babu/mason-nvim-dap.nvim" },
 	{ src = "https://github.com/j-hui/fidget.nvim" },
@@ -42,9 +42,9 @@ require("plugins.blink-cmp")
 require("gitsigns").setup()
 require("plugins.conform")
 require("plugins.telescope")
-require("easy-dotnet").setup()
+require("plugins.easy-dotnet")
 require("plugins.lualine")
 require("plugins.mini")
-require("plugins.gruvbox")
+require("plugins.mac-clear")
 require("plugins.dap")
 require("fidget").setup({})

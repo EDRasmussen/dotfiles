@@ -38,7 +38,7 @@ local should_install = {
 	"vim",
 	"vimdoc",
 	"gitignore",
-	"docker",
+	"dockerfile",
 	"twig",
 }
 

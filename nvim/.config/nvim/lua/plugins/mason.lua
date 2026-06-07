@@ -4,6 +4,7 @@ require("mason-lspconfig").setup({
 	ensure_installed = {
 		"astro",
 		"bashls",
+		"clangd",
 		"gopls",
 		"lua_ls",
 		"intelephense",
@@ -22,10 +23,11 @@ require("mason-lspconfig").setup({
 	automatic_installation = true,
 })
 
-require("mason-tool-installer").setup({
+	require("mason-tool-installer").setup({
 	ensure_installed = {
 		"prettierd",
 		"stylua",
+		"clang-format",
 		"gofumpt",
 		"goimports",
 		"eslint_d",
