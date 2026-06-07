@@ -2,3 +2,5 @@ tmux/.local/share
 tmux/.local/state
 tmux/.local/.IdentityService
 /tmux/.local/bin/claude
+wayle/.config/wayle/schema.json
+wayle/.config/wayle/themes/schema.json

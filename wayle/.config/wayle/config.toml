@@ -1,0 +1,117 @@
+[general]
+font-sans = "SF Pro Text"
+font-mono = "SF Pro Display"
+
+[styling]
+theme-provider = "wayle"
+rounding = "none"
+
+[styling.palette]
+bg = "#202225"
+surface = "#202225"
+elevated = "#2a2d31"
+fg = "#e6e8eb"
+fg-muted = "#aeb5bd"
+primary = "#d7dce2"
+red = "#c66a5a"
+yellow = "#bca86a"
+green = "#7ca982"
+blue = "#9aa7b4"
+
+[osd]
+enabled = false
+
+[wallpaper]
+engine-enabled = false
+
+[bar]
+location = "top"
+bg = "#202225"
+background-opacity = 98
+padding = 0.18
+padding-ends = 0.65
+module-gap = 0.85
+rounding = "none"
+border-location = "none"
+border-color = "#303338"
+button-variant = "basic"
+button-bg-opacity = 100
+button-icon-size = 0.82
+button-label-size = 0.92
+button-label-weight = "medium"
+button-rounding = "none"
+button-border-location = "none"
+button-group-background = "transparent"
+button-group-border-color = "#303338"
+button-group-border-location = "none"
+button-group-padding = 0.12
+button-group-module-gap = 0.45
+button-group-rounding = "none"
+
+[[bar.layout]]
+monitor = "*"
+left = ["hyprland-workspaces"]
+center = ["clock"]
+right = ["network", "volume", "notifications"]
+
+[modules.hyprland-workspaces]
+min-workspace-count = 9
+monitor-specific = true
+show-special = true
+display-mode = "label"
+numbering = "absolute"
+active-indicator = "underline"
+active-color = "#f0f2f4"
+occupied-color = "#c6ccd2"
+empty-color = "#5f6872"
+container-bg-color = "transparent"
+border-show = false
+workspace-padding = 0.65
+label-size = 0.9
+
+[modules.network]
+label-show = false
+label-max-length = 18
+icon-bg-color = "transparent"
+icon-color = "#b8bec6"
+label-color = "#d7dce2"
+button-bg-color = "transparent"
+
+[modules.volume]
+label-show = false
+format = "{{ percent }}%"
+icon-bg-color = "transparent"
+icon-color = "#b8bec6"
+label-color = "#d7dce2"
+button-bg-color = "transparent"
+scroll-up = "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+
+[modules.battery]
+format = "{{ percent }}%"
+icon-bg-color = "#c4ac62"
+label-color = "#d7dce2"
+button-bg-color = "transparent"
+
+[[modules.battery.thresholds]]
+below = 30
+icon-color = "#c4ac62"
+label-color = "#c4ac62"
+
+[[modules.battery.thresholds]]
+below = 20
+icon-color = "#b45648"
+label-color = "#b45648"
+
+[modules.notifications]
+label-show = false
+icon-bg-color = "transparent"
+icon-color = "#b8bec6"
+label-color = "#d7dce2"
+button-bg-color = "transparent"
+
+[modules.clock]
+format = "%a %d %b %H:%M"
+icon-show = false
+label-color = "#d7dce2"
+button-bg-color = "transparent"
