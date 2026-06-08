@@ -52,7 +52,7 @@ button-group-rounding = "none"
 monitor = "*"
 left = ["hyprland-workspaces"]
 center = ["clock"]
-right = ["network", "volume", "notifications"]
+right = ["network", "volume", "battery", "notifications"]
 
 [modules.hyprland-workspaces]
 min-workspace-count = 9
