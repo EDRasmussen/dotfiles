@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd("FileType", {
 local should_install = {
 	"javascript",
 	"typescript",
+	"tsx",
 	"python",
 	"c",
 	"lua",

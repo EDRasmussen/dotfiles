@@ -23,6 +23,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.lsp.enable({
 	"astro",
+	"mdx",
 	"bashls",
 	"clangd",
 	"gopls",
