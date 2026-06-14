@@ -27,6 +27,7 @@ vim.pack.add({
 
 	{ src = "https://github.com/nvim-neotest/nvim-nio" },
 	{ src = "https://github.com/mfussenegger/nvim-dap" },
+	{ src = "https://codeberg.org/mfussenegger/nvim-jdtls" },
 	{ src = "https://github.com/igorlfs/nvim-dap-view", version = vim.version.range("1.*") },
 	{ src = "https://github.com/leoluz/nvim-dap-go" },
 	{ src = "https://github.com/jay-babu/mason-nvim-dap.nvim" },

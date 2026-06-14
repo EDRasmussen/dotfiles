@@ -137,6 +137,31 @@ install_omz() {
   fi
 }
 
+install_sdkman() {
+    export SDKMAN_DIR="${SDKMAN_DIR:-$HOME/.sdkman}"
+    local java_version="${SDKMAN_JAVA_VERSION:-21.0.7-tem}"
+    local gradle_version="${SDKMAN_GRADLE_VERSION:-9.5.1}"
+    local maven_version="${SDKMAN_MAVEN_VERSION:-3.9.16}"
+
+    export sdkman_auto_answer=true
+
+    sudo pacman -S --needed --noconfirm curl zip unzip
+
+    if [[ ! -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
+        curl -s "https://get.sdkman.io" | bash
+    fi
+
+    source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+    sdk install java "$java_version"
+    sdk install gradle "$gradle_version"
+    sdk install maven "$maven_version"
+
+    sdk default java "$java_version"
+    sdk default gradle "$gradle_version"
+    sdk default maven "$maven_version"
+}
+
 install_aur() {
     if ! command -v yay >/dev/null 2>&1; then
         sudo pacman -S --needed --noconfirm base-devel git
@@ -215,6 +240,15 @@ EOF
   sudo systemctl enable --now greetd.service >/dev/null 2>&1 || true
 }
 
+group_enabled() {
+    local group="$1"
+    for enabled_group in "${enabled[@]}"; do
+        [[ "$enabled_group" == "$group" ]] && return 0
+    done
+
+    return 1
+}
+
 sudo pacman -Syu --noconfirm
 for g in "${enabled[@]}"; do
     pkgs=${groups[$g]:-}
@@ -232,6 +266,10 @@ for g in "${enabled[@]}"; do
         echo "Unknown group: $g"
     fi
 done
+
+if group_enabled langs; then
+    install_sdkman
+fi
 
 # Azure credentials manager
 wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash

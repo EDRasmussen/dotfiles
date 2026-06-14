@@ -14,16 +14,20 @@ require("mason-lspconfig").setup({
 		"html",
 		"cssls",
 		"jsonls",
+		"jdtls",
 		"svelte",
 		"pyright",
 		"rust_analyzer",
 		"sqls",
 		"tailwindcss",
 	},
+	automatic_enable = {
+		exclude = { "jdtls" },
+	},
 	automatic_installation = true,
 })
 
-	require("mason-tool-installer").setup({
+require("mason-tool-installer").setup({
 	ensure_installed = {
 		"prettierd",
 		"mdx-analyzer",
@@ -40,6 +44,8 @@ require("mason-lspconfig").setup({
 		"sqlfluff",
 		"php-cs-fixer",
 		"djlint",
+		"java-debug-adapter",
+		"java-test",
 		"php-debug-adapter",
 	},
 	auto_update = false,

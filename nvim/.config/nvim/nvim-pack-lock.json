@@ -61,6 +61,10 @@
       "rev": "bb639d4bf385a4d89f478b83af4d770be05ab7eb",
       "src": "https://github.com/mason-org/mason.nvim"
     },
+    "mdx.nvim": {
+      "rev": "6c3dc7c4a4b58b5d86404c21a9b4655282ca08c5",
+      "src": "https://github.com/davidmh/mdx.nvim"
+    },
     "mini.nvim": {
       "rev": "44657837c7338e52727facc85c1d95bec1f6bd7c",
       "src": "https://github.com/nvim-mini/mini.nvim"
@@ -93,6 +97,10 @@
       "rev": "91a2b0eab74cc889499587166cc6e3d53a7e1e45",
       "src": "https://github.com/igorlfs/nvim-dap-view",
       "version": "1.0.0 - 2.0.0"
+    },
+    "nvim-jdtls": {
+      "rev": "6e9d953f0b82bccdb834cfde0e893f3119c22592",
+      "src": "https://codeberg.org/mfussenegger/nvim-jdtls"
     },
     "nvim-lint": {
       "rev": "d48f3a76189d03b2239f6df1b2f7e3fa8353743b",
