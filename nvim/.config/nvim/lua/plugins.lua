@@ -34,6 +34,7 @@ vim.pack.add({
 	{ src = "https://github.com/j-hui/fidget.nvim" },
 	{ src = "https://github.com/github/copilot.vim" },
 	{ src = "https://github.com/LunarVim/bigfile.nvim" },
+	{ src = "https://github.com/folke/trouble.nvim" },
 })
 
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
@@ -49,4 +50,11 @@ require("plugins.lualine")
 require("plugins.mini")
 require("plugins.mac-clear")
 require("plugins.dap")
+require("trouble").setup({
+	modes = {
+		symbols = {
+			win = { position = "right", size = 50 },
+		},
+	},
+})
 require("fidget").setup({})

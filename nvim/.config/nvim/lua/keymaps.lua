@@ -15,6 +15,12 @@ end, { desc = "Format file or selection" })
 
 vim.keymap.set("n", "<leader>e", ":Explore<CR>", { desc = "Open file explorer" })
 
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer diagnostics (Trouble)" })
+vim.keymap.set("n", "<leader>xp", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Project diagnostics (Trouble)" })
+vim.keymap.set("n", "<leader>xs", "<cmd>Trouble symbols toggle<cr>", { desc = "Symbols outline (Trouble)" })
+vim.keymap.set("n", "<leader>xl", "<cmd>Trouble lsp toggle<cr>", { desc = "LSP definitions/references (Trouble)" })
+vim.keymap.set("n", "<leader>xq", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix list (Trouble)" })
+
 vim.keymap.set("n", "<leader>gb", function()
 	require("gitsigns").blame()
 end, { desc = "Blame file (split)" })
