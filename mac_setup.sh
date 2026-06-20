@@ -9,7 +9,6 @@ formulae=(
     curl
     wget
     ca-certificates
-    openssh
     stow
     coreutils
     findutils
