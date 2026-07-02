@@ -58,6 +58,13 @@ formulae=(
     pnpm
     python
     zsh
+    yazi
+    ffmpeg-full
+    sevenzip 
+    poppler
+    zoxide
+    resvg
+    imagemagick-full
 )
 
 casks=(
@@ -195,6 +202,10 @@ setup_dotnet() {
     dotnet tool install --global dotnet-ef || dotnet tool update --global dotnet-ef
 }
 
+setup_yazi() {
+    brew link ffmpeg-full imagemagick-full -f --overwrite
+}
+
 launch_mac_apps() {
     open -a Raycast || true
     open -a AeroSpace || true
@@ -218,6 +229,7 @@ setup_rust
 setup_docker
 setup_security
 setup_dotnet
+setup_yazi 
 install_omz
 
 git config --global --type bool push.autoSetupRemote true
