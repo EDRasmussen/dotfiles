@@ -37,6 +37,7 @@ vim.pack.add({
 	{ src = "https://github.com/folke/trouble.nvim" },
 	{ src = "https://github.com/kevinhwang91/promise-async" },
 	{ src = "https://github.com/kevinhwang91/nvim-ufo" },
+	{ src = "https://github.com/luukvbaal/statuscol.nvim" },
 })
 
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
@@ -52,6 +53,7 @@ require("plugins.lualine")
 require("plugins.mini")
 require("plugins.mac-clear")
 require("plugins.dap")
+require("plugins.statuscol")
 require("plugins.ufo")
 require("trouble").setup({
 	modes = {

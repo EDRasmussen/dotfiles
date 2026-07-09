@@ -1,4 +1,10 @@
 vim.o.foldcolumn = "1" -- show fold column, set to "0" to hide
+vim.opt.fillchars:append({
+	fold = " ",
+	foldsep = " ",
+	foldopen = "",
+	foldclose = "",
+})
 vim.o.foldlevel = 99 -- ufo needs a high value, feel free to decrease
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
