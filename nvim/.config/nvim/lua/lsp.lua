@@ -1,5 +1,17 @@
 vim.diagnostic.config({ virtual_text = true })
 
+-- nvim-ufo uses LSP folding ranges as its main fold provider
+vim.lsp.config("*", {
+	capabilities = {
+		textDocument = {
+			foldingRange = {
+				dynamicRegistration = false,
+				lineFoldingOnly = true,
+			},
+		},
+	},
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local bufnr = args.buf

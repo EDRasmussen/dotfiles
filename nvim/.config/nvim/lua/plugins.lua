@@ -35,6 +35,8 @@ vim.pack.add({
 	{ src = "https://github.com/github/copilot.vim" },
 	{ src = "https://github.com/LunarVim/bigfile.nvim" },
 	{ src = "https://github.com/folke/trouble.nvim" },
+	{ src = "https://github.com/kevinhwang91/promise-async" },
+	{ src = "https://github.com/kevinhwang91/nvim-ufo" },
 })
 
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
@@ -50,6 +52,7 @@ require("plugins.lualine")
 require("plugins.mini")
 require("plugins.mac-clear")
 require("plugins.dap")
+require("plugins.ufo")
 require("trouble").setup({
 	modes = {
 		symbols = {
