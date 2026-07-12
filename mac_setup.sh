@@ -187,7 +187,22 @@ setup_rust() {
 }
 
 setup_docker() {
-    colima status >/dev/null 2>&1 || colima start --cpu 12 --memory 12 --disk 100
+    local total_cpus total_mem_gb vm_cpus vm_mem
+
+    total_cpus="$(sysctl -n hw.ncpu)"
+    total_mem_gb="$(( $(sysctl -n hw.memsize) / 1024 / 1024 / 1024 ))"
+
+    # ~75% of cores to the VM, always leaving at least 2 for macOS,
+    # so builds can't starve the host UI
+    vm_cpus=$(( total_cpus * 3 / 4 ))
+    (( vm_cpus > total_cpus - 2 )) && vm_cpus=$(( total_cpus - 2 ))
+    (( vm_cpus < 2 )) && vm_cpus=2
+
+    # half the RAM to the VM, minimum 4GB
+    vm_mem=$(( total_mem_gb / 2 ))
+    (( vm_mem < 4 )) && vm_mem=4
+
+    colima status >/dev/null 2>&1 || colima start --cpu "$vm_cpus" --memory "$vm_mem" --disk 100
     docker context use colima >/dev/null 2>&1 || true
 }
 
