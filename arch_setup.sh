@@ -211,6 +211,30 @@ EOF
   fi
 }
 
+install_herdr() {
+  if ! command -v herdr >/dev/null 2>&1; then
+    curl -fsSL https://herdr.dev/install.sh | sh
+  fi
+}
+
+install_pi() {
+  if ! command -v npm >/dev/null 2>&1; then
+    sudo pacman -S --needed --noconfirm nodejs npm
+  fi
+
+  if ! command -v pi >/dev/null 2>&1; then
+    sudo npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+  fi
+
+  if ! pi list 2>/dev/null | grep -q '^  npm:pi-web-access$'; then
+    pi install npm:pi-web-access
+  fi
+
+  if ! pi list 2>/dev/null | grep -q '^  npm:@plannotator/pi-extension$'; then
+    pi install npm:@plannotator/pi-extension
+  fi
+}
+
 setup_greetd() {
   sudo install -d -m 0755 /etc/greetd
   sudo tee /etc/greetd/config.toml >/dev/null <<EOF
@@ -308,6 +332,8 @@ git config --global --type bool push.autoSetupRemote true
 mkdir -p ~/projects
 install_omz
 sh ./install.sh
+install_herdr
+install_pi
 setup_greetd
 setup_clamshell
 

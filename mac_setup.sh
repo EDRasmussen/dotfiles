@@ -8,6 +8,7 @@ formulae=(
     git
     curl
     wget
+    herdr
     ca-certificates
     stow
     coreutils
@@ -221,6 +222,20 @@ setup_yazi() {
     brew link ffmpeg-full imagemagick-full -f --overwrite
 }
 
+install_pi() {
+    if ! command -v pi >/dev/null 2>&1; then
+        npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+    fi
+
+    if ! pi list 2>/dev/null | grep -q '^  npm:pi-web-access$'; then
+        pi install npm:pi-web-access
+    fi
+
+    if ! pi list 2>/dev/null | grep -q '^  npm:@plannotator/pi-extension$'; then
+        pi install npm:@plannotator/pi-extension
+    fi
+}
+
 launch_mac_apps() {
     open -a Raycast || true
     open -a AeroSpace || true
@@ -250,6 +265,7 @@ install_omz
 git config --global --type bool push.autoSetupRemote true
 mkdir -p "$HOME/projects"
 (cd "$script_dir" && sh ./install.sh)
+install_pi
 launch_mac_apps
 
 echo "Done!"

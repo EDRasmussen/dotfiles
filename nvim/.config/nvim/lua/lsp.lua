@@ -1,5 +1,45 @@
 vim.diagnostic.config({ virtual_text = true })
 
+-- Neovim pulls diagnostics only for the document that changed. For providers declaring
+-- inter-file dependencies, also pull diagnostics for other visible documents after a save.
+local interfile_diagnostics_group = vim.api.nvim_create_augroup(
+	"LspInterfileDiagnostics",
+	{ clear = true }
+)
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = interfile_diagnostics_group,
+	callback = function(args)
+		for _, client in ipairs(vim.lsp.get_clients({ bufnr = args.buf })) do
+			local providers = {}
+			client:_provider_foreach("textDocument/diagnostic", function(provider)
+				if provider.interFileDependencies then
+					providers[#providers + 1] = provider
+				end
+			end)
+
+			if #providers > 0 then
+				local refreshed = {}
+				for _, window in ipairs(vim.api.nvim_list_wins()) do
+					local bufnr = vim.api.nvim_win_get_buf(window)
+					if
+						bufnr ~= args.buf
+						and client.attached_buffers[bufnr]
+						and not refreshed[bufnr]
+					then
+						refreshed[bufnr] = true
+						for _, provider in ipairs(providers) do
+							client:request("textDocument/diagnostic", {
+								identifier = provider.identifier,
+								textDocument = vim.lsp.util.make_text_document_params(bufnr),
+							}, nil, bufnr)
+						end
+					end
+				end
+			end
+		end
+	end,
+})
+
 -- nvim-ufo uses LSP folding ranges as its main fold provider
 vim.lsp.config("*", {
 	capabilities = {

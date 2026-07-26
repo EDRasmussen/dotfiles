@@ -1,0 +1,36 @@
+[keys]
+# Match the tmux prefix and pane navigation.
+prefix = "ctrl+a"
+focus_pane_left = "ctrl+h"
+focus_pane_down = "ctrl+j"
+focus_pane_up = "ctrl+k"
+focus_pane_right = "ctrl+l"
+
+# Match Neovim: :split stacks panes; :vsplit puts them side by side.
+split_horizontal = "prefix+s"
+split_vertical = "prefix+v"
+
+# Treat Herdr tabs like tmux windows.
+previous_tab = "prefix+p"
+next_tab = "prefix+n"
+
+# Treat Herdr workspaces like tmux sessions.
+previous_workspace = "prefix+ctrl+s"
+next_workspace = "prefix+ctrl+d"
+workspace_picker = "prefix+w"
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
+open_notification_target = ""
+
+reload_config = "prefix+r"
+
+[[keys.command]]
+key = "prefix+f"
+type = "popup"
+command = "~/.local/scripts/herdr-s"
+width = "80%"
+height = "80%"
+
+[ui]
+agent_panel_sort = "spaces"
+prompt_new_tab_name = false
