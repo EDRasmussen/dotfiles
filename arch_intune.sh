@@ -1,3 +1,5 @@
+#!/bin/bash
+
 yay --S --needed --noconfirm microsoft-edge-stable-bin intune-portal-bin
 sudo pacman -S --needed --noconfirm libpwquality
 

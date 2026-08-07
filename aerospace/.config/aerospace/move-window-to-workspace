@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Move the focused window to a workspace. A destination visible on either
+# monitor stays pinned there; a hidden destination is summoned to the source
+# monitor first, regardless of whether it contains other windows.
+workspace=$1
+window_id=$(aerospace list-windows --focused --format '%{window-id}')
+
+if [ -z "$workspace" ] || [ -z "$window_id" ]; then
+    exit 1
+fi
+
+if ! aerospace list-workspaces --monitor all --visible --format '%{workspace}' | grep -Fxq "$workspace"; then
+    aerospace summon-workspace "$workspace"
+fi
+
+exec aerospace move-node-to-workspace \
+    --window-id "$window_id" \
+    --focus-follows-window \
+    "$workspace"

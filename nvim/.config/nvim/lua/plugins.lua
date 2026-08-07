@@ -11,7 +11,10 @@ vim.pack.add({
 		src = "https://github.com/saghen/blink.cmp",
 		version = vim.version.range("^1"),
 	},
+	{ src = "https://github.com/L3MON4D3/LuaSnip" },
+	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
+	{ src = "https://github.com/mfussenegger/nvim-lint" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
@@ -21,8 +24,12 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
+	{ src = "https://github.com/iofq/dart.nvim" },
 	{ src = "https://github.com/andymass/vim-matchup" },
 	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
+	-- Keep both colorschemes installed so switching back only requires changing
+	-- the theme module below.
+	{ src = "https://github.com/WTFox/luna.nvim" },
 	{ src = "https://github.com/boningmaple/mac-clear" },
 
 	{ src = "https://github.com/nvim-neotest/nvim-nio" },
@@ -44,14 +51,19 @@ vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
 
 require("plugins.nvim-treesitter")
 require("plugins.mason")
+require("luasnip.loaders.from_vscode").lazy_load()
 require("plugins.blink-cmp")
 require("gitsigns").setup()
 require("plugins.conform")
+require("plugins.lint")
 require("plugins.telescope")
 require("plugins.easy-dotnet")
 require("plugins.lualine")
 require("plugins.mini")
-require("plugins.mac-clear")
+require("plugins.dart")
+require("plugins.luna")
+-- To restore the previous theme, use this instead:
+-- require("plugins.mac-clear")
 require("plugins.dap")
 require("plugins.statuscol")
 require("plugins.ufo")

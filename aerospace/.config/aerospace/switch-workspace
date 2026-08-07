@@ -1,0 +1,14 @@
+#!/bin/sh
+
+workspace=$1
+
+if [ -z "$workspace" ]; then
+    exit 1
+fi
+
+if aerospace list-workspaces --monitor all --visible --format '%{workspace}' | grep -Fxq "$workspace"; then
+    aerospace workspace "$workspace" || exit
+    exec aerospace move-mouse window-lazy-center
+else
+    exec aerospace summon-workspace "$workspace"
+fi

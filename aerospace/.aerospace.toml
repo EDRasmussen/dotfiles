@@ -30,7 +30,8 @@ default-root-container-orientation = 'horizontal'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # Fallback value (if you omit the key): on-focused-monitor-changed = []
-# Mouse follows the focused window, similar to Hyprland focus behavior.
+# Focus follows the pointer, and keyboard focus changes move the pointer too.
+focus-follows-mouse.enabled = true
 on-focus-changed = ['move-mouse window-lazy-center']
 # on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
@@ -38,6 +39,18 @@ on-focus-changed = ['move-mouse window-lazy-center']
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = false
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.finder'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Notes'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'net.battle.app'
+    run = 'layout floating'
 
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
@@ -120,15 +133,17 @@ automatically-unhide-macos-hidden-apps = false
     alt-f = 'fullscreen'
     alt-t = 'layout floating tiling'
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-    ctrl-1 = 'workspace 1'
-    ctrl-2 = 'workspace 2'
-    ctrl-3 = 'workspace 3'
-    ctrl-4 = 'workspace 4'
-    ctrl-5 = 'workspace 5'
-    ctrl-6 = 'workspace 6'
-    ctrl-7 = 'workspace 7'
-    ctrl-8 = 'workspace 8'
-    ctrl-9 = 'workspace 9'
+    # Visible workspaces stay pinned; hidden workspaces come to the focused monitor.
+    ctrl-1 = 'exec-and-forget $HOME/.config/aerospace/switch-workspace 1'
+    ctrl-2 = 'exec-and-forget $HOME/.config/aerospace/switch-workspace 2'
+    ctrl-3 = 'exec-and-forget $HOME/.config/aerospace/switch-workspace 3'
+    ctrl-4 = 'exec-and-forget $HOME/.config/aerospace/switch-workspace 4'
+    ctrl-5 = 'exec-and-forget $HOME/.config/aerospace/switch-workspace 5'
+    ctrl-6 = 'exec-and-forget $HOME/.config/aerospace/switch-workspace 6'
+    ctrl-7 = 'exec-and-forget $HOME/.config/aerospace/switch-workspace 7'
+    ctrl-8 = 'exec-and-forget $HOME/.config/aerospace/switch-workspace 8'
+    ctrl-9 = 'exec-and-forget $HOME/.config/aerospace/switch-workspace 9'
+    ctrl-0 = 'exec-and-forget $HOME/.config/aerospace/switch-workspace 10'
     # cmd-a = 'workspace A'
     # cmd-b = 'workspace B'
     # cmd-c = 'workspace C'
@@ -153,13 +168,15 @@ automatically-unhide-macos-hidden-apps = false
     # cmd-z = 'workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-    ctrl-shift-1 = 'move-node-to-workspace --focus-follows-window 1'
-    ctrl-shift-2 = 'move-node-to-workspace --focus-follows-window 2'
-    ctrl-shift-3 = 'move-node-to-workspace --focus-follows-window 3'
-    ctrl-shift-4 = 'move-node-to-workspace --focus-follows-window 4'
-    ctrl-shift-5 = 'move-node-to-workspace --focus-follows-window 5'
-    ctrl-shift-6 = 'move-node-to-workspace --focus-follows-window 6'
-    ctrl-shift-7 = 'move-node-to-workspace --focus-follows-window 7'
+    # Visible destinations stay pinned; hidden destinations use the source monitor.
+    ctrl-shift-1 = 'exec-and-forget $HOME/.config/aerospace/move-window-to-workspace 1'
+    ctrl-shift-2 = 'exec-and-forget $HOME/.config/aerospace/move-window-to-workspace 2'
+    ctrl-shift-3 = 'exec-and-forget $HOME/.config/aerospace/move-window-to-workspace 3'
+    ctrl-shift-4 = 'exec-and-forget $HOME/.config/aerospace/move-window-to-workspace 4'
+    ctrl-shift-5 = 'exec-and-forget $HOME/.config/aerospace/move-window-to-workspace 5'
+    ctrl-shift-6 = 'exec-and-forget $HOME/.config/aerospace/move-window-to-workspace 6'
+    ctrl-shift-7 = 'exec-and-forget $HOME/.config/aerospace/move-window-to-workspace 7'
+    ctrl-shift-0 = 'exec-and-forget $HOME/.config/aerospace/move-window-to-workspace 10'
     # cmd-shift-8 = 'move-node-to-workspace 8'
     # cmd-shift-9 = 'move-node-to-workspace 9'
     # cmd-shift-a = 'move-node-to-workspace A'
@@ -187,8 +204,9 @@ automatically-unhide-macos-hidden-apps = false
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     cmd-tab = 'workspace-back-and-forth'
-    # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-    cmd-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+    # Focus the other monitor, or move the focused window there.
+    ctrl-m = 'focus-monitor --wrap-around next'
+    ctrl-shift-m = 'move-node-to-monitor --focus-follows-window --wrap-around next'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     cmd-shift-comma = 'mode service'

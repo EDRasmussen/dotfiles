@@ -15,7 +15,7 @@ opt.tabstop = 4 -- number of spaces for a tab
 opt.softtabstop = 4 -- number of spaces for a tab when editing
 opt.shiftwidth = 4 -- number of spaces for autoindent
 opt.shiftround = true -- round indent to multiple of shiftwidth
-opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" } -- characters to show
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", lead = "·" } -- characters to show
 opt.list = true -- show whitespace characters
 opt.number = true -- show line numbers
 opt.relativenumber = true -- show relative line numbers

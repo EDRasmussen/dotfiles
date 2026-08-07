@@ -6,6 +6,10 @@ vim.filetype.add({
 		cshtml = "html",
 		razor = "html",
 	},
+	pattern = {
+		[".*/%.github/workflows/.*%.yaml"] = "yaml.ghaction",
+		[".*/%.github/workflows/.*%.yml"] = "yaml.ghaction",
+	},
 })
 
 local highlight_group = augroup("YankHighlight", { clear = true })

@@ -1,20 +1,16 @@
 [keys]
-# Match the tmux prefix and pane navigation.
 prefix = "ctrl+a"
 focus_pane_left = "ctrl+h"
 focus_pane_down = "ctrl+j"
 focus_pane_up = "ctrl+k"
 focus_pane_right = "ctrl+l"
 
-# Match Neovim: :split stacks panes; :vsplit puts them side by side.
 split_horizontal = "prefix+s"
 split_vertical = "prefix+v"
 
-# Treat Herdr tabs like tmux windows.
 previous_tab = "prefix+p"
 next_tab = "prefix+n"
 
-# Treat Herdr workspaces like tmux sessions.
 previous_workspace = "prefix+ctrl+s"
 next_workspace = "prefix+ctrl+d"
 workspace_picker = "prefix+w"
@@ -30,6 +26,28 @@ type = "popup"
 command = "~/.local/scripts/herdr-s"
 width = "80%"
 height = "80%"
+
+[theme]
+name = "terminal"
+
+# Match luna theme (nvim)
+[theme.custom]
+panel_bg = "#060606"
+accent = "#75a1c7"
+surface0 = "#333333"
+surface1 = "#404040"
+surface_dim = "#1c1c1c"
+overlay0 = "#888888"
+overlay1 = "#b8b8b8"
+text = "#e4e4e8"
+subtext0 = "#a8a8a8"
+mauve = "#c4a8d6"
+green = "#6fbe80"
+yellow = "#d9a35a"
+red = "#e08585"
+blue = "#8c9cb8"
+teal = "#75a1c7"
+peach = "#e19067"
 
 [ui]
 agent_panel_sort = "spaces"
