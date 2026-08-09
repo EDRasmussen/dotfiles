@@ -219,6 +219,10 @@ install_herdr() {
   fi
 }
 
+install_go_tools() {
+  go install github.com/gohugoio/gotmplfmt@v0.4.1
+}
+
 install_pi() {
   if ! command -v npm >/dev/null 2>&1; then
     sudo pacman -S --needed --noconfirm nodejs npm
@@ -335,6 +339,7 @@ mkdir -p ~/projects
 install_omz
 sh ./install.sh
 install_herdr
+install_go_tools
 install_pi
 setup_greetd
 setup_clamshell

@@ -5,6 +5,8 @@ vim.filetype.add({
 	extension = {
 		cshtml = "html",
 		razor = "html",
+		tmpl = "gotmpl",
+		gotmpl = "gotmpl",
 	},
 	pattern = {
 		[".*/%.github/workflows/.*%.yaml"] = "yaml.ghaction",

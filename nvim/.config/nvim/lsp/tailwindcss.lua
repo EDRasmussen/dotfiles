@@ -4,6 +4,7 @@ return {
 	filetypes = {
 		"astro",
 		"html",
+		"gotmpl",
 		"twig",
 		"css",
 		"scss",
@@ -14,6 +15,13 @@ return {
 		"vue",
 		"svelte",
 		"php",
+	},
+	settings = {
+		tailwindCSS = {
+			includeLanguages = {
+				gotmpl = "html",
+			},
+		},
 	},
 	root_markers = {
 		"package.json",

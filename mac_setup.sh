@@ -222,6 +222,10 @@ setup_yazi() {
     brew link ffmpeg-full imagemagick-full -f --overwrite
 }
 
+install_go_tools() {
+    go install github.com/gohugoio/gotmplfmt@v0.4.1
+}
+
 install_pi() {
     if ! command -v pi >/dev/null 2>&1; then
         npm install -g --ignore-scripts @earendil-works/pi-coding-agent
@@ -265,6 +269,7 @@ install_omz
 git config --global --type bool push.autoSetupRemote true
 mkdir -p "$HOME/projects"
 (cd "$script_dir" && sh ./install.sh)
+install_go_tools
 install_pi
 launch_mac_apps
 

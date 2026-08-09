@@ -13,6 +13,9 @@ require("conform").setup({
 		djlint = {
 			prepend_args = { "--profile", "nunjucks", "--ignore-blocks", "extends" },
 		},
+		gotmplfmt = {
+			command = "gotmplfmt",
+		},
 		prettierd = {
 			cwd = util.root_file({ ".prettierignore", ".git", "package.json" }),
 		},
@@ -27,6 +30,7 @@ require("conform").setup({
 		objcpp = { "clang_format" },
 		cs = { "csharpier" },
 		go = { "goimports", "gofmt" },
+		gotmpl = { "gotmplfmt" },
 		rust = { "rustfmt" },
 		php = { "php_cs_fixer" },
 		twig = { "djlint" },

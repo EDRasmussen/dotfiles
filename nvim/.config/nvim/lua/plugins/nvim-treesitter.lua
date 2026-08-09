@@ -26,6 +26,7 @@ local should_install = {
 	"c_sharp",
 	"vue",
 	"go",
+	"gotmpl",
 	"rust",
 	"sql",
 	"html",
