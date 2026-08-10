@@ -75,3 +75,11 @@ require("trouble").setup({
 	},
 })
 require("fidget").setup({})
+
+-- Use the local Owl checkout while the plugin is under development.
+local owl_path = vim.fn.expand("~/projects/owl.nvim")
+if vim.fn.isdirectory(owl_path) == 1 then
+	vim.opt.runtimepath:prepend(owl_path)
+	vim.cmd.runtime("plugin/owl.lua")
+	require("owl").setup()
+end

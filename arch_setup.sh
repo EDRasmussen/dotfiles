@@ -223,6 +223,14 @@ install_go_tools() {
   go install github.com/gohugoio/gotmplfmt@v0.4.1
 }
 
+install_owl() {
+  local owl_dir="$HOME/projects/owl.nvim"
+
+  if [[ ! -d "$owl_dir/.git" ]]; then
+    git clone git@github.com:EDRasmussen/owl.nvim.git "$owl_dir"
+  fi
+}
+
 install_pi() {
   if ! command -v npm >/dev/null 2>&1; then
     sudo pacman -S --needed --noconfirm nodejs npm
@@ -238,6 +246,10 @@ install_pi() {
 
   if ! pi list 2>/dev/null | grep -q '^  npm:@plannotator/pi-extension$'; then
     pi install npm:@plannotator/pi-extension
+  fi
+
+  if ! pi list 2>/dev/null | grep -q '^  npm:@ogulcancelik/pi-minimal-footer$'; then
+    pi install npm:@ogulcancelik/pi-minimal-footer
   fi
 }
 
@@ -336,6 +348,7 @@ sudo systemctl daemon-reexec
 git config --global --type bool push.autoSetupRemote true
 
 mkdir -p ~/projects
+install_owl
 install_omz
 sh ./install.sh
 install_herdr

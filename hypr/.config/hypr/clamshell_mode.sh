@@ -19,7 +19,9 @@ scale_4k_externals() {
   hyprctl -j monitors \
     | jq -r '.[] | select(.name!="eDP-1" and .width>=3800 and .height>=2100) | .name' \
     | while read -r name; do
-        [ -n "${name:-}" ] && hyprctl eval "hl.monitor({ output = \"${name}\", mode = \"preferred\", position = \"auto\", scale = 1.5 })"
+        # A fixed origin prevents the output (and Noctalia's layer surface)
+        # from shifting when eDP-1 is disabled in clamshell mode.
+        [ -n "${name:-}" ] && hyprctl eval "hl.monitor({ output = \"${name}\", mode = \"preferred\", position = \"0x0\", scale = 1.5 })"
       done
 }
 
@@ -33,9 +35,12 @@ case "$ARG" in
       disable_edp
       scale_4k_externals
     else
-      # No external display: lid shut means sleep. systemd-logind owns this
-      # (HandleLidSwitch=suspend, HandleLidSwitchDocked=ignore) -- nothing to do.
-      :
+      # No external display: lid shut means sleep. systemd-logind owns the
+      # suspend (HandleLidSwitch=suspend, HandleLidSwitchDocked=ignore). Lock
+      # first so we resume to the Noctalia lockscreen. Best-effort: this runs
+      # concurrently with logind's suspend, so ordering isn't guaranteed here
+      # (the 'removed' branch below owns the order and is race-free).
+      loginctl lock-session
     fi
     ;;
   rescan)
@@ -48,6 +53,7 @@ case "$ARG" in
     # dock change, so cover that one edge here).
     if ! has_external; then
       if grep -q closed /proc/acpi/button/lid/*/state 2>/dev/null; then
+        loginctl lock-session   # race-free: we own the order (lock, then suspend)
         systemctl suspend
       else
         enable_edp

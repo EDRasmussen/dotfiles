@@ -2,8 +2,24 @@ tmux/.local/share
 tmux/.local/state
 tmux/.local/.IdentityService
 /tmux/.local/bin/claude
+/tmux/.local/bin/herdr
 
-pi/.pi/agent/
+# Herdr runtime state and caches
+/herdr/.config/herdr/.plugins.lock
+/herdr/.config/herdr/*.log
+/herdr/.config/herdr/release-notes.json
+/herdr/.config/herdr/session.json
+
+# Pi: keep authored configuration, skills, and extensions; ignore local state
+/pi/.pi/agent/auth.json
+/pi/.pi/agent/models-store.json
+/pi/.pi/agent/sessions/
+/pi/.pi/agent/trust.json
+/pi/.pi/agent/npm/
+/pi/.pi/agent/git/
+/pi/.pi/agent/**/__pycache__/
+/pi/.pi/agent/**/*.py[cod]
 
 wayle/.config/wayle/schema.json
 wayle/.config/wayle/themes/schema.json
+/pi/.pi/agent/skills/bro/SKILL.md

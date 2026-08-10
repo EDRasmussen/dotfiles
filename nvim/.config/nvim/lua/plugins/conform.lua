@@ -2,6 +2,20 @@ local util = require("conform.util")
 
 require("conform").setup({
 	formatters = {
+		stylua = {
+			prepend_args = function(_, ctx)
+				local config = vim.fs.find({ ".stylua.toml", "stylua.toml" }, {
+					path = ctx.dirname,
+					upward = true,
+				})[1]
+
+				if config then
+					return {}
+				end
+
+				return { "--indent-type", "Spaces", "--indent-width", "2" }
+			end,
+		},
 		csharpier = {
 			cwd = util.root_file({ ".csharpierrc", ".csharpierrc.json", ".csharpierrc.yaml", ".git" }),
 		},

@@ -5,8 +5,10 @@
 ---- MONITORS ----
 ----------------
 
-hl.monitor({ output = "DP-4", mode = "3840x2160@120", position = "auto", scale = 1.5 })
-hl.monitor({ output = "DP-3", mode = "3840x2160@120", position = "auto", scale = 1.5 })
+-- Keep the external display at a stable origin. With "auto", disabling eDP-1
+-- moves the external output; Noctalia can retain the old offset for its bar.
+hl.monitor({ output = "DP-4", mode = "3840x2160@120", position = "0x0", scale = 1.5 })
+hl.monitor({ output = "DP-3", mode = "3840x2160@120", position = "0x0", scale = 1.5 })
 hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = 1.5 })
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
 
@@ -30,10 +32,7 @@ end)
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("~/.config/hypr/clamshell_mode.sh fallback")
-	hl.exec_cmd("hyprpaper")
-	hl.exec_cmd("hypridle")
-	hl.exec_cmd("wayle panel start")
-	hl.exec_cmd("wl-paste --watch cliphist store")
+	hl.exec_cmd("noctalia --daemon") -- shell: bar, wallpaper, notifications, launcher, clipboard, idle, lockscreen
 	hl.exec_cmd("hyprctl setcursor breeze_cursors 24")
 end)
 
@@ -117,21 +116,13 @@ local mainMod = "SUPER"
 
 -- Terminal / launchers
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("alacritty"))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd([[rofi -show drun -theme-str 'entry { placeholder: "Search..."; }']]))
-hl.bind(
-	mainMod .. " + C",
-	hl.dsp.exec_cmd([[rofi -show calc -theme-str 'entry { placeholder: "Insert expression"; }']])
-)
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher")) -- calc auto-activates when the query contains a digit
 
 -- Browser, clipboard, lock
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("zen"))
-hl.bind(
-	mainMod .. " + V",
-	hl.dsp.exec_cmd(
-		[[cliphist list | rofi -dmenu -theme-str 'entry { placeholder: "Select clipboard history element to copy"; }' | cliphist decode | wl-copy]]
-	)
-)
-hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("noctalia msg panel-toggle clipboard"))
+hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("noctalia msg session lock"))
 
 -- Window mgmt
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())

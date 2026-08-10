@@ -226,6 +226,14 @@ install_go_tools() {
     go install github.com/gohugoio/gotmplfmt@v0.4.1
 }
 
+install_owl() {
+    local owl_dir="$HOME/projects/owl.nvim"
+
+    if [[ ! -d "$owl_dir/.git" ]]; then
+        git clone git@github.com:EDRasmussen/owl.nvim.git "$owl_dir"
+    fi
+}
+
 install_pi() {
     if ! command -v pi >/dev/null 2>&1; then
         npm install -g --ignore-scripts @earendil-works/pi-coding-agent
@@ -237,6 +245,10 @@ install_pi() {
 
     if ! pi list 2>/dev/null | grep -q '^  npm:@plannotator/pi-extension$'; then
         pi install npm:@plannotator/pi-extension
+    fi
+
+    if ! pi list 2>/dev/null | grep -q '^  npm:@ogulcancelik/pi-minimal-footer$'; then
+        pi install npm:@ogulcancelik/pi-minimal-footer
     fi
 }
 
@@ -268,6 +280,7 @@ install_omz
 
 git config --global --type bool push.autoSetupRemote true
 mkdir -p "$HOME/projects"
+install_owl
 (cd "$script_dir" && sh ./install.sh)
 install_go_tools
 install_pi
