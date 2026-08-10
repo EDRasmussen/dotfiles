@@ -45,6 +45,7 @@ require("conform").setup({
 		cs = { "csharpier" },
 		go = { "goimports", "gofmt" },
 		gotmpl = { "gotmplfmt" },
+		templ = { "templ" },
 		rust = { "rustfmt" },
 		php = { "php_cs_fixer" },
 		twig = { "djlint" },

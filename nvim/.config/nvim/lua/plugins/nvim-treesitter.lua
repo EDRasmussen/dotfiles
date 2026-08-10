@@ -27,6 +27,7 @@ local should_install = {
 	"vue",
 	"go",
 	"gotmpl",
+	"templ",
 	"rust",
 	"sql",
 	"html",

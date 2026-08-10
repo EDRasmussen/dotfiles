@@ -5,6 +5,7 @@ return {
 		"astro",
 		"html",
 		"gotmpl",
+		"templ",
 		"twig",
 		"css",
 		"scss",
@@ -20,6 +21,7 @@ return {
 		tailwindCSS = {
 			includeLanguages = {
 				gotmpl = "html",
+				templ = "html",
 			},
 		},
 	},

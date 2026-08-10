@@ -221,6 +221,7 @@ install_herdr() {
 
 install_go_tools() {
   go install github.com/gohugoio/gotmplfmt@v0.4.1
+  go install github.com/a-h/templ/cmd/templ@v0.3.1020
 }
 
 install_owl() {
