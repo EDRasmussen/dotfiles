@@ -239,18 +239,6 @@ install_pi() {
   if ! command -v pi >/dev/null 2>&1; then
     sudo npm install -g --ignore-scripts @earendil-works/pi-coding-agent
   fi
-
-  if ! pi list 2>/dev/null | grep -q '^  npm:pi-web-access$'; then
-    pi install npm:pi-web-access
-  fi
-
-  if ! pi list 2>/dev/null | grep -q '^  npm:@plannotator/pi-extension$'; then
-    pi install npm:@plannotator/pi-extension
-  fi
-
-  if ! pi list 2>/dev/null | grep -q '^  npm:@ogulcancelik/pi-minimal-footer$'; then
-    pi install npm:@ogulcancelik/pi-minimal-footer
-  fi
 }
 
 setup_greetd() {
