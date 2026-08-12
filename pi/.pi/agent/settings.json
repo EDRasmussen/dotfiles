@@ -2,7 +2,8 @@
   "packages": [
     "npm:pi-web-access",
     "npm:@plannotator/pi-extension",
-    "npm:@ogulcancelik/pi-minimal-footer"
+    "npm:@ogulcancelik/pi-minimal-footer",
+    "./packages/pi-debug-mode"
   ],
   "lastChangelogVersion": "0.84.1",
   "theme": "dark",

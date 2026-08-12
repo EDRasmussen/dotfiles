@@ -1,0 +1,33 @@
+{
+  "name": "pi-debug-mode",
+  "version": "0.1.0",
+  "description": "Evidence-driven, human-verified runtime debugging mode for Pi",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "debugging",
+    "coding-agent"
+  ],
+  "license": "MIT",
+  "files": [
+    "extensions",
+    "skills",
+    "README.md",
+    "LICENSE"
+  ],
+  "pi": {
+    "extensions": [
+      "./extensions"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

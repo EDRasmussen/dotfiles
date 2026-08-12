@@ -17,8 +17,10 @@ tmux/.local/.IdentityService
 /pi/.pi/agent/trust.json
 /pi/.pi/agent/npm/
 /pi/.pi/agent/git/
+/pi/.pi/agent/**/*.log
 /pi/.pi/agent/**/__pycache__/
 /pi/.pi/agent/**/*.py[cod]
+/pi/.pi/web-search-cache/
 
 wayle/.config/wayle/schema.json
 wayle/.config/wayle/themes/schema.json
