@@ -115,7 +115,7 @@ hl.config({
 local mainMod = "SUPER"
 
 -- Terminal / launchers
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("alacritty"))
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("ghostty"))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher")) -- calc auto-activates when the query contains a digit
 

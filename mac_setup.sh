@@ -74,7 +74,7 @@ casks=(
     linearmouse
     karabiner-elements
     dotnet-sdk
-    alacritty
+    ghostty
     spotify
     discord
     dbeaver-community

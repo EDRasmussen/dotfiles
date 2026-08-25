@@ -40,7 +40,7 @@
     "format-disconnected": "󰤭",
     "format-ethernet": "󰈀",
     "tooltip-format": "Connected to {essid}\nNetwork speed: {signalStrength}%",
-    "on-click": "alacritty -e nmtui",
+    "on-click": "ghostty -e nmtui",
   },
 
   "bluetooth": {
@@ -51,7 +51,7 @@
     "tooltip-format": "Bluetooth: {status}",
     "tooltip-format-connected": "{controller_alias}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "  {device_alias}",
-    "on-click": "alacritty -e bluetui",
+    "on-click": "ghostty -e bluetui",
   },
 
   "pulseaudio": {

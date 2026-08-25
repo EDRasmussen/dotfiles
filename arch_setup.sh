@@ -61,7 +61,7 @@ langs=(
 )
 
 gui=(
-    alacritty
+    ghostty
     thunar
     rofi-wayland
     rofi-calc

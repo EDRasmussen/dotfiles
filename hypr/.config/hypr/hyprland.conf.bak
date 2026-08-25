@@ -93,7 +93,7 @@ xwayland {
 }
 
 # Autostart terminal
-bind=SUPER, Return, exec, alacritty
+bind=SUPER, Return, exec, ghostty
 
 # Launcher (rofi/wofi)
 bind=SUPER, SPACE, exec, rofi -show drun -theme-str 'entry { placeholder: "Search..."; }'

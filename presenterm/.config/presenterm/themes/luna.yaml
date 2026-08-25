@@ -1,0 +1,157 @@
+default:
+  margin:
+    percent: 8
+  colors:
+    foreground: palette:foreground
+    background: palette:background
+
+slide_title:
+  alignment: center
+  padding_top: 1
+  padding_bottom: 1
+  colors:
+    foreground: palette:blue
+  bold: true
+  font_size: 2
+
+headings:
+  h1:
+    prefix: "▌"
+    colors:
+      foreground: palette:blue
+  h2:
+    prefix: "│"
+    colors:
+      foreground: palette:magenta
+  h3:
+    prefix: "·"
+    colors:
+      foreground: palette:cyan
+  h4:
+    colors:
+      foreground: palette:green
+  h5:
+    colors:
+      foreground: palette:yellow
+  h6:
+    colors:
+      foreground: palette:muted
+
+code:
+  alignment: center
+  minimum_size: 50
+  minimum_margin:
+    percent: 8
+  theme_name: base16-eighties.dark
+  padding:
+    horizontal: 2
+    vertical: 1
+
+inline_code:
+  colors:
+    foreground: palette:cyan
+    background: palette:surface
+
+block_quote:
+  prefix: "▍ "
+  colors:
+    foreground: palette:foreground
+    background: palette:surface
+    prefix: palette:magenta
+
+alert:
+  prefix: "▍ "
+  base_colors:
+    foreground: palette:foreground
+    background: palette:surface
+  styles:
+    note:
+      color: palette:blue
+    tip:
+      color: palette:green
+    important:
+      color: palette:magenta
+    warning:
+      color: palette:yellow
+    caution:
+      color: palette:red
+
+execution_output:
+  colors:
+    foreground: palette:foreground
+    background: palette:surface
+  status:
+    running:
+      foreground: palette:blue
+    success:
+      foreground: palette:green
+    failure:
+      foreground: palette:red
+    not_started:
+      foreground: palette:yellow
+  padding:
+    horizontal: 2
+    vertical: 1
+
+intro_slide:
+  title:
+    alignment: center
+    colors:
+      foreground: palette:blue
+    font_size: 2
+  subtitle:
+    alignment: center
+    colors:
+      foreground: palette:magenta
+  event:
+    alignment: center
+    colors:
+      foreground: palette:cyan
+  location:
+    alignment: center
+    colors:
+      foreground: palette:muted
+  date:
+    alignment: center
+    colors:
+      foreground: palette:yellow
+  author:
+    alignment: center
+    colors:
+      foreground: palette:muted
+    positioning: page_bottom
+  footer: false
+
+footer:
+  style: template
+  left: "  👻 {title}"
+  right: "{current_slide} / {total_slides}  "
+
+modals:
+  selection_colors:
+    foreground: palette:blue
+
+mermaid:
+  background: transparent
+  theme: dark
+
+d2:
+  theme: 200
+
+layout_grid:
+  color: palette:blue
+
+palette:
+  colors:
+    background: "060606"
+    surface: "1c1c1c"
+    elevated: "404040"
+    foreground: "e4e4e8"
+    muted: "888888"
+    red: "e08585"
+    green: "6fbe80"
+    yellow: "d9a35a"
+    blue: "75a1c7"
+    magenta: "c4a8d6"
+    cyan: "7ccbcd"
+    white: "ffffff"
