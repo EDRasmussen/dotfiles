@@ -34,6 +34,9 @@ name = "terminal"
 # Match luna theme (nvim)
 [theme.custom]
 panel_bg = "#060606"
+sidebar_bg = "#060606"
+active_row_bg = "#1c1c1c"
+selection_bg = "#333333"
 accent = "#75a1c7"
 surface0 = "#333333"
 surface1 = "#404040"
