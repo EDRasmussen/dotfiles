@@ -38,5 +38,8 @@ palette = 21=#c7c7c7
 background-opacity = 1
 background-blur = false
 
+# Ghostty defaults discrete mouse wheels to 3x speed.
+mouse-scroll-multiplier = precision:1,discrete:1
+
 keybind = cmd+up=increase_font_size:1
 keybind = cmd+down=decrease_font_size:1
