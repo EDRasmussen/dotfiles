@@ -1,6 +1,74 @@
 {
   "profiles": [
     {
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "Corne Caps Lock to Escape",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 24926,
+                        "vendor_id": 7504
+                      }
+                    ],
+                    "type": "device_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "caps_lock",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "devices": [
+        {
+          "identifiers": {
+            "is_keyboard": true,
+            "product_id": 24926,
+            "vendor_id": 7504
+          },
+          "simple_modifications": [
+            {
+              "from": {
+                "key_code": "caps_lock"
+              },
+              "to": [
+                {
+                  "key_code": "escape"
+                }
+              ]
+            },
+            {
+              "from": {
+                "key_code": "escape"
+              },
+              "to": [
+                {
+                  "key_code": "caps_lock"
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "name": "Default profile",
       "selected": true,
       "simple_modifications": [
