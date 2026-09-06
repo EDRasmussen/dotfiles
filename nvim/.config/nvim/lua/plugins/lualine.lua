@@ -4,6 +4,9 @@ require("lualine").setup({
 		section_separators = "",
 		component_separators = "",
 		globalstatus = true,
+		disabled_filetypes = {
+			winbar = { "NvimTree" },
+		},
 	},
 	sections = {
 		lualine_c = {

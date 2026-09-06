@@ -13,7 +13,8 @@ vim.keymap.set({ "n", "v" }, "<leader>f", function()
 	})
 end, { desc = "Format file or selection" })
 
-vim.keymap.set("n", "<leader>e", "<cmd>Explore %:p:h<CR>", { desc = "Open file explorer in current file's directory" })
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file tree (reveal current file)" })
+vim.keymap.set("n", "<leader>E", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file tree" })
 
 vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer diagnostics (Trouble)" })
 vim.keymap.set("n", "<leader>xp", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Project diagnostics (Trouble)" })

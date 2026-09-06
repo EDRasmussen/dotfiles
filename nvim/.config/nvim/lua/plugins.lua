@@ -22,6 +22,7 @@ vim.pack.add({
 	{ src = "https://github.com/GustavEikaas/easy-dotnet.nvim" },
 
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
+	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
 	{ src = "https://github.com/iofq/dart.nvim" },
@@ -57,6 +58,7 @@ require("gitsigns").setup()
 require("plugins.conform")
 require("plugins.lint")
 require("plugins.telescope")
+require("plugins.nvim-tree")
 require("plugins.easy-dotnet")
 require("plugins.lualine")
 require("plugins.mini")
