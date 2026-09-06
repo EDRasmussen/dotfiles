@@ -80,6 +80,7 @@ casks=(
     dbeaver-community
     zen-browser
     bruno
+    font-lilex
     font-jetbrains-mono-nerd-font
     font-symbols-only-nerd-font
     font-inter

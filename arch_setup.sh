@@ -90,6 +90,7 @@ aur=(
     bruno-bin
     azure-functions-core-tools-bin
     wayle-bin
+    ttf-lilex
     ttf-ms-fonts ttf-vista-fonts
     ttf-menlo-powerline ttf-monaco
     apple-fonts
