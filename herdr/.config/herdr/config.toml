@@ -31,28 +31,31 @@ height = "80%"
 [theme]
 name = "terminal"
 
-# Match luna theme (nvim)
+# Match One Dark in Neovim and Ghostty
 [theme.custom]
-panel_bg = "#060606"
-accent = "#75a1c7"
-surface0 = "#333333"
-surface1 = "#404040"
-surface_dim = "#1c1c1c"
-overlay0 = "#888888"
-overlay1 = "#b8b8b8"
-text = "#e4e4e8"
-subtext0 = "#a8a8a8"
-mauve = "#c4a8d6"
-green = "#6fbe80"
-yellow = "#d9a35a"
-red = "#e08585"
-blue = "#8c9cb8"
-teal = "#75a1c7"
-peach = "#e19067"
+panel_bg = "#282c34"
+accent = "#61afef"
+surface0 = "#353b45"
+surface1 = "#3e4451"
+surface_dim = "#21252b"
+overlay0 = "#737c8c"
+overlay1 = "#9da5b4"
+text = "#abb2bf"
+subtext0 = "#9da5b4"
+mauve = "#c678dd"
+green = "#98c379"
+yellow = "#e5c07b"
+red = "#e06c75"
+blue = "#61afef"
+teal = "#56b6c2"
+peach = "#d19a66"
 
 [ui]
 agent_panel_sort = "spaces"
 prompt_new_tab_name = false
+hide_tab_bar_when_single_tab = true
+pane_scrollbars = false
+sidebar_collapsed_mode = "hidden"
 
 [experimental]
 kitty_graphics = true
