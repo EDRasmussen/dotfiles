@@ -1,17 +1,29 @@
+# One Dark, matching nvim's onedark.nvim style = "dark" palette.
 gui:
   theme:
     activeBorderColor:
-      - "#a9b665"
+      - "#98c379"
       - bold
     inactiveBorderColor:
-      - "#665c54"
+      - "#5c6370"
+    searchingActiveBorderColor:
+      - "#56b6c2"
+      - bold
     optionsTextColor:
-      - "#d8a657"
+      - "#61afef"
     selectedLineBgColor:
-      - "#504945"
-    selectedLineFgColor:
-      - "#ebdbb2"
+      - "#393f4a"
+    inactiveViewSelectedLineBgColor:
+      - "#31353f"
+    cherryPickedCommitFgColor:
+      - "#56b6c2"
+    cherryPickedCommitBgColor:
+      - "#31353f"
+    markedBaseCommitFgColor:
+      - "#e5c07b"
+    markedBaseCommitBgColor:
+      - "#31353f"
     unstagedChangesColor:
-      - "#ea6962"
+      - "#e86671"
     defaultFgColor:
-      - "#d4be98"
+      - "#abb2bf"

@@ -1,11 +1,12 @@
+# One Dark, matching nvim's onedark.nvim style = "dark" palette.
 gui:
   theme:
     activeBorderColor:
-      - green
+      - "#98c379"
       - bold
     inactiveBorderColor:
-      - yellow
+      - "#5c6370"
     optionsTextColor:
-      - yellow
+      - "#61afef"
     selectedLineBgColor:
-      - reverse
+      - "#393f4a"
