@@ -31,10 +31,10 @@ require("conform").setup({
 			command = "gotmplfmt",
 		},
 		prettierd = {
-			cwd = util.root_file({ ".prettierignore", ".git", "package.json" }),
+			cwd = util.root_file({ "prettier.config.js", ".prettierrc", ".prettierignore", "package.json" }),
 		},
 		prettier = {
-			cwd = util.root_file({ ".prettierignore", ".git", "package.json" }),
+			cwd = util.root_file({ "prettier.config.js", ".prettierrc", ".prettierignore", "package.json" }),
 		},
 	},
 	formatters_by_ft = {

@@ -1,4 +1,4 @@
-# One Dark palette, coordinated with Neovim and Herdr
+# Catppuccin Mocha, coordinated with Neovim and Herdr
 
 font-family = "Lilex"
 font-style = Regular
@@ -8,31 +8,7 @@ window-padding-y = 14
 window-theme = ghostty
 resize-overlay = never
 
-background = #282c34
-foreground = #abb2bf
-
-cursor-color = #abb2bf
-cursor-text = #282c34
-
-selection-foreground = #abb2bf
-selection-background = #3e4451
-
-palette = 0=#282c34
-palette = 1=#e06c75
-palette = 2=#98c379
-palette = 3=#e5c07b
-palette = 4=#61afef
-palette = 5=#c678dd
-palette = 6=#56b6c2
-palette = 7=#abb2bf
-palette = 8=#5c6370
-palette = 9=#e06c75
-palette = 10=#98c379
-palette = 11=#e5c07b
-palette = 12=#61afef
-palette = 13=#c678dd
-palette = 14=#56b6c2
-palette = 15=#ffffff
+theme = Catppuccin Mocha
 
 background-opacity = 1
 background-blur = false

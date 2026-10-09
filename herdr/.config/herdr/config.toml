@@ -29,26 +29,8 @@ width = "80%"
 height = "80%"
 
 [theme]
-name = "terminal"
-
-# Match One Dark in Neovim and Ghostty
-[theme.custom]
-panel_bg = "#282c34"
-accent = "#61afef"
-surface0 = "#353b45"
-surface1 = "#3e4451"
-surface_dim = "#21252b"
-overlay0 = "#737c8c"
-overlay1 = "#9da5b4"
-text = "#abb2bf"
-subtext0 = "#9da5b4"
-mauve = "#c678dd"
-green = "#98c379"
-yellow = "#e5c07b"
-red = "#e06c75"
-blue = "#61afef"
-teal = "#56b6c2"
-peach = "#d19a66"
+# Match Catppuccin Mocha in Neovim.
+name = "catppuccin"
 
 [ui]
 agent_panel_sort = "spaces"

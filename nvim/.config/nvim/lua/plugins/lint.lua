@@ -47,14 +47,31 @@ lint.linters_by_ft = {
 -- Neovim is the expected runtime for Lua files in this configuration.
 vim.list_extend(lint.linters.luacheck.args, { "--globals", "vim" })
 
+local function try_available_linters()
+	local available = {}
+	for _, name in ipairs(lint.linters_by_ft[vim.bo.filetype] or {}) do
+		local linter = lint.linters[name]
+		local command = linter and linter.cmd
+		if type(command) == "function" then
+			local ok, resolved = pcall(command)
+			command = ok and resolved or nil
+		end
+		if type(command) == "table" then
+			command = command[1]
+		end
+		if type(command) == "string" and vim.fn.executable(command) == 1 then
+			available[#available + 1] = name
+		end
+	end
+	if #available > 0 then
+		lint.try_lint(available)
+	end
+end
+
 local lint_group = vim.api.nvim_create_augroup("NvimLint", { clear = true })
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
 	group = lint_group,
-	callback = function()
-		lint.try_lint()
-	end,
+	callback = try_available_linters,
 })
 
-vim.keymap.set("n", "<leader>ll", function()
-	lint.try_lint()
-end, { desc = "Lint current buffer" })
+vim.keymap.set("n", "<leader>ll", try_available_linters, { desc = "Lint current buffer" })
