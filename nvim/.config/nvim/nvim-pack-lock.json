@@ -151,6 +151,10 @@
       "rev": "bbe4c260ffebe4f80968273c9fab6fcb672bffb3",
       "src": "https://github.com/roerohan/orng.nvim"
     },
+    "oxide": {
+      "rev": "838760c820821cce6a79706430883439c80dad4c",
+      "src": "https://github.com/oxidescheme/nvim"
+    },
     "papercolor-theme": {
       "rev": "0cfe64ffb24c21a6101b5f994ca342a74c977aef",
       "src": "https://github.com/NLKNguyen/papercolor-theme"
@@ -187,6 +191,11 @@
       "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
       "src": "https://github.com/folke/trouble.nvim"
     },
+    "ultimate-autopair.nvim": {
+      "rev": "6b58234de921437836efe27714b2026ed2ee235a",
+      "src": "https://github.com/altermo/ultimate-autopair.nvim",
+      "version": "'v0.6'"
+    },
     "vague.nvim": {
       "rev": "f9060fdaf7b20f68575d6f8214da6f1cf0c72825",
       "src": "https://github.com/vague-theme/vague.nvim"
@@ -194,6 +203,10 @@
     "vim-matchup": {
       "rev": "055881643e1b37038a572c883de7b1969716db77",
       "src": "https://github.com/andymass/vim-matchup"
+    },
+    "vscode.nvim": {
+      "rev": "6439ed89d0e10193f07e92268a321d7c6f6e93ee",
+      "src": "https://github.com/Mofiqul/vscode.nvim"
     }
   }
 }

@@ -25,11 +25,14 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
+	{ src = "https://github.com/altermo/ultimate-autopair.nvim", version = "v0.6" },
 	{ src = "https://github.com/iofq/dart.nvim" },
 	{ src = "https://github.com/andymass/vim-matchup" },
 	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
 	{ src = "https://github.com/navarasu/onedark.nvim" },
 	{ src = "https://github.com/catppuccin/nvim" },
+	{ src = "https://github.com/oxidescheme/nvim", name = "oxide" },
+	{ src = "https://github.com/Mofiqul/vscode.nvim" },
 
 	{ src = "https://github.com/nvim-neotest/nvim-nio" },
 	{ src = "https://github.com/mfussenegger/nvim-dap" },
@@ -60,8 +63,9 @@ require("plugins.nvim-tree")
 require("plugins.easy-dotnet")
 require("plugins.lualine")
 require("plugins.mini")
+require("plugins.ultimate-autopair")
 require("plugins.dart")
-require("plugins.catppuccin")
+require("plugins.visual-studio")
 require("plugins.dap")
 require("plugins.statuscol")
 require("plugins.ufo")

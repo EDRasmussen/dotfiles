@@ -29,8 +29,29 @@ width = "80%"
 height = "80%"
 
 [theme]
-# Match Catppuccin Mocha in Neovim.
+# Custom Visual Studio 2012–2015-inspired Dark palette.
 name = "catppuccin"
+
+[theme.custom]
+panel_bg = "#1e1e1e"
+sidebar_bg = "#252526"
+active_row_bg = "#373737"
+selection_bg = "#264f78"
+surface0 = "#2d2d30"
+surface1 = "#3f3f46"
+surface_dim = "#252526"
+overlay0 = "#636369"
+overlay1 = "#808080"
+text = "#dcdcdc"
+subtext0 = "#bbbbbb"
+accent = "#007acc"
+mauve = "#c586c0"
+green = "#608b4e"
+yellow = "#dcdcaa"
+red = "#f44747"
+blue = "#569cd6"
+teal = "#4ec9b0"
+peach = "#ce9178"
 
 [ui]
 agent_panel_sort = "spaces"

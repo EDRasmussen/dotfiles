@@ -18,15 +18,21 @@ require("dart").setup({
 })
 
 local function style_dart()
-	local bg = "#282c34"
+	local function color(group, attribute)
+		return vim.api.nvim_get_hl(0, { name = group, link = false })[attribute]
+	end
+	local bg = color("CursorLine", "bg") or color("Normal", "bg")
+	local fg = color("Normal", "fg")
+	local muted = color("Comment", "fg")
+	local accent = color("Keyword", "fg")
 	vim.api.nvim_set_hl(0, "DartFill", { bg = bg })
 	for _, group in ipairs({ "DartCurrent", "DartVisible", "DartMarked", "DartMarkedCurrent" }) do
 		local active = group:find("Current") ~= nil
-		local text = { fg = active and "#abb2bf" or "#737c8c", bg = bg, bold = active }
-		local label = { fg = active and "#61afef" or "#737c8c", bg = bg, bold = active }
+		local text = { fg = active and fg or muted, bg = bg, bold = active }
+		local label = { fg = active and accent or muted, bg = bg, bold = active }
 		vim.api.nvim_set_hl(0, group, text)
 		vim.api.nvim_set_hl(0, group .. "Label", label)
-		vim.api.nvim_set_hl(0, group .. "Modified", { fg = "#e5c07b", bg = bg, bold = active })
+		vim.api.nvim_set_hl(0, group .. "Modified", { fg = color("DiagnosticWarn", "fg"), bg = bg, bold = active })
 		vim.api.nvim_set_hl(0, group .. "LabelModified", label)
 	end
 end
