@@ -1,6 +1,25 @@
 local dotnet = require("easy-dotnet")
+-- Set NVIM_NO_ICONS=1 on machines without a Nerd Font.
+local no_icons = vim.env.NVIM_NO_ICONS == "1"
 
 dotnet.setup({
+	test_runner = {
+		icons = no_icons and {
+			passed = "+",
+			skipped = "-",
+			inconclusive = "?",
+			failed = "x",
+			success = "+",
+			reload = "~",
+			test = "T",
+			sln = "S",
+			project = "P",
+			dir = "D",
+			package = "G",
+			class = "C",
+			build_failed = "!",
+		} or nil,
+	},
 	lsp = {
 		config = dofile(vim.fn.stdpath("config") .. "/lsp/easy_dotnet.lua"),
 	},

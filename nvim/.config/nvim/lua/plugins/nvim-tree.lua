@@ -1,3 +1,6 @@
+-- Set NVIM_NO_ICONS=1 on machines without a Nerd Font.
+local no_icons = vim.env.NVIM_NO_ICONS == "1"
+
 local function on_attach(bufnr)
   local api = require("nvim-tree.api")
   local function map(key, action, desc)
@@ -54,8 +57,42 @@ require("nvim-tree").setup({
   renderer = {
     group_empty = true,
     highlight_git = "name",
-    indent_markers = { enable = true },
-    icons = { git_placement = "after" },
+    indent_markers = {
+      enable = true,
+      icons = no_icons and { corner = "`", edge = "|", item = "|", bottom = "-", none = " " } or nil,
+    },
+    icons = {
+      git_placement = "after",
+      web_devicons = no_icons and { file = { enable = false }, folder = { enable = false } } or nil,
+      show = no_icons and { file = false, folder = false } or nil,
+      symlink_arrow = no_icons and " -> " or nil,
+      glyphs = no_icons and {
+        default = "",
+        symlink = "@",
+        bookmark = "*",
+        modified = "+",
+        hidden = ".",
+        folder = {
+          arrow_closed = ">",
+          arrow_open = "v",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "@",
+          symlink_open = "@",
+        },
+        git = {
+          unstaged = "M",
+          staged = "S",
+          unmerged = "U",
+          renamed = "R",
+          untracked = "?",
+          deleted = "D",
+          ignored = "!",
+        },
+      } or nil,
+    },
   },
   git = { enable = true },
   filters = { dotfiles = false, git_ignored = true },
