@@ -1,9 +1,11 @@
+local no_icons = vim.env.NVIM_NO_ICONS == "1"
+
 vim.o.foldcolumn = "1" -- show fold column, set to "0" to hide
 vim.opt.fillchars:append({
 	fold = " ",
 	foldsep = " ",
-	foldopen = "",
-	foldclose = "",
+	foldopen = no_icons and "v" or "",
+	foldclose = no_icons and ">" or "",
 })
 vim.o.foldlevel = 99 -- ufo needs a high value, feel free to decrease
 vim.o.foldlevelstart = 99
